@@ -881,6 +881,8 @@ body.light{
 </section>
 
 <!-- Contact -->
+<!-- REPLACE YOUR CURRENT CONTACT SECTION WITH THIS -->
+
 <section id="contact">
   <div class="container">
     <div style="text-align:center" data-reveal>
@@ -888,8 +890,11 @@ body.light{
       <h2 class="section-h2">Let's Build Something</h2>
       <p class="section-sub" style="margin:0 auto">Open to opportunities, collaborations, and interesting AI/ML projects</p>
     </div>
+
     <div class="contact-grid">
+
       <div class="contact-info" data-reveal>
+
         <a href="mailto:aviralgoyal739@gmail.com" class="contact-card" style="text-decoration:none">
           <div class="contact-icon">✉️</div>
           <div>
@@ -897,6 +902,7 @@ body.light{
             <div class="contact-val">aviralgoyal739@gmail.com</div>
           </div>
         </a>
+
         <a href="tel:+917399999508" class="contact-card" style="text-decoration:none">
           <div class="contact-icon">📱</div>
           <div>
@@ -904,6 +910,7 @@ body.light{
             <div class="contact-val">+91 73999-99508</div>
           </div>
         </a>
+
         <a href="https://www.linkedin.com/in/avviiiral" target="_blank" rel="noopener" class="contact-card" style="text-decoration:none">
           <div class="contact-icon">💼</div>
           <div>
@@ -911,42 +918,100 @@ body.light{
             <div class="contact-val">linkedin.com/in/avviiiral</div>
           </div>
         </a>
+
         <div style="padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:14px">
           <div style="font-size:.85rem;color:var(--text2);line-height:1.7">
             Currently exploring full-time opportunities in AI/ML engineering and data analytics. Based in India, open to remote collaboration worldwide.
           </div>
+
           <div style="display:flex;gap:.5rem;margin-top:1rem">
             <span style="background:rgba(16,185,129,0.1);color:#10b981;border:1px solid rgba(16,185,129,0.2);border-radius:100px;padding:4px 12px;font-size:.75rem;font-weight:600">● Available</span>
+
             <span style="background:rgba(59,130,246,0.1);color:#3b82f6;border:1px solid rgba(59,130,246,0.2);border-radius:100px;padding:4px 12px;font-size:.75rem;font-weight:600">Remote OK</span>
           </div>
         </div>
+
       </div>
-      <div class="contact-form" data-reveal style="transition-delay:.2s">
-        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.2rem;margin-bottom:1.5rem">Send a message</div>
+
+      <!-- NETLIFY FORM -->
+      <form
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="contact-form"
+        data-reveal
+        style="transition-delay:.2s"
+      >
+
+        <input type="hidden" name="form-name" value="contact">
+
+        <p hidden>
+          <label>
+            Don’t fill this out:
+            <input name="bot-field">
+          </label>
+        </p>
+
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.2rem;margin-bottom:1.5rem">
+          Send a message
+        </div>
+
         <div class="form-row">
+
           <div class="form-group">
             <label class="form-label">Name</label>
-            <input type="text" class="form-input" placeholder="Your name">
+            <input
+              type="text"
+              name="name"
+              class="form-input"
+              placeholder="Your name"
+              required
+            >
           </div>
+
           <div class="form-group">
             <label class="form-label">Email</label>
-            <input type="email" class="form-input" placeholder="your@email.com">
+            <input
+              type="email"
+              name="email"
+              class="form-input"
+              placeholder="your@email.com"
+              required
+            >
           </div>
+
         </div>
+
         <div class="form-group">
           <label class="form-label">Subject</label>
-          <input type="text" class="form-input" placeholder="Project collaboration, job opportunity...">
+          <input
+            type="text"
+            name="subject"
+            class="form-input"
+            placeholder="Project collaboration, job opportunity..."
+          >
         </div>
+
         <div class="form-group">
           <label class="form-label">Message</label>
-          <textarea class="form-textarea" placeholder="Tell me about your project or opportunity..."></textarea>
+          <textarea
+            name="message"
+            class="form-textarea"
+            placeholder="Tell me about your project or opportunity..."
+            required
+          ></textarea>
         </div>
-        <button class="form-submit" id="sendBtn">Send Message →</button>
-      </div>
+
+        <button type="submit" class="form-submit">
+          Send Message →
+        </button>
+
+      </form>
+
     </div>
   </div>
 </section>
-
 <!-- Footer -->
 <footer>
   <div class="footer-logo">Aviral Goyal</div>
@@ -1083,21 +1148,6 @@ window.addEventListener('scroll',()=>{
   else navbar.style.padding='20px 5%';
 });
 
-// Send button
-const sendBtn=document.getElementById('sendBtn');
-sendBtn.addEventListener('click',()=>{
-  sendBtn.textContent='Sending...';
-  sendBtn.style.opacity='.7';
-  setTimeout(()=>{
-    sendBtn.textContent='Message Sent! ✓';
-    sendBtn.style.background='linear-gradient(135deg,#10b981,#06b6d4)';
-    setTimeout(()=>{
-      sendBtn.textContent='Send Message →';
-      sendBtn.style.background='linear-gradient(135deg,#3b82f6,#8b5cf6)';
-      sendBtn.style.opacity='1';
-    },3000);
-  },1500);
-});
 </script>
 </body>
 </html>
