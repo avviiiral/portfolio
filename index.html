@@ -452,7 +452,11 @@ body.light{
 /* Responsive */
 @media(max-width:900px){
   .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
-  .hero-visual{display:none}
+  .hero-visual{
+    display:flex;
+    justify-content:center;
+    margin-top:30px;
+}
   .projects-grid{grid-template-columns:repeat(2,1fr)}
   .skills-grid,.vision-grid{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
