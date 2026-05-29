@@ -573,13 +573,14 @@ body.light{
       </div>
       <div class="hero-visual">
   <div style="
-    width:380px;
-    height:380px;
+    width:min(380px,85vw);
+    aspect-ratio:1/1;
     border-radius:50%;
     padding:8px;
     background:linear-gradient(135deg,#3b82f6,#8b5cf6,#06b6d4);
     box-shadow:0 0 60px rgba(59,130,246,0.35);
     animation:float 5s ease-in-out infinite;
+    margin:auto;
   ">
     <img 
       src="profile.jpg"
@@ -593,8 +594,7 @@ body.light{
       "
     >
   </div>
-</div>    </div>
-
+</div>
     <div class="stats-row" data-reveal>
       <div class="stat-card"><div class="stat-num counter" data-target="19">0</div><div class="stat-label">GitHub Repos</div></div>
       <div class="stat-card"><div class="stat-num counter" data-target="5">0</div><div class="stat-label">Tech Domains</div></div>
