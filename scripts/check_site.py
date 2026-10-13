@@ -116,6 +116,10 @@ def main() -> int:
             errors.append(f"{rel}: missing <title>")
         if not pg.metas.get("description") and not noindex:
             errors.append(f"{rel}: missing meta description")
+        if not noindex:
+            for social_key in ("og:title", "og:description", "og:url", "og:image", "twitter:card", "twitter:title", "twitter:description", "twitter:image"):
+                if not pg.metas.get(social_key):
+                    errors.append(f"{rel}: missing {social_key} metadata")
         if pg.h1 < 1 and rel not in ("thank-you.html", "404.html"):
             errors.append(f"{rel}: no <h1>")
         if pg.h1 > 1:
@@ -166,6 +170,13 @@ def main() -> int:
             errors.append(f"sitemap.xml: lists {extra} but no indexable page matches")
     else:
         errors.append("sitemap.xml not found")
+
+    # Sitemap URLs should be absolute HTTPS URLs on the configured site.
+    if sm.is_file():
+        for loc in listed:
+            u = urlparse(loc)
+            if u.scheme != "https" or u.netloc != urlparse(SITE).netloc:
+                errors.append(f"sitemap.xml: unexpected URL {loc}")
 
     # local assets referenced from index.html
     idx = ROOT / "index.html"
