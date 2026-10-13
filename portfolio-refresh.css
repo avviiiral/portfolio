@@ -2265,3 +2265,22 @@ body.light #hero {
     width:min(260px,64vw)
   }
 }
+
+/* Layout fixes: keep case-study cards compact and reduce oversized section gaps. */
+section:not(#hero) {
+  padding:clamp(3.5rem,6vw,5rem) 0;
+}
+
+section.panel {
+  padding:clamp(1.25rem,2.5vw,2rem);
+}
+
+@media (max-width:640px) {
+  section:not(#hero) {
+    padding:3.25rem 0;
+  }
+
+  section.panel {
+    padding:1.1rem;
+  }
+}
