@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personal Wealth Monitoring System | Case Study</title>
+<meta name="description" content="Case study of a full-stack personal wealth monitoring application for organizing investments, transactions, mutual funds, SIPs, and portfolio analytics.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://aviral-goyal.netlify.app/projects/personal-wealth-monitoring.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Personal Wealth Monitoring System">
+<meta property="og:description" content="A Django and Angular application for bringing investment records and portfolio analytics into one workflow.">
+<meta property="og:url" content="https://aviral-goyal.netlify.app/projects/personal-wealth-monitoring.html">
+<style>
+:root{color-scheme:dark;--bg:#050810;--surface:#0f1830;--border:#1a2a50;--text:#e8eeff;--muted:#9aa9d0;--blue:#60a5fa;--cyan:#67e8f9}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#111c3b 0,transparent 50%),var(--bg);color:var(--text);font:16px/1.7 system-ui,-apple-system,Segoe UI,sans-serif}main{max-width:920px;margin:auto;padding:56px 22px 80px}.back{color:var(--cyan);text-decoration:none}.eyebrow{margin-top:56px;color:var(--cyan);font:12px ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase}h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.08;letter-spacing:-.04em;margin:.7rem 0 1rem}h2{font-size:1.35rem;margin:2.2rem 0 .5rem}p,li{color:var(--muted)}.lead{font-size:1.15rem;max-width:760px}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}.chips span{border:1px solid var(--border);background:var(--surface);padding:6px 10px;border-radius:8px;color:var(--text);font-size:.8rem}.panel{border:1px solid var(--border);background:rgba(15,24,48,.72);border-radius:16px;padding:22px;margin-top:16px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}.btn{display:inline-block;padding:11px 16px;border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text)}.btn.primary{background:#2563eb;border-color:#2563eb}@media(max-width:620px){main{padding:28px 18px 56px}.grid{grid-template-columns:1fr}.eyebrow{margin-top:38px}}
+</style>
+</head>
+<body><main>
+<a class="back" href="/">← Back to portfolio</a>
+<div class="eyebrow">Selected work / Full-stack application</div>
+<h1>Personal Wealth Monitoring System</h1>
+<p class="lead">A personal-finance application focused on bringing investment holdings, transaction history, mutual funds, SIPs, and portfolio analysis into one place.</p>
+<div class="chips"><span>Python</span><span>Django REST Framework</span><span>Angular</span><span>SQL</span><span>Market data integration</span></div>
+<div class="grid">
+<section class="panel"><h2>The problem</h2><p>Investment information can be spread across transaction exports, market-price sources, mutual-fund NAV data, and separate asset categories. Comparing positions consistently requires a clear data model and repeatable calculations.</p></section>
+<section class="panel"><h2>The approach</h2><p>Use a Django API to manage application data and calculation logic, with an Angular frontend for portfolio views, investment workflows, and analytics.</p></section>
+</div>
+<h2>Product areas</h2>
+<ul>
+<li><strong>Portfolio and holdings:</strong> organize investments and current positions.</li>
+<li><strong>Transactions:</strong> preserve the underlying activity used to derive holdings and performance.</li>
+<li><strong>Mutual funds and SIPs:</strong> track units, NAV-based values, and recurring investment records.</li>
+<li><strong>Analytics:</strong> compare costs and current values while separating realized and unrealized performance where the data supports it.</li>
+<li><strong>Market data:</strong> integrate external price/NAV sources with clear handling for missing or stale values.</li>
+</ul>
+<h2>Important engineering decisions</h2>
+<div class="panel"><p>Financial calculations need explicit conventions: transaction ordering, units and currency precision, treatment of fees, split/bonus events where relevant, stale-price indicators, and reconciliation between transaction-derived holdings and imported closing balances. A useful dashboard should make assumptions visible rather than hide them behind a single total.</p></div>
+<h2>What this demonstrates</h2>
+<ul><li>Building a full-stack application with a separate API and frontend.</li><li>Integrating market-data inputs with user-managed investment records.</li><li>Designing reporting around transaction-level data and calculation consistency.</li></ul>
+<p><em>This page describes application scope and design; it does not claim audited financial accuracy or investment performance.</em></p>
+<div class="actions"><a class="btn primary" href="/#contact">Discuss a similar application</a><a class="btn" href="https://github.com/avviiiral/Personal_Wealth_Monitoring_System" target="_blank" rel="noopener noreferrer">GitHub repository</a><a class="btn" href="/#projects">More projects</a></div>
+</main></body></html>
