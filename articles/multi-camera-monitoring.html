@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Designing a Multi-Camera Monitoring Pipeline | Aviral Goyal</title>
+<meta name="description" content="Engineering notes on separating camera capture, browser streaming and computer-vision inference in a multi-camera monitoring system.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://aviral-goyal.netlify.app/articles/multi-camera-monitoring.html">
+<meta property="og:type" content="article"><meta property="og:title" content="Designing a Multi-Camera Monitoring Pipeline"><meta property="og:description" content="A practical approach to camera capture, video delivery, inference and reliability."><meta property="og:url" content="https://aviral-goyal.netlify.app/articles/multi-camera-monitoring.html">
+<style>:root{color-scheme:dark;--bg:#080a0f;--surface:#10151f;--border:#252d3b;--text:#f3f5f8;--muted:#a7b0bf;--cyan:#9edbd7}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.8 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}main{max-width:860px;margin:auto;padding:clamp(28px,7vw,76px) 22px 90px}.back{display:inline-block;border:1px solid var(--border);border-radius:999px;padding:8px 14px;color:var(--text);text-decoration:none;font-weight:650}.eyebrow{font:600 .72rem/1.4 ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-top:3.5rem}h1{font-size:clamp(2.5rem,7vw,4.5rem);line-height:1.04;letter-spacing:-.055em;margin:.8rem 0 1.2rem}h2{font-size:1.5rem;letter-spacing:-.03em;margin:2.6rem 0 .6rem}p,li{color:var(--muted)}.lead{font-size:1.18rem;max-width:740px}a{color:var(--cyan);text-underline-offset:4px}.callout{margin:1.6rem 0;padding:1.2rem 1.3rem;background:var(--surface);border:1px solid var(--border);border-radius:14px}.flow{display:flex;gap:.55rem;overflow:auto;padding:.4rem 0 1rem}.flow span{min-width:130px;padding:1rem;border:1px solid var(--border);border-radius:12px;background:var(--surface);font-size:.88rem}footer{margin-top:4rem;border-top:1px solid var(--border);padding-top:1.4rem;font-size:.85rem}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}</style>
+</head>
+<body><main>
+<a class="back" href="/">← Portfolio</a>
+<div class="eyebrow">Computer vision / Engineering notes</div>
+<h1>Designing a multi-camera monitoring pipeline</h1>
+<p class="lead">When an application must show multiple live camera feeds and run computer-vision inference, treating everything as one loop makes debugging and capacity planning harder. Separate responsibilities first, then measure the system under its actual network conditions.</p>
+<div class="callout"><strong>Example flow</strong><div class="flow" aria-label="Camera to browser and inference pipeline"><span>RTSP camera<br><small>Video source</small></span><span>Frame capture<br><small>Reconnect / latest frame</small></span><span>Inference worker<br><small>Model workload</small></span><span>API + dashboard<br><small>Results / stream</small></span></div></div>
+<h2>Separate three workloads</h2>
+<p><strong>Capture</strong> keeps a usable frame available and recovers from camera or network interruptions. It should expose stale-frame and reconnect conditions instead of hiding them.</p>
+<p><strong>Inference</strong> has a different budget. Model size, image resolution, batching and accelerator availability influence throughput and latency. The displayed frame rate is not the same as the rate at which unique frames are analysed.</p>
+<p><strong>Browser streaming</strong> delivers a view of the feed; it should not become the only place frames are acquired or force model processing to run at a viewer's pace.</p>
+<h2>Plan for network and browser constraints</h2>
+<p>RTSP quality depends on camera configuration, network path, packet loss and reconnect behavior. Remote access paths such as VPN relays can affect latency. Browsers also impose connection and resource limits, so test the target browser, protocol and number of simultaneous feeds rather than assuming a single-feed demo scales unchanged.</p>
+<h2>Measure what matters</h2>
+<ul><li>Capture uptime, reconnect count and time since the last good frame.</li><li>Inference throughput, queue depth and end-to-end detection latency.</li><li>Stream startup time, browser rendering stability and bandwidth.</li><li>CPU/GPU utilization and memory at the intended camera count.</li></ul>
+<div class="callout"><strong>Reporting rule:</strong> publish FPS, detection accuracy or capacity numbers only after recording camera count, frame size, model version, hardware, network conditions and the measurement method.</div>
+<h2>Related project</h2><p>See the <a href="/projects/bgliin-ai.html">BGLIIN.AI case study</a> for the system components and implementation considerations.</p>
+<footer><a href="/#projects">Back to projects</a> · <a href="/#contact">Discuss a similar system</a></footer>
+</main></body></html>
