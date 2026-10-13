@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<title id="title">Industrial production monitoring system flow</title>
+<desc id="desc">Five stages: IP cameras, frame capture, YOLOv8 inference, Django service, and Angular dashboard.</desc>
+<rect width="1200" height="630" fill="#0b1018"/>
+<path d="M48 78H1152" stroke="#2b3543" stroke-width="2"/>
+<text x="56" y="52" fill="#9edbd7" font-family="Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="3">BGLIIN.AI / SYSTEM FLOW</text>
+<text x="56" y="142" fill="#f3f5f8" font-family="Arial,sans-serif" font-size="44" font-weight="700">Production monitoring</text>
+<text x="56" y="180" fill="#a7b0bf" font-family="Arial,sans-serif" font-size="22">Computer vision connected to a full-stack dashboard</text>
+<g font-family="Arial,sans-serif">
+<g><rect x="44" y="270" width="198" height="172" rx="14" fill="#111923" stroke="#39495a" stroke-width="2"/><circle cx="78" cy="308" r="10" fill="#9edbd7"/><text x="64" y="354" fill="#f3f5f8" font-size="22" font-weight="700">IP cameras</text><text x="64" y="388" fill="#a7b0bf" font-size="18">RTSP feeds</text></g>
+<g><rect x="278" y="270" width="198" height="172" rx="14" fill="#111923" stroke="#39495a" stroke-width="2"/><circle cx="312" cy="308" r="10" fill="#9edbd7"/><text x="298" y="354" fill="#f3f5f8" font-size="22" font-weight="700">Frame capture</text><text x="298" y="388" fill="#a7b0bf" font-size="18">OpenCV</text></g>
+<g><rect x="512" y="270" width="198" height="172" rx="14" fill="#111923" stroke="#39495a" stroke-width="2"/><circle cx="546" cy="308" r="10" fill="#9edbd7"/><text x="532" y="354" fill="#f3f5f8" font-size="22" font-weight="700">Inference</text><text x="532" y="388" fill="#a7b0bf" font-size="18">YOLOv8</text></g>
+<g><rect x="746" y="270" width="198" height="172" rx="14" fill="#111923" stroke="#39495a" stroke-width="2"/><circle cx="780" cy="308" r="10" fill="#9edbd7"/><text x="766" y="354" fill="#f3f5f8" font-size="22" font-weight="700">Service layer</text><text x="766" y="388" fill="#a7b0bf" font-size="18">Django API</text></g>
+<g><rect x="980" y="270" width="176" height="172" rx="14" fill="#111923" stroke="#39495a" stroke-width="2"/><circle cx="1014" cy="308" r="10" fill="#9edbd7"/><text x="1000" y="354" fill="#f3f5f8" font-size="22" font-weight="700">Dashboard</text><text x="1000" y="388" fill="#a7b0bf" font-size="18">Angular</text></g>
+</g>
+<g stroke="#9edbd7" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M246 354h23m-8 -8 8 8-8 8"/><path d="M480 354h23m-8 -8 8 8-8 8"/><path d="M714 354h23m-8 -8 8 8-8 8"/><path d="M948 354h23m-8 -8 8 8-8 8"/></g>
+<text x="56" y="526" fill="#a7b0bf" font-family="Arial,sans-serif" font-size="19">Capture, inference, streaming and reporting are separate workloads.</text>
+</svg>
