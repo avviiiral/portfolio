@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aviral-goyal.netlify.app/sitemap.xml
