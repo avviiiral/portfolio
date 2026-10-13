@@ -47,8 +47,15 @@ class Page(HTMLParser):
                 self.metas[key] = a.get("content", "")
         elif tag == "link" and a.get("rel") == "canonical":
             self.canonical = a.get("href")
-        elif tag == "img" and "alt" not in a:
-            self.imgs_missing_alt += 1
+        elif tag == "img":
+            if "alt" not in a:
+                self.imgs_missing_alt += 1
+            for attr in ("src", "srcset"):
+                value = a.get(attr, "")
+                if value and not value.startswith(("http://", "https://", "data:")):
+                    candidate = value.split(",")[0].strip().split()[0]
+                    if not (ROOT / candidate.lstrip("/")).is_file():
+                        self.problems.append(f"image {attr} points at missing file {candidate}")
         elif tag == "a" and a.get("href") is not None:
             self.links.append(a["href"])
             if a.get("target") == "_blank" and "noopener" not in (a.get("rel") or ""):
@@ -114,8 +121,17 @@ def main() -> int:
         noindex = "noindex" in pg.metas.get("robots", "")
         if not pg.title.strip():
             errors.append(f"{rel}: missing <title>")
-        if not pg.metas.get("description") and not noindex:
+        description = pg.metas.get("description", "").strip()
+        if not description and not noindex:
             errors.append(f"{rel}: missing meta description")
+        elif description and not noindex and not (70 <= len(description) <= 180):
+            errors.append(f"{rel}: meta description length {len(description)} is outside 70–180 characters")
+        if not noindex:
+            for social_key in ("og:title", "og:description", "og:url", "og:image", "twitter:card", "twitter:title", "twitter:description", "twitter:image"):
+                if not pg.metas.get(social_key):
+                    errors.append(f"{rel}: missing {social_key} metadata")
+            if pg.metas.get("twitter:card") != "summary_large_image":
+                errors.append(f"{rel}: twitter:card should be summary_large_image")
         if pg.h1 < 1 and rel not in ("thank-you.html", "404.html"):
             errors.append(f"{rel}: no <h1>")
         if pg.h1 > 1:
@@ -166,6 +182,13 @@ def main() -> int:
             errors.append(f"sitemap.xml: lists {extra} but no indexable page matches")
     else:
         errors.append("sitemap.xml not found")
+
+    # Sitemap URLs should be absolute HTTPS URLs on the configured site.
+    if sm.is_file():
+        for loc in listed:
+            u = urlparse(loc)
+            if u.scheme != "https" or u.netloc != urlparse(SITE).netloc:
+                errors.append(f"sitemap.xml: unexpected URL {loc}")
 
     # local assets referenced from index.html
     idx = ROOT / "index.html"

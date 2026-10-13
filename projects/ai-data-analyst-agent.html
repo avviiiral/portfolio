@@ -3,21 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Data Analyst Agent | Case Study</title>
-<meta name="description" content="Case study of a Python and Streamlit AI-assisted data analysis application, including workflow design and responsible handling of data and model outputs.">
+<title>AI Data Analyst Agent | Python, Streamlit &amp; AI-Assisted Analytics</title>
+<meta name="description" content="A Python and Streamlit case study exploring interactive data inspection, reproducible calculations and optional AI-assisted explanations.">
 <meta name="robots" content="index,follow">
+<meta name="author" content="Aviral Goyal">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="canonical" href="https://aviral-goyal.netlify.app/projects/ai-data-analyst-agent.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AI Data Analyst Agent">
-<meta property="og:description" content="Exploring a more interactive workflow for data exploration with Python, Streamlit, and AI assistance.">
+<meta property="og:title" content="AI Data Analyst Agent | Python and Streamlit">
+<meta property="og:description" content="A practical look at making data exploration interactive while keeping calculations traceable and data privacy in view.">
 <meta property="og:url" content="https://aviral-goyal.netlify.app/projects/ai-data-analyst-agent.html">
 <meta property="og:site_name" content="Aviral Goyal">
 <meta property="og:image" content="https://aviral-goyal.netlify.app/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AI Data Analyst Agent">
-<meta name="twitter:description" content="Exploring a more interactive workflow for data exploration with Python, Streamlit, and AI assistance.">
+<meta name="twitter:title" content="AI Data Analyst Agent | Python, Streamlit &amp; AI-Assisted Analytics">
+<meta name="twitter:description" content="A Python and Streamlit case study exploring interactive data inspection, reproducible calculations and optional AI-assisted explanations.">
 <meta name="twitter:image" content="https://aviral-goyal.netlify.app/og-image.jpg">
 <style>:root {
   color-scheme:dark;
@@ -260,8 +262,82 @@ hr {
     transition-duration:.01ms!important
   }
 }
+
+/* Phase 1: compact card headings and resilient small-screen layout. */
+.panel > h2:first-child,
+.grid > .panel > h2:first-child {
+  margin-top: 0;
+}
+.panel > :last-child {
+  margin-bottom: 0;
+}
+.grid,
+.panel,
+main,
+.actions,
+.chips {
+  min-width: 0;
+}
+.grid > * {
+  min-width: 0;
+}
+main {
+  width: 100%;
+  overflow-wrap: anywhere;
+}
+.architecture-case,
+pre,
+table {
+  max-width: 100%;
+}
+.architecture-case {
+  overscroll-behavior-inline: contain;
+}
+pre {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+@media (max-width: 640px) {
+  main {
+    padding: 28px 16px 52px;
+  }
+  h1 {
+    font-size: clamp(2rem, 9vw, 3.25rem);
+    line-height: 1.08;
+    overflow-wrap: anywhere;
+  }
+  h2 {
+    font-size: clamp(1.3rem, 5.5vw, 1.8rem);
+    line-height: 1.2;
+    margin-top: 2rem;
+    text-wrap: balance;
+  }
+  .panel {
+    padding: 16px;
+    border-radius: 14px;
+  }
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .actions {
+    gap: 10px;
+  }
+  .btn {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+  .architecture-case {
+    padding-bottom: .75rem;
+  }
+}
+
 </style>
   <link rel="stylesheet" href="/portfolio-refresh.css">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CreativeWork","headline":"AI Data Analyst Agent","name":"AI Data Analyst Agent","description":"A Python and Streamlit case study exploring interactive data inspection, reproducible calculations and optional AI-assisted explanations.","url":"https://aviral-goyal.netlify.app/projects/ai-data-analyst-agent.html","author":{"@type":"Person","name":"Aviral Goyal","url":"https://aviral-goyal.netlify.app/"},"inLanguage":"en"}
+</script>
 </head>
 <body><main>
 <a class="back" href="/">← Back to portfolio</a>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<title id="title">Personal wealth monitoring data flow</title>
+<desc id="desc">Transactions and price or NAV inputs flow through validation and a Django API into portfolio reports.</desc>
+<rect width="1200" height="630" fill="#0b1018"/>
+<path d="M48 78H1152" stroke="#2b3543" stroke-width="2"/>
+<text x="56" y="52" fill="#9edbd7" font-family="Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="3">PERSONAL WEALTH MONITORING / DATA FLOW</text>
+<text x="56" y="142" fill="#f3f5f8" font-family="Arial,sans-serif" font-size="44" font-weight="700">Investment data, made traceable</text>
+<text x="56" y="180" fill="#a7b0bf" font-family="Arial,sans-serif" font-size="22">Separate source records, calculation rules and reporting</text>
+<g font-family="Arial,sans-serif">
+<g><rect x="44" y="270" width="198" height="172" rx="14" fill="#111923" stroke="#39495a" stroke-width="2"/><circle cx="78" cy="308" r="10" fill="#9edbd7"/><text x="64" y="354" fill="#f3f5f8" font-size="22" font-weight="700">Transactions</text><text x="64" y="388" fill="#a7b0bf" font-size="18">Buys / sells</text></g>
+<g><rect x="278" y="270" width="198" height="172" rx="14" fill="#111923" stroke="#39495a" stroke-width="2"/><circle cx="312" cy="308" r="10" fill="#9edbd7"/><text x="298" y="354" fill="#f3f5f8" font-size="22" font-weight="700">Prices / NAV</text><text x="298" y="388" fill="#a7b0bf" font-size="18">Date-aware data</text></g>
+<g><rect x="512" y="270" width="198" height="172" rx="14" fill="#111923" stroke="#39495a" stroke-width="2"/><circle cx="546" cy="308" r="10" fill="#9edbd7"/><text x="532" y="354" fill="#f3f5f8" font-size="22" font-weight="700">Validation</text><text x="532" y="388" fill="#a7b0bf" font-size="18">Rules / checks</text></g>
+<g><rect x="746" y="270" width="198" height="172" rx="14" fill="#111923" stroke="#39495a" stroke-width="2"/><circle cx="780" cy="308" r="10" fill="#9edbd7"/><text x="766" y="354" fill="#f3f5f8" font-size="22" font-weight="700">Service layer</text><text x="766" y="388" fill="#a7b0bf" font-size="18">Django API</text></g>
+<g><rect x="980" y="270" width="176" height="172" rx="14" fill="#111923" stroke="#39495a" stroke-width="2"/><circle cx="1014" cy="308" r="10" fill="#9edbd7"/><text x="1000" y="354" fill="#f3f5f8" font-size="22" font-weight="700">Reports</text><text x="1000" y="388" fill="#a7b0bf" font-size="18">Angular UI</text></g>
+</g>
+<g stroke="#9edbd7" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M246 354h23m-8 -8 8 8-8 8"/><path d="M480 354h23m-8 -8 8 8-8 8"/><path d="M714 354h23m-8 -8 8 8-8 8"/><path d="M948 354h23m-8 -8 8 8-8 8"/></g>
+<text x="56" y="526" fill="#a7b0bf" font-family="Arial,sans-serif" font-size="19">Values need explicit assumptions, source dates and reconciliation.</text>
+</svg>

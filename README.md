@@ -39,7 +39,15 @@ Netlify Forms only work once deployed, so the contact form will not submit local
 python3 scripts/check_site.py
 ```
 
-The same script runs in GitHub Actions on every push and pull request (`.github/workflows/site-checks.yml`). It needs only Python 3.
+The checker validates page titles/descriptions/canonicals, social metadata, markup structure, duplicate IDs, image alt text, safe external links, internal links/anchors, referenced homepage assets, and sitemap consistency. The same script runs in GitHub Actions on every push and pull request (`.github/workflows/site-checks.yml`). It needs only Python 3.
+
+## Search, accessibility and performance
+
+- Keep page titles and descriptions specific to each page, and update canonical/social metadata and `sitemap.xml` together when URLs change.
+- Use descriptive case-study content and real screenshots only. Mask any private, financial, client or production details before publishing.
+- Preserve keyboard focus visibility, skip navigation, meaningful image alternatives and reduced-motion support.
+- The featured-project SVGs are schematic architecture illustrations, not screenshots of a deployed application. Replace or supplement them with approved, redacted product screenshots when available.
+- Check the live site with Lighthouse/PageSpeed Insights and at least one narrow mobile viewport before merging changes. Search ranking depends on external indexing and relevance; metadata improvements do not guarantee rankings.
 
 ## Architecture and technical notes
 

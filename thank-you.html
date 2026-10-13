@@ -55,6 +55,35 @@ a {
   color:#fff;
   text-decoration:none
 }
+
+/* Phase 1: keep utility pages readable on small screens. */
+main {
+  width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+a {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 480px) {
+  main {
+    padding: 28px 16px 48px;
+  }
+  h1 {
+    font-size: clamp(1.9rem, 9vw, 2.8rem);
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+  .links {
+    gap: .65rem;
+  }
+  .links a,
+  .primary {
+    max-width: 100%;
+    text-align: center;
+  }
+}
+
 </style>
 </head>
 <body><main class="card"><div class="mark" aria-hidden="true">✓</div><h1>Thanks for reaching out.</h1><p>Your enquiry has been submitted. If your message is time-sensitive, you can also email <a href="mailto:aviralgoyal739@gmail.com">aviralgoyal739@gmail.com</a>.</p><a href="/">Return to portfolio</a></main></body></html>
