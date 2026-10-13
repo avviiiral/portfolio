@@ -11,6 +11,16 @@ This guide is intentionally separate from the public homepage. The website inclu
 5. Check that the site's `trackPortfolioEvent()` hook records events after the tag is loaded. Suggested events: `contact_cta_click` and `outbound_contact_or_project_click`.
 6. Review consent and privacy obligations for the audiences you serve before enabling analytics. Avoid collecting form field values as analytics event parameters.
 
+### Content-Security-Policy
+
+`_headers` ships a Content-Security-Policy that only allows this site's own files and Google Fonts. Before adding the GA4 snippet, extend the policy in `_headers` or the browser will block the tag silently. Per Google's tag-manager CSP guidance, add:
+
+- `script-src`: `https://*.googletagmanager.com`
+- `img-src`: `https://*.google-analytics.com https://*.googletagmanager.com`
+- `connect-src`: `https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com`
+
+Deploy to a Netlify preview first and confirm the browser console shows no CSP violations.
+
 ## 2. Configure Google Search Console
 
 1. Add the deployed site as a URL-prefix property: `https://aviral-goyal.netlify.app/`.
