@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BGLIIN.AI | Industrial Production Monitoring Case Study</title>
+<meta name="description" content="Case study: a multi-camera industrial production monitoring system combining computer vision, a Django backend, and an Angular dashboard.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://aviral-goyal.netlify.app/projects/bgliin-ai.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BGLIIN.AI | Industrial Production Monitoring">
+<meta property="og:description" content="How computer vision, camera streaming, and a web dashboard fit together in an industrial monitoring workflow.">
+<meta property="og:url" content="https://aviral-goyal.netlify.app/projects/bgliin-ai.html">
+<style>
+:root{color-scheme:dark;--bg:#050810;--surface:#0f1830;--border:#1a2a50;--text:#e8eeff;--muted:#9aa9d0;--blue:#60a5fa;--cyan:#67e8f9}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#111c3b 0,transparent 50%),var(--bg);color:var(--text);font:16px/1.7 system-ui,-apple-system,Segoe UI,sans-serif}main{max-width:920px;margin:auto;padding:56px 22px 80px}.back{color:var(--cyan);text-decoration:none}.eyebrow{margin-top:56px;color:var(--cyan);font:12px ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase}h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.08;letter-spacing:-.04em;margin:.7rem 0 1rem}h2{font-size:1.35rem;margin:2.2rem 0 .5rem}p,li{color:var(--muted)}.lead{font-size:1.15rem;max-width:760px}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}.chips span{border:1px solid var(--border);background:var(--surface);padding:6px 10px;border-radius:8px;color:var(--text);font-size:.8rem}.panel{border:1px solid var(--border);background:rgba(15,24,48,.72);border-radius:16px;padding:22px;margin-top:16px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}.btn{display:inline-block;padding:11px 16px;border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text)}.btn.primary{background:#2563eb;border-color:#2563eb}@media(max-width:620px){main{padding:28px 18px 56px}.grid{grid-template-columns:1fr}.eyebrow{margin-top:38px}}
+</style>
+</head>
+<body><main>
+<a class="back" href="/">← Back to portfolio</a>
+<div class="eyebrow">Selected work / Computer vision</div>
+<h1>BGLIIN.AI</h1>
+<p class="lead">An industrial production-monitoring system designed to turn camera feeds into more useful, visible production information through computer vision and a web dashboard.</p>
+<div class="chips"><span>Python</span><span>YOLOv8</span><span>OpenCV</span><span>Django</span><span>Angular</span><span>GPU inference</span></div>
+<div class="grid">
+<section class="panel"><h2>The problem</h2><p>Production teams need a clearer way to observe multiple camera feeds and derive product-counting signals without relying only on manual observation.</p></section>
+<section class="panel"><h2>The approach</h2><p>Separate camera capture, inference, and browser streaming responsibilities so that monitoring views and computer-vision processing can operate with fewer unnecessary dependencies on one another.</p></section>
+</div>
+<h2>System design</h2>
+<ul>
+<li><strong>Video ingestion:</strong> OpenCV captures RTSP camera streams and manages the latest available frames.</li>
+<li><strong>Inference:</strong> a YOLOv8 model processes frames for product detection/counting workflows.</li>
+<li><strong>Application layer:</strong> Django exposes camera and analytics endpoints while an Angular interface presents the monitoring views.</li>
+<li><strong>Streaming:</strong> MJPEG endpoints deliver browser-viewable camera feeds; capture and inference are treated as distinct workloads.</li>
+<li><strong>Operational records:</strong> production counts can be recorded for hourly review and analysis.</li>
+</ul>
+<h2>Engineering considerations</h2>
+<div class="panel"><p>Multi-camera systems are sensitive to network quality, camera reconnect behavior, browser connection limits, frame resolution, JPEG size, and inference batch size. The architecture therefore needs explicit handling for capture locks, stale frames, reconnection, and the difference between dashboard display rate and model-processing rate.</p></div>
+<h2>What this demonstrates</h2>
+<ul><li>Connecting computer vision inference to a usable full-stack application.</li><li>Working with RTSP video sources, OpenCV, model inference, and browser streaming.</li><li>Thinking about operational reliability and resource constraints, not just model predictions.</li></ul>
+<p><em>No throughput or accuracy figures are published here because they should be supported by a reproducible benchmark from the target deployment.</em></p>
+<div class="actions"><a class="btn primary" href="/#contact">Discuss a similar project</a><a class="btn" href="https://github.com/avviiiral/bgliin.ai" target="_blank" rel="noopener noreferrer">GitHub repository</a><a class="btn" href="/#projects">More projects</a></div>
+</main></body></html>
