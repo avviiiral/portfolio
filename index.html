@@ -15,6 +15,25 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Aviral Goyal | Full-Stack Developer, AI/ML &amp; Data Analytics">
 <meta name="twitter:description" content="Full-stack web apps, practical AI tools, computer vision, and data dashboards built to solve real problems.">
+<meta property="og:image" content="https://aviral-goyal.netlify.app/profile.jpg">
+<meta name="twitter:image" content="https://aviral-goyal.netlify.app/profile.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Aviral Goyal",
+  "url": "https://aviral-goyal.netlify.app/",
+  "image": "https://aviral-goyal.netlify.app/profile.jpg",
+  "jobTitle": "Full-Stack Developer, AI/ML and Data Analytics",
+  "sameAs": [
+    "https://github.com/avviiiral",
+    "https://www.linkedin.com/in/avviiiral"
+  ],
+  "knowsAbout": ["Full-stack web development", "Python", "Django REST Framework", "Angular", "AI/ML", "Computer vision", "Data analytics", "Power BI"]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=Cabinet+Grotesk:wght@300;400;500;700;800&display=swap" rel="stylesheet">
@@ -462,6 +481,12 @@ body.light{
 /* Responsive */
 @media(max-width:900px){
   .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .engagement-grid{grid-template-columns:1fr}
+  .menu-toggle{display:flex}
+  nav{gap:.75rem}
+  .nav-cta{margin-left:auto}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;padding:1rem 5%;background:rgba(5,8,16,.97);border-bottom:1px solid var(--border);flex-direction:column;gap:1rem}
+  .nav-links.is-open{display:flex}
   .hero-visual{
     display:flex;
     justify-content:center;
@@ -478,7 +503,30 @@ body.light{
   .stats-row{grid-template-columns:repeat(2,1fr)}
   .hero-btns{flex-direction:column}
   .btn-primary,.btn-secondary{text-align:center}
+  nav{padding:14px 4%!important}
+  .nav-logo{font-size:1.15rem}
+  .nav-cta{padding:8px 10px;font-size:.78rem}
+  .menu-toggle{padding:8px}
+  .contact-form{padding:1.2rem}
+  .projects-header{align-items:flex-start;gap:1rem;flex-direction:column}
+  .projects-header p{text-align:left!important}
 }
+/* Skip link for keyboard users */
+.skip-link{position:fixed;left:1rem;top:-5rem;z-index:10000;padding:.75rem 1rem;background:var(--surface);color:var(--text);border:1px solid var(--border2);border-radius:8px}
+.skip-link:focus{top:1rem}
+.menu-toggle{display:none;background:transparent;border:1px solid var(--border2);border-radius:8px;padding:9px;gap:4px;flex-direction:column;cursor:pointer}
+.menu-toggle span{display:block;width:20px;height:2px;background:var(--text);border-radius:2px}
+.engagement-heading{margin-top:4rem;max-width:700px}
+.engagement-title{font-family:"Syne",sans-serif;font-size:clamp(1.4rem,2.5vw,2rem);margin-bottom:.75rem}
+.engagement-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.5rem}
+.engagement-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem;display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+.engagement-kicker{font-family:"DM Mono",monospace;font-size:.72rem;color:var(--cyan);letter-spacing:.1em;margin-bottom:.8rem}
+.engagement-card h4{font-size:1.05rem;margin-bottom:.65rem}
+.engagement-card p{color:var(--text2);font-size:.88rem;line-height:1.7;margin-bottom:1.1rem}
+.text-link{margin-top:auto;color:var(--cyan);text-decoration:none;font-size:.85rem;font-weight:700}
+.text-link:hover{text-decoration:underline}
+.form-privacy-note,.form-fallback{color:var(--text3);font-size:.78rem;line-height:1.6;margin:.75rem 0}
+.form-fallback a{color:var(--cyan)}
 /* Scrollbar */
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:var(--bg)}
@@ -502,6 +550,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 
 <!-- Custom cursor -->
 <div id="cursor"></div>
@@ -513,7 +562,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 <!-- Navigation -->
 <nav id="navbar">
   <div class="nav-logo">AG.</div>
-  <ul class="nav-links">
+  <ul class="nav-links" id="primary-navigation">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#services">Services</a></li>
@@ -523,9 +572,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
     Discuss a Project
   </button>
+  <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- Hero -->
+<main id="main-content">
 <section id="hero">
   <div class="container">
     <div class="hero-grid">
@@ -830,6 +883,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
         <div class="vision-text">Python automation, AI-powered tools, and machine-learning prototypes designed around a specific workflow or business problem.</div>
       </div>
     </div>
+    <div class="engagement-heading" data-reveal>
+      <div class="section-tag">How We Can Work Together</div>
+      <h3 class="engagement-title">A clear scope before the build</h3>
+      <p class="section-sub">Start small, validate the approach, and expand only when it makes sense. Final scope and pricing are agreed after discussing your requirements.</p>
+    </div>
+    <div class="engagement-grid" data-reveal>
+      <article class="engagement-card"><span class="engagement-kicker">01 / START</span><h4>Focused Fix or Feature</h4><p>For an existing website or application that needs a targeted improvement, bug fix, integration, or a small new feature.</p><a href="#contact" class="text-link" data-project-type="Website or web application">Discuss a focused task →</a></article>
+      <article class="engagement-card"><span class="engagement-kicker">02 / BUILD</span><h4>Website or Web App</h4><p>For a new landing page, business website, dashboard, or full-stack application with a defined set of deliverables.</p><a href="#contact" class="text-link" data-project-type="Website or web application">Discuss a build →</a></article>
+      <article class="engagement-card"><span class="engagement-kicker">03 / AUTOMATE</span><h4>Data, AI or Automation</h4><p>For reporting workflows, data cleanup, AI integrations, or a prototype that helps test a specific business idea.</p><a href="#contact" class="text-link" data-project-type="AI, data or automation">Discuss an automation →</a></article>
+    </div>
     <div style="text-align:center;margin-top:2rem" data-reveal>
       <a href="#contact" class="btn-primary">Tell Me About Your Project</a>
     </div>
@@ -864,6 +927,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
           </div>
           <div class="project-links">
             <a href="https://github.com/avviiiral/bgliin.ai" target="_blank" rel="noopener" class="project-btn" style="text-align:center;text-decoration:none">GitHub</a>
+          
+            <a href="/projects/bglliin-ai.html" class="project-btn case-study-link" style="text-align:center;text-decoration:none">Case Study</a>
           </div>
         </div>
       </div>
@@ -879,6 +944,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
           </div>
           <div class="project-links">
             <a href="https://github.com/avviiiral/Personal_Wealth_Monitoring_System" target="_blank" rel="noopener noreferrer" class="project-btn" style="text-align:center;text-decoration:none">GitHub</a>
+          
+            <a href="/projects/personal-wealth-monitoring.html" class="project-btn case-study-link" style="text-align:center;text-decoration:none">Case Study</a>
           </div>
         </div>
       </div>
@@ -894,6 +961,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
           </div>
           <div class="project-links">
             <a href="https://github.com/avviiiral/AI-Data-Analyst-Agent_v1" target="_blank" rel="noopener noreferrer" class="project-btn" style="text-align:center;text-decoration:none">GitHub</a>
+          
+            <a href="/projects/ai-data-analyst-agent.html" class="project-btn case-study-link" style="text-align:center;text-decoration:none">Case Study</a>
           </div>
         </div>
       </div>
@@ -1070,7 +1139,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
           </div>
         </a>
 
-        <a href="https://www.linkedin.com/in/avviiiral" target="_blank" rel="noopener" class="contact-card" style="text-decoration:none">
+        <a href="https://wa.me/917399999508?text=Hi%20Aviral%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="contact-card" style="text-decoration:none">
+          <div class="contact-icon">💬</div>
+          <div><div class="contact-label">WhatsApp</div><div class="contact-val">Start a project conversation</div></div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/avviiiral" target="_blank" rel="noopener noreferrer" class="contact-card" style="text-decoration:none">
           <div class="contact-icon">💼</div>
           <div>
             <div class="contact-label">LinkedIn</div>
@@ -1098,6 +1172,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
         method="POST"
         data-netlify="true"
         netlify-honeypot="bot-field"
+        action="/thank-you.html"
         class="contact-form"
         data-reveal
         style="transition-delay:.2s"
@@ -1126,6 +1201,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
               name="name"
               class="form-input"
               placeholder="Your name"
+              autocomplete="name"
               required
             >
           </div>
@@ -1137,7 +1213,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
               type="email"
               name="email"
               class="form-input"
-              placeholder="your@email.com"
+              placeholder="you@example.com"
+              autocomplete="email"
               required
             >
           </div>
@@ -1155,26 +1232,63 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
           >
         </div>
 
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="project-type">What do you need?</label>
+            <select id="project-type" name="project-type" class="form-input">
+              <option value="">Choose a project type</option>
+              <option>Website or web application</option>
+              <option>Data analytics or Power BI</option>
+              <option>AI, data or automation</option>
+              <option>Bug fix or feature improvement</option>
+              <option>Other / not sure yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="project-budget">Budget range (optional)</label>
+            <select id="project-budget" name="budget-range" class="form-input">
+              <option value="">Prefer to discuss</option>
+              <option>Under ₹10,000</option>
+              <option>₹10,000–₹25,000</option>
+              <option>₹25,000–₹50,000</option>
+              <option>₹50,000+</option>
+            </select>
+          </div>
+        </div>
         <div class="form-group">
-          <label class="form-label" for="contact-message">Message</label>
+          <label class="form-label" for="project-timeline">Expected timeline (optional)</label>
+          <select id="project-timeline" name="project-timeline" class="form-input">
+            <option value="">Flexible / not decided</option>
+            <option>Within 1 week</option>
+            <option>Within 2–4 weeks</option>
+            <option>Within 1–2 months</option>
+            <option>Longer-term / ongoing</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="contact-message">Project brief</label>
           <textarea
             id="contact-message"
             name="message"
             class="form-textarea"
-            placeholder="Tell me about your project or opportunity..."
+            placeholder="What are you trying to achieve? Include useful context, must-have features, or links if available."
             required
           ></textarea>
         </div>
 
+        <p class="form-privacy-note">Your details are used to respond to this enquiry. Please do not include passwords, API keys, or sensitive financial information.</p>
         <button type="submit" class="form-submit">
-          Send Message →
+          Send Project Enquiry →
         </button>
+        <p class="form-fallback">Prefer email? <a href="mailto:aviralgoyal739@gmail.com?subject=Portfolio%20project%20enquiry">Email me directly</a>.</p>
 
       </form>
 
     </div>
   </div>
 </section>
+</main>
 <!-- Footer -->
 <footer>
   <div class="footer-logo">Aviral Goyal</div>
@@ -1305,6 +1419,40 @@ toggle.addEventListener('click',()=>{
   document.body.classList.toggle('light');
   toggle.textContent=document.body.classList.contains('light')?'🌙':'☀️';
 });
+
+// Optional analytics event hook. Events are sent only if a site owner configures gtag/GA4.
+function trackPortfolioEvent(eventName, parameters = {}) {
+  if (typeof window.gtag === "function") {
+    window.gtag("event", eventName, { event_category: "portfolio", ...parameters });
+  }
+}
+document.querySelectorAll('a[href="#contact"]').forEach(link => {
+  link.addEventListener("click", () => trackPortfolioEvent("contact_cta_click", { label: link.textContent.trim() }));
+});
+document.querySelectorAll('a[href^="https://github.com/"], a[href^="https://wa.me/"], a[href^="mailto:"]').forEach(link => {
+  link.addEventListener("click", () => trackPortfolioEvent("outbound_contact_or_project_click", { destination: link.hostname || "email" }));
+});
+document.querySelectorAll("[data-project-type]").forEach(link => {
+  link.addEventListener("click", () => {
+    const field = document.getElementById("project-type");
+    if (field) field.value = link.dataset.projectType;
+  });
+});
+
+// Mobile navigation
+const menuToggle = document.getElementById("menuToggle");
+const primaryNavigation = document.getElementById("primary-navigation");
+menuToggle.addEventListener("click", () => {
+  const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+  menuToggle.setAttribute("aria-expanded", String(!isOpen));
+  menuToggle.setAttribute("aria-label", isOpen ? "Open navigation menu" : "Close navigation menu");
+  primaryNavigation.classList.toggle("is-open", !isOpen);
+});
+primaryNavigation.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+  primaryNavigation.classList.remove("is-open");
+  menuToggle.setAttribute("aria-expanded", "false");
+  menuToggle.setAttribute("aria-label", "Open navigation menu");
+}));
 
 // Nav scroll effect
 const navbar=document.getElementById('navbar');
