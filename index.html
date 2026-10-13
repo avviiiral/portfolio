@@ -888,15 +888,15 @@ filterButtons.forEach(b=>b.addEventListener('click',()=>applyProjectFilter(b.dat
 
 // Highlight the nav link for the section in view
 const navLinks=[...document.querySelectorAll('.nav-links a[href^="#"]')];
-const navSpy=new IntersectionObserver(entries=>{
+const navSpy = "IntersectionObserver" in window ? new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     const link=navLinks.find(l=>l.getAttribute('href')==='#'+e.target.id);
     if(!link)return;
     link.classList.toggle('is-active',e.isIntersecting);
     if(e.isIntersecting)link.setAttribute('aria-current','true');else link.removeAttribute('aria-current');
   });
-},{rootMargin:'-40% 0px -55% 0px'});
-navLinks.forEach(l=>{const section=document.querySelector(l.getAttribute('href'));if(section)navSpy.observe(section)});
+},{rootMargin:'-40% 0px -55% 0px'}) : null;
+if (navSpy) navLinks.forEach(l=>{const section=document.querySelector(l.getAttribute('href'));if(section)navSpy.observe(section)});
 
 // Optional analytics event hook. Events are sent only if a site owner configures gtag/GA4.
 function trackPortfolioEvent(eventName, parameters = {}) {
@@ -934,10 +934,12 @@ primaryNavigation.querySelectorAll("a").forEach(link => link.addEventListener("c
 
 // Nav scroll effect
 const navbar=document.getElementById('navbar');
-window.addEventListener('scroll',()=>{
-  if(window.scrollY>50)navbar.style.padding='12px 5%';
-  else navbar.style.padding='20px 5%';
-});
+const syncNavbar = () => {
+  if (!navbar) return;
+  navbar.style.padding = window.scrollY > 50 ? '12px 5%' : '';
+};
+window.addEventListener('scroll', syncNavbar, { passive: true });
+syncNavbar();
 
 </script>
   <script src="/portfolio.js" defer></script>
