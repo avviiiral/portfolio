@@ -102,6 +102,49 @@ footer {
     transition:none!important
   }
 }
+
+/* Phase 1: readable article layout on narrow screens. */
+main {
+  width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+pre,
+table,
+figure {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 640px) {
+  main {
+    padding: 28px 16px 52px;
+  }
+  h1 {
+    font-size: clamp(2rem, 9vw, 3.25rem);
+  }
+  h2 {
+    font-size: clamp(1.3rem, 5.5vw, 1.8rem);
+  }
+  pre {
+    font-size: .82rem;
+  }
+}
+
 </style>
 </head>
 <body><main>
