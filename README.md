@@ -46,6 +46,7 @@ The checker validates page titles/descriptions/canonicals, social metadata, mark
 - Keep page titles and descriptions specific to each page, and update canonical/social metadata and `sitemap.xml` together when URLs change.
 - Use descriptive case-study content and real screenshots only. Mask any private, financial, client or production details before publishing.
 - Preserve keyboard focus visibility, skip navigation, meaningful image alternatives and reduced-motion support.
+- The featured-project SVGs are schematic architecture illustrations, not screenshots of a deployed application. Replace or supplement them with approved, redacted product screenshots when available.
 - Check the live site with Lighthouse/PageSpeed Insights and at least one narrow mobile viewport before merging changes. Search ranking depends on external indexing and relevance; metadata improvements do not guarantee rankings.
 
 ## Architecture and technical notes
