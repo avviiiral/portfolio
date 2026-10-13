@@ -1,5 +1,9 @@
+# Security headers for every page.
+# The pages use inline <style>/<script> and Google Fonts, so 'unsafe-inline' is needed until those move to separate files.
+# Enabling Google Analytics later? See docs/portfolio-analytics-and-leads.md ("Content-Security-Policy") for the extra hosts to allow.
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'
