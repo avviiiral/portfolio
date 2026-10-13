@@ -12,6 +12,8 @@ There is no build step: plain HTML, CSS and a little vanilla JavaScript, deploye
 |---|---|
 | `index.html` | Single-page homepage (about, skills, services, FAQ, projects, contact form) |
 | `projects/*.html` | Case-study pages linked from the project cards |
+| `articles/*.html` | Short engineering notes on reliability and auditable data workflows |
+| `portfolio-refresh.css`, `portfolio.js` | Accessible, low-motion layout refinements and the architecture switcher |
 | `thank-you.html` | Redirect target after a Netlify Forms submission (`noindex`) |
 | `404.html` | Custom "page not found" page (served automatically by Netlify) |
 | `_headers` | Netlify security headers, including the Content-Security-Policy |
@@ -38,6 +40,10 @@ python3 scripts/check_site.py
 ```
 
 The same script runs in GitHub Actions on every push and pull request (`.github/workflows/site-checks.yml`). It needs only Python 3.
+
+## Architecture and technical notes
+
+The homepage includes an architecture explorer and two technical notes. Keep diagrams aligned with implementation; publish performance figures only when reproducible. The feedback section intentionally avoids fabricated testimonials; add client comments only with permission.
 
 ## Adding a project
 
