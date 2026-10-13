@@ -48,6 +48,7 @@ hr{border:0;border-top:1px solid var(--border);margin:2.5rem 0}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
 </style>
+  <link rel="stylesheet" href="/portfolio-refresh.css">
 </head>
 <body><main>
 <a class="back" href="/">← Back to portfolio</a>
@@ -60,6 +61,9 @@ hr{border:0;border-top:1px solid var(--border);margin:2.5rem 0}
 <section class="panel"><h2>The approach</h2><p>Use a Django API to manage application data and calculation logic, with an Angular frontend for portfolio views, investment workflows, and analytics.</p></section>
 </div>
 <h2>Product areas</h2>
+<div class="architecture-case" aria-label="Portfolio data flow">
+<div>Transactions <small>Ledger</small></div><span aria-hidden="true">+</span><div>Prices / NAV <small>Market data</small></div><span aria-hidden="true">→</span><div>Validation <small>Calculation rules</small></div><span aria-hidden="true">→</span><div>API <small>Django</small></div><span aria-hidden="true">→</span><div>Reports <small>Angular</small></div>
+</div>
 <ul>
 <li><strong>Portfolio and holdings:</strong> organize investments and current positions.</li>
 <li><strong>Transactions:</strong> preserve the underlying activity used to derive holdings and performance.</li>
