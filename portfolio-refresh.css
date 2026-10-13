@@ -2538,3 +2538,92 @@ summary:focus-visible {
   height: 100%;
   object-fit: cover;
 }
+
+
+/* Follow-up visual fixes from preview review: keep section titles centered on the viewport. */
+#skills > .container > div:first-child,
+#services > .container > div:first-child,
+#vision > .container > div:first-child,
+#contact > .container > div:first-child,
+#exploring > .container > div:first-child {
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: center !important;
+}
+#skills > .container > div:first-child .section-tag,
+#services > .container > div:first-child .section-tag,
+#vision > .container > div:first-child .section-tag,
+#contact > .container > div:first-child .section-tag,
+#exploring > .container > div:first-child .section-tag {
+  width: fit-content;
+  margin-inline: auto;
+  justify-content: center;
+  text-align: center;
+}
+#skills > .container > div:first-child .section-h2,
+#services > .container > div:first-child .section-h2,
+#vision > .container > div:first-child .section-h2,
+#contact > .container > div:first-child .section-h2,
+#exploring > .container > div:first-child .section-h2 {
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: center !important;
+  text-wrap: balance;
+}
+#skills > .container > div:first-child .section-sub,
+#services > .container > div:first-child .section-sub,
+#vision > .container > div:first-child .section-sub,
+#contact > .container > div:first-child .section-sub,
+#exploring > .container > div:first-child .section-sub {
+  max-width: 560px;
+  width: 100%;
+  margin-inline: auto;
+  text-align: center !important;
+}
+#exploring .vision-grid,
+#vision .vision-grid {
+  margin-inline: auto;
+}
+#projects .project-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: .65rem;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 1.25rem;
+}
+#projects .project-links .project-btn {
+  display: inline-flex;
+  min-width: 0;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: .65rem .75rem;
+  border: 1px solid var(--border2);
+  border-radius: 9px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1.25;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  box-sizing: border-box;
+}
+#projects .project-links .project-btn:first-child {
+  background: var(--surface);
+}
+#projects .project-links .case-study-link {
+  background: rgba(59, 130, 246, .10);
+  border-color: rgba(59, 130, 246, .32);
+  color: var(--text);
+}
+#projects .project-links .project-btn:hover {
+  transform: translateY(-1px);
+}
+@media (max-width: 480px) {
+  #projects .project-links {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
