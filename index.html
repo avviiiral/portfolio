@@ -546,6 +546,130 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   [data-reveal]{opacity:1!important;transform:none!important}
 }
+
+/* Premium portfolio refresh — restrained surfaces, clearer hierarchy, accessible defaults */
+:root{
+  --bg:#080a0f;--bg2:#0c1018;--bg3:#111722;--surface:#10151f;--surface2:#151c28;
+  --border:#252d3b;--border2:#364154;--text:#f3f5f8;--text2:#a7b0bf;--text3:#7a8698;
+  --blue:#9bbcff;--cyan:#9edbd7;--purple:#b5a4ef;--pink:#d7a4bf;--green:#91d6b8;--amber:#e8c58b;
+  --glow-blue:rgba(155,188,255,.08);--glow-cyan:rgba(158,219,215,.06);--glow-purple:rgba(181,164,239,.07);
+}
+html{scroll-padding-top:88px}
+body{background:var(--bg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:auto}
+#particles-canvas{opacity:.22}
+#cursor,#cursor-trail{display:none!important}
+a,button,.project-card,.skill-card,.mode-toggle,.nav-cta,.form-submit{cursor:pointer!important}
+a{transition:color .2s ease}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+nav{padding:18px 5%;background:rgba(8,10,15,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(167,176,191,.12)}
+.nav-logo,.footer-logo{background:none;-webkit-text-fill-color:var(--text);color:var(--text);letter-spacing:-.06em}
+.nav-links{gap:clamp(1rem,2.2vw,2rem)}
+.nav-links a{font-size:.88rem;color:#a7b0bf}
+.nav-links a:hover,.footer-links a:hover{color:#fff}
+.nav-cta,.btn-primary,.form-submit{background:var(--text);color:#0a0d12;border:1px solid var(--text);box-shadow:none;border-radius:999px;font-weight:700}
+.nav-cta{padding:10px 19px}
+.btn-primary{padding:14px 24px}
+.btn-primary:hover,.form-submit:hover,.nav-cta:hover{background:#dce5f2;border-color:#dce5f2;box-shadow:none;transform:translateY(-2px)}
+.btn-secondary{background:transparent;border:1px solid #3a4556;border-radius:999px;padding:13px 23px}
+.btn-secondary:hover{background:rgba(255,255,255,.055);border-color:#8c9bb0}
+#hero{min-height:auto;padding:154px 0 82px;background:radial-gradient(ellipse at 80% 22%,rgba(114,133,167,.11),transparent 34%)}
+.hero-grid{grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);gap:clamp(2rem,6vw,6rem)}
+.hero-tag{background:rgba(158,219,215,.07);border:1px solid rgba(158,219,215,.2);color:var(--cyan);font-size:.72rem;letter-spacing:.1em;padding:8px 14px}
+.hero-tag-dot{background:var(--cyan);animation:none}
+.hero-h1{font-size:clamp(2.7rem,5.2vw,5.2rem);line-height:1.01;letter-spacing:-.065em;font-weight:700;margin-bottom:1.35rem}
+.hero-h1 .gradient-text{background:linear-gradient(115deg,#f3f5f8 10%,#b7c5dc 55%,#9edbd7 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.type-wrap{color:var(--cyan);font-size:.86rem;letter-spacing:.015em}
+.hero-sub{max-width:540px;color:#a7b0bf;font-size:clamp(1rem,1.2vw,1.13rem);line-height:1.85}
+.hero-btns{gap:.75rem}
+.hero-socials{gap:.6rem}
+.social-link{border-radius:50%;background:transparent;color:#b6c0cf;border-color:#343d4b}
+.social-link:hover{background:#151c28;border-color:#8496ae;color:#fff;transform:translateY(-2px)}
+.hero-visual>div{width:min(340px,80vw)!important;padding:5px!important;background:linear-gradient(145deg,#46566b,#9edbd7 48%,#7b789b)!important;box-shadow:0 28px 90px rgba(0,0,0,.42)!important;animation:none!important}
+.hero-visual img{border:5px solid var(--bg)!important;display:block}
+.stats-row{gap:0;border:1px solid var(--border);border-radius:18px;background:rgba(16,21,31,.7);overflow:hidden;margin-top:4rem}
+.stat-card{padding:1.35rem 1.1rem;background:transparent;border:0;border-right:1px solid var(--border);border-radius:0}
+.stat-card:last-child{border-right:0}
+.stat-num{font-size:1.05rem;letter-spacing:-.025em;color:var(--text)}
+.stat-label{color:var(--text3);font-size:.76rem}
+section:not(#hero){padding:clamp(4.5rem,8vw,7.5rem) 0}
+.section-tag{color:var(--cyan);letter-spacing:.16em;font-size:.7rem}
+.section-h2{font-size:clamp(2rem,4vw,3.4rem);line-height:1.08;letter-spacing:-.055em;font-weight:700;max-width:760px}
+.section-sub,.section-desc{color:var(--text2)}
+.skill-card,.service-card,.engagement-card,.vision-card,.contact-card,.contact-form,.project-card{
+  background:linear-gradient(145deg,rgba(18,24,35,.96),rgba(13,17,25,.96));
+  border:1px solid var(--border);box-shadow:none;border-radius:18px;
+}
+.skill-card,.service-card,.engagement-card,.vision-card{padding:1.5rem}
+.skill-card:hover,.service-card:hover,.engagement-card:hover,.vision-card:hover{border-color:#475466;transform:translateY(-3px);box-shadow:0 18px 45px rgba(0,0,0,.18)}
+.skill-name,.service-title,.vision-title{color:var(--text)}
+.skill-desc,.service-desc,.vision-text{color:var(--text2)}
+.skill-fill{background:linear-gradient(90deg,#a5b9d5,#9edbd7);box-shadow:none}
+.projects-header{margin-bottom:2rem}
+.projects-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.15rem}
+.project-card{overflow:hidden;transition:transform .25s ease,border-color .25s ease,background .25s ease}
+.project-card:hover{transform:translateY(-5px);border-color:#4b596c;box-shadow:0 20px 55px rgba(0,0,0,.25)}
+.project-img-wrap{height:190px;background:#0d121a;overflow:hidden;border-bottom:1px solid var(--border)}
+.project-img{height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;isolation:isolate}
+.project-img::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.85;background:radial-gradient(ellipse at 75% 20%,rgba(158,219,215,.12),transparent 42%),linear-gradient(145deg,#151e2b,#0c1017)}
+.project-img::after{content:"";position:absolute;inset:18px;border:1px solid rgba(180,195,216,.13);border-radius:10px;pointer-events:none}
+.project-img.blue-bg,.project-img.green-bg,.project-img.purple-bg,.project-img.cyan-bg,.project-img.amber-bg{background:transparent}
+.project-body{padding:1.5rem}
+.project-title{font-size:1.16rem;line-height:1.35;letter-spacing:-.025em;color:var(--text);margin-bottom:.65rem}
+.project-desc{font-size:.9rem;line-height:1.75;color:var(--text2)}
+.project-tag{background:#171e29;color:#b9c3d2;border:1px solid #2b3544;border-radius:999px;font-size:.7rem;padding:5px 9px}
+.project-btn{background:transparent!important;border:1px solid #394556!important;color:#e6ebf2!important;border-radius:999px!important;padding:9px 15px!important}
+.project-btn:hover{background:#1a2330!important;border-color:#697b92!important}
+.contact-grid{gap:clamp(2rem,5vw,4rem)}
+.contact-card{padding:1.1rem 1.25rem}
+.contact-card:hover{border-color:#526075;transform:translateY(-2px)}
+.contact-icon{background:#1a2330;color:var(--cyan);border-radius:50%}
+.contact-form{padding:clamp(1.25rem,3vw,2rem)}
+.form-input,.form-textarea{background:#0a0e15;border-color:#303a49;border-radius:10px;color:var(--text);min-height:46px}
+.form-input:focus,.form-textarea:focus{border-color:#91b7d4;box-shadow:0 0 0 3px rgba(145,183,212,.12)}
+.form-submit{margin-top:.3rem;padding:14px 20px}
+.form-privacy-note,.form-fallback{color:#929dad}
+footer{border-top:1px solid var(--border);background:#080a0f}
+.mode-toggle{bottom:1.5rem;right:1.5rem;background:#141a24;border-color:#3a4555;border-radius:50%;box-shadow:0 8px 24px rgba(0,0,0,.25);cursor:pointer!important}
+body.light{--bg:#f4f5f7;--bg2:#eef0f3;--bg3:#e5e8ed;--surface:#fff;--surface2:#f7f8fa;--border:#d8dde5;--border2:#c5ccd7;--text:#151922;--text2:#505b6b;--text3:#6f7b8c;--blue:#315d91;--cyan:#236d6b;--purple:#6e5a9e}
+body.light #hero{background:radial-gradient(ellipse at 80% 22%,rgba(49,93,145,.1),transparent 34%)}
+body.light nav{background:rgba(244,245,247,.9)}
+body.light .nav-links a{color:#505b6b}
+body.light .hero-h1 .gradient-text{background:linear-gradient(115deg,#151922,#315d91 55%,#236d6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+body.light .project-img-wrap{background:#e8ebf0}
+body.light .project-img::before{background:radial-gradient(ellipse at 75% 20%,rgba(35,109,107,.12),transparent 42%),linear-gradient(145deg,#fff,#e9edf2)}
+body.light .project-tag{background:#f1f3f6;color:#4b5665;border-color:#dce1e8}
+body.light .form-input,body.light .form-textarea{background:#fff}
+body.light .mode-toggle{background:#fff}
+@media(max-width:900px){
+  #hero{padding-top:130px}
+  .hero-grid{grid-template-columns:1fr;gap:2.5rem}
+  .hero-visual{grid-row:1;margin:0 auto}
+  .hero-visual>div{width:min(260px,64vw)!important}
+  .hero-grid>div:first-child{grid-row:2}
+  .stats-row{margin-top:2.5rem}
+  .nav-links{background:rgba(8,10,15,.98);border-color:var(--border)}
+  body.light .nav-links{background:rgba(244,245,247,.98)}
+}
+@media(max-width:640px){
+  nav{padding:12px 4%!important}
+  #hero{padding:108px 0 48px}
+  .hero-h1{font-size:clamp(2.5rem,12vw,4rem)}
+  .hero-sub{font-size:1rem}
+  .hero-btns{align-items:stretch}
+  .btn-primary,.btn-secondary{text-align:center}
+  .hero-socials{justify-content:center}
+  .stats-row{grid-template-columns:repeat(2,minmax(0,1fr));border-radius:14px}
+  .stat-card{border-right:1px solid var(--border);border-bottom:1px solid var(--border);padding:1rem .65rem}
+  .stat-card:nth-child(2n){border-right:0}
+  .stat-card:nth-last-child(-n+2){border-bottom:0}
+  .projects-grid{grid-template-columns:1fr}
+  .project-img-wrap{height:170px}
+  .projects-header{align-items:flex-start}
+  .contact-form{padding:1.1rem}
+  .footer-links{flex-wrap:wrap;gap:.8rem 1rem}
+  .mode-toggle{width:42px;height:42px;right:1rem;bottom:1rem}
+}
+
 </style>
 </head>
 <body>
@@ -659,7 +783,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   ">
     <img 
       src="profile.jpg"
-      alt="Aviral Goyal"
+      alt="Portrait of Aviral Goyal"
+      width="380" height="380" fetchpriority="high" decoding="async"
       style="
         width:100%;
         height:100%;
@@ -1302,20 +1427,20 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 </footer>
 
 <!-- Dark/light toggle -->
-<button class="mode-toggle" id="modeToggle" title="Toggle theme" aria-label="Toggle color theme">🌙</button>
+<button class="mode-toggle" id="modeToggle" title="Toggle theme" aria-label="Toggle color theme" aria-pressed="false">🌙</button>
 
 <script>
 // Cursor
 const cursor=document.getElementById('cursor');
 const trail=document.getElementById('cursor-trail');
-document.addEventListener('mousemove',e=>{
+if(cursor && trail && window.matchMedia('(hover: hover) and (pointer: fine)').matches) document.addEventListener('mousemove',e=>{
   cursor.style.left=e.clientX+'px';
   cursor.style.top=e.clientY+'px';
   setTimeout(()=>{trail.style.left=e.clientX+'px';trail.style.top=e.clientY+'px'},80);
 });
-document.querySelectorAll('a,button,.project-card,.skill-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cursor.style.width='20px';cursor.style.height='20px';cursor.style.background='rgba(59,130,246,0.5)'});
-  el.addEventListener('mouseleave',()=>{cursor.style.width='8px';cursor.style.height='8px';cursor.style.background='#3b82f6'});
+if(cursor && trail && window.matchMedia('(hover: hover) and (pointer: fine)').matches) document.querySelectorAll('a,button,.project-card,.skill-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursor.style.width='20px';cursor.style.height='20px';cursor.style.background='rgba(155,188,255,0.5)'});
+  el.addEventListener('mouseleave',()=>{cursor.style.width='8px';cursor.style.height='8px';cursor.style.background='#9bbcff'});
 });
 
 // Particles
@@ -1325,7 +1450,7 @@ canvas.width=window.innerWidth;canvas.height=window.innerHeight;
 window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight});
 const particles=[];
 const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-for(let i=0;i<80;i++)particles.push({
+for(let i=0;i<(window.matchMedia('(max-width: 700px)').matches ? 22 : 42);i++)particles.push({
   x:Math.random()*canvas.width,y:Math.random()*canvas.height,
   vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,
   r:Math.random()*1.5+.5,
@@ -1416,7 +1541,9 @@ document.querySelectorAll('.stats-row').forEach(r=>countObserver.observe(r));
 const toggle=document.getElementById('modeToggle');
 toggle.addEventListener('click',()=>{
   document.body.classList.toggle('light');
-  toggle.textContent=document.body.classList.contains('light')?'🌙':'☀️';
+  const isLight=document.body.classList.contains('light');
+  toggle.textContent=isLight?'🌙':'☀️';
+  toggle.setAttribute('aria-pressed',String(isLight));
 });
 
 // Optional analytics event hook. Events are sent only if a site owner configures gtag/GA4.
