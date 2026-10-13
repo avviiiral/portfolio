@@ -23,7 +23,6 @@ SITE = "https://aviral-goyal.netlify.app"
 VOID = {"meta", "link", "img", "input", "br", "hr", "source", "area", "base", "col", "embed", "param", "track", "wbr"}
 SKIP_DIRS = {".git", "node_modules", ".github"}
 
-
 class Page(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
@@ -70,15 +69,12 @@ class Page(HTMLParser):
         if self._in_title:
             self.title += data
 
-
 def html_files():
     return sorted(p for p in ROOT.rglob("*.html") if not (set(p.relative_to(ROOT).parts) & SKIP_DIRS))
-
 
 def url_for(path: Path) -> str:
     rel = path.relative_to(ROOT).as_posix()
     return SITE + "/" if rel == "index.html" else f"{SITE}/{rel}"
-
 
 def resolve_internal(href: str, page: Path):
     """Return (target_file, fragment) for an internal href, or None for external/ignored links."""
@@ -102,7 +98,6 @@ def resolve_internal(href: str, page: Path):
     if target.is_dir() or path.endswith("/") or path == "/":
         target = target / "index.html"
     return target, u.fragment
-
 
 def main() -> int:
     errors = []
@@ -188,7 +183,6 @@ def main() -> int:
         return 1
     print(f"OK: {len(pages)} page(s) checked, sitemap and internal links consistent.")
     return 0
-
 
 if __name__ == "__main__":
     sys.exit(main())
