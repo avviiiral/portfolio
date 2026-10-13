@@ -2284,3 +2284,53 @@ section.panel {
     padding:1.1rem;
   }
 }
+
+/* Responsive section-heading alignment: consistent centering across viewport sizes. */
+section:not(#hero) > .container > :is(.section-tag, .section-h2, .section-sub),
+section:not(#hero) > :is(.section-tag, .section-h2, .section-sub) {
+  text-align: center;
+  margin-inline: auto;
+}
+
+section:not(#hero) > .container > .section-tag,
+section:not(#hero) > .section-tag {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+}
+
+section:not(#hero) > .container > .section-h2,
+section:not(#hero) > .section-h2 {
+  width: 100%;
+  max-width: 760px;
+  text-wrap: balance;
+}
+
+section:not(#hero) > .container > .section-sub,
+section:not(#hero) > .section-sub {
+  width: min(100%, 560px);
+}
+
+@media (max-width: 640px) {
+  section:not(#hero) > .container > :is(.section-tag, .section-h2, .section-sub),
+  section:not(#hero) > :is(.section-tag, .section-h2, .section-sub) {
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  section:not(#hero) > .container > .section-h2,
+  section:not(#hero) > .section-h2 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+  }
+
+  section:not(#hero) > .container > .section-sub,
+  section:not(#hero) > .section-sub {
+    font-size: .96rem;
+  }
+
+  .container {
+    padding-inline: 1.1rem;
+  }
+}
