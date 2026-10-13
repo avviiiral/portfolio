@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Making Portfolio Calculations Auditable | Aviral Goyal</title>
+<meta name="description" content="Engineering notes on transaction provenance, market-data freshness, valuation conventions and reconciliation checks in an investment-tracking application.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://aviral-goyal.netlify.app/articles/auditable-portfolio-calculations.html">
+<meta property="og:type" content="article"><meta property="og:title" content="Making Portfolio Calculations Auditable"><meta property="og:description" content="Designing investment reporting around explicit inputs, assumptions and reconciliation."><meta property="og:url" content="https://aviral-goyal.netlify.app/articles/auditable-portfolio-calculations.html">
+<style>:root{color-scheme:dark;--bg:#080a0f;--surface:#10151f;--border:#252d3b;--text:#f3f5f8;--muted:#a7b0bf;--cyan:#9edbd7}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.8 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}main{max-width:860px;margin:auto;padding:clamp(28px,7vw,76px) 22px 90px}.back{display:inline-block;border:1px solid var(--border);border-radius:999px;padding:8px 14px;color:var(--text);text-decoration:none;font-weight:650}.eyebrow{font:600 .72rem/1.4 ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-top:3.5rem}h1{font-size:clamp(2.5rem,7vw,4.5rem);line-height:1.04;letter-spacing:-.055em;margin:.8rem 0 1.2rem}h2{font-size:1.5rem;letter-spacing:-.03em;margin:2.6rem 0 .6rem}p,li{color:var(--muted)}.lead{font-size:1.18rem;max-width:740px}a{color:var(--cyan);text-underline-offset:4px}.callout{margin:1.6rem 0;padding:1.2rem 1.3rem;background:var(--surface);border:1px solid var(--border);border-radius:14px}footer{margin-top:4rem;border-top:1px solid var(--border);padding-top:1.4rem;font-size:.85rem}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}</style>
+</head>
+<body><main>
+<a class="back" href="/">← Portfolio</a>
+<div class="eyebrow">Data engineering / Financial reporting</div>
+<h1>Making portfolio calculations auditable</h1>
+<p class="lead">A portfolio dashboard is only as reliable as the data and conventions behind it. Showing a value is useful; explaining where it came from, how old its price is and how the result reconciles is what makes it auditable.</p>
+<h2>Keep transaction provenance</h2>
+<p>Maintain an ordered record of buys, sells, units, fees, dates and any corporate-action adjustments used by the calculation. A position should be traceable to the transactions that contribute to it, while imported closing balances can serve as a separate reconciliation source.</p>
+<h2>Define each measure</h2>
+<ul>
+<li><strong>Cost basis:</strong> document the convention used to allocate acquisition cost and fees across units.</li>
+<li><strong>Market value:</strong> state the price or NAV date and flag missing or stale market data.</li>
+<li><strong>Realized result:</strong> explain how disposed units are matched to cost under the chosen accounting method.</li>
+<li><strong>Unrealized result:</strong> distinguish remaining-position value versus cost basis from realized proceeds.</li>
+<li><strong>Cash flows and returns:</strong> make timing and sign conventions explicit before presenting XIRR or a time-weighted measure.</li>
+</ul>
+<h2>Add reconciliation checks</h2>
+<p>Compare transaction-derived units to imported or custodian closing units, report unexplained differences, and retain rounding rules. Reconciliation differences should be visible and investigated rather than silently overwritten. For mutual funds, capture the NAV date as part of the price record.</p>
+<div class="callout"><strong>Practical rule:</strong> calculations should be testable independently of the UI. Keep example ledgers for buys, partial sells, fees, missing prices and date boundaries, then assert expected units, cost, value and realized/unrealized outcomes.</div>
+<h2>Related project</h2><p>See the <a href="/projects/personal-wealth-monitoring.html">Personal Wealth Monitoring System case study</a> for the product scope and data considerations.</p>
+<footer><a href="/#projects">Back to projects</a> · <a href="/#contact">Discuss an analytics application</a></footer>
+</main></body></html>
