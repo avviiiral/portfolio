@@ -2334,3 +2334,132 @@ section:not(#hero) > .section-sub {
     padding-inline: 1.1rem;
   }
 }
+
+/* Phase 1 responsive polish: shared layout and predictable wrapping. */
+:root {
+  --content-gutter: clamp(1rem, 4vw, 2.5rem);
+  --section-space: clamp(3.25rem, 6vw, 5rem);
+  --card-space: clamp(1rem, 2.4vw, 1.5rem);
+}
+
+.container {
+  width: min(100%, 1200px);
+  margin-inline: auto;
+  padding-inline: var(--content-gutter);
+}
+
+section:not(#hero) {
+  padding-block: var(--section-space);
+}
+
+section:not(#hero) > .container > .section-tag,
+section:not(#hero) > .section-tag {
+  margin-inline: auto;
+  text-align: center;
+}
+
+section:not(#hero) > .container > .section-h2,
+section:not(#hero) > .section-h2 {
+  margin-inline: auto;
+  text-align: center;
+  text-wrap: balance;
+}
+
+section:not(#hero) > .container > .section-sub,
+section:not(#hero) > .section-sub {
+  margin-inline: auto;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+.skill-card,
+.engagement-card,
+.vision-card,
+.contact-card,
+.project-card,
+.note-card,
+.architecture-panel,
+.exploring-panel {
+  min-width: 0;
+}
+
+.project-card h3,
+.skill-card h3,
+.engagement-card h3,
+.vision-card h3,
+.note-card h3 {
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+.project-card p,
+.skill-card p,
+.engagement-card p,
+.vision-card p,
+.note-card p {
+  overflow-wrap: anywhere;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+}
+
+button,
+.btn-primary,
+.btn-secondary,
+.project-btn,
+.nav-cta,
+.form-submit {
+  max-width: 100%;
+}
+
+input,
+textarea,
+select {
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --section-space: 3.25rem;
+    --card-space: 1rem;
+  }
+
+  .container {
+    padding-inline: 1rem;
+  }
+
+  .section-h2 {
+    font-size: clamp(1.75rem, 7.8vw, 2.5rem);
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+  }
+
+  .section-sub,
+  .section-desc {
+    font-size: .96rem;
+  }
+
+  .project-card,
+  .skill-card,
+  .engagement-card,
+  .vision-card,
+  .contact-card,
+  .note-card {
+    min-width: 0;
+  }
+
+  .hero-btns,
+  .actions,
+  .footer-links {
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
