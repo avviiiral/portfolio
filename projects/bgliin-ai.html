@@ -48,6 +48,7 @@ hr{border:0;border-top:1px solid var(--border);margin:2.5rem 0}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
 </style>
+  <link rel="stylesheet" href="/portfolio-refresh.css">
 </head>
 <body><main>
 <a class="back" href="/">← Back to portfolio</a>
@@ -60,6 +61,9 @@ hr{border:0;border-top:1px solid var(--border);margin:2.5rem 0}
 <section class="panel"><h2>The approach</h2><p>Separate camera capture, inference, and browser streaming responsibilities so that monitoring views and computer-vision processing can operate with fewer unnecessary dependencies on one another.</p></section>
 </div>
 <h2>System design</h2>
+<div class="architecture-case" aria-label="System flow">
+<div>IP cameras <small>RTSP</small></div><span aria-hidden="true">→</span><div>Frame capture <small>OpenCV</small></div><span aria-hidden="true">→</span><div>Detection <small>YOLOv8</small></div><span aria-hidden="true">→</span><div>Service layer <small>Django</small></div><span aria-hidden="true">→</span><div>Dashboard <small>Angular</small></div>
+</div>
 <ul>
 <li><strong>Video ingestion:</strong> OpenCV captures RTSP camera streams and manages the latest available frames.</li>
 <li><strong>Inference:</strong> a YOLOv8 model processes frames for product detection/counting workflows.</li>

@@ -48,6 +48,7 @@ hr{border:0;border-top:1px solid var(--border);margin:2.5rem 0}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
 </style>
+  <link rel="stylesheet" href="/portfolio-refresh.css">
 </head>
 <body><main>
 <a class="back" href="/">← Back to portfolio</a>
@@ -58,6 +59,10 @@ hr{border:0;border-top:1px solid var(--border);margin:2.5rem 0}
 <div class="grid">
 <section class="panel"><h2>The problem</h2><p>Data exploration often involves repeated steps: understanding columns, checking quality, selecting useful summaries, and translating findings into plain language.</p></section>
 <section class="panel"><h2>The approach</h2><p>Build an interactive application around a Python analysis workflow, using Streamlit to make the exploration process accessible through a browser-based interface.</p></section>
+</div>
+<h2>Workflow at a glance</h2>
+<div class="architecture-case" aria-label="Data analysis workflow">
+<div>Dataset <small>Input</small></div><span aria-hidden="true">→</span><div>Inspect <small>Quality checks</small></div><span aria-hidden="true">→</span><div>Calculate <small>Python</small></div><span aria-hidden="true">→</span><div>Explain <small>Optional AI</small></div><span aria-hidden="true">→</span><div>Review <small>Streamlit</small></div>
 </div>
 <h2>Workflow principles</h2>
 <ul>
