@@ -1,13 +1,13 @@
 # Netlify response headers. Keep CSP aligned with any future third-party embeds.
- /*
-   X-Content-Type-Options: nosniff
-   Referrer-Policy: strict-origin-when-cross-origin
-   X-Frame-Options: DENY
-   Permissions-Policy: camera=(), microphone=(), geolocation=()
-   Strict-Transport-Security: max-age=31536000
-   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'
 
-# Fingerprinted/versioned assets can be cached for a year; HTML and crawler files stay revalidatable.
+# Bounded caching for assets without content-hashed filenames.
 /*.css
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 
