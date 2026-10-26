@@ -10,6 +10,7 @@ Checks (exit code 1 if any fail):
   * internal links and #anchors point at files / ids that exist
   * sitemap.xml lists every indexable page and nothing that does not exist
   * local files referenced from <meta og:image>/<twitter:image> exist
+  * JSON-LD script blocks parse as JSON and include a schema context
 """
 import json
 import re
