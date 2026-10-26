@@ -11,6 +11,7 @@ Checks (exit code 1 if any fail):
   * sitemap.xml lists every indexable page and nothing that does not exist
   * local files referenced from <meta og:image>/<twitter:image> exist
 """
+import json
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -30,9 +31,13 @@ class Page(HTMLParser):
         self.ids, self.links, self.metas, self.imgs_missing_alt = [], [], {}, 0
         self.title, self._in_title, self.h1 = "", False, 0
         self.canonical, self.blank_without_noopener = None, []
+        self._ld, self._in_ld = [], False
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
+        if tag == "script" and a.get("type") == "application/ld+json":
+            self._in_ld = True
+            self._ld.append("")
         if tag not in VOID:
             self.stack.append((tag, self.getpos()))
         if "id" in a:
@@ -62,6 +67,9 @@ class Page(HTMLParser):
                 self.blank_without_noopener.append(a["href"])
 
     def handle_endtag(self, tag):
+        if tag == "script" and self._in_ld:
+            self._in_ld = False
+            self._check_ld(self._ld[-1])
         if tag == "title":
             self._in_title = False
         if tag in VOID:
@@ -73,8 +81,19 @@ class Page(HTMLParser):
             self.stack.pop()
 
     def handle_data(self, data):
+        if self._in_ld:
+            self._ld[-1] += data
         if self._in_title:
             self.title += data
+
+    def _check_ld(self, raw):
+        try:
+            doc = json.loads(raw)
+        except ValueError as exc:
+            self.problems.append(f"invalid JSON-LD: {exc}")
+            return
+        if not isinstance(doc, (dict, list)) or (isinstance(doc, dict) and "@context" not in doc):
+            self.problems.append("JSON-LD block is missing @context")
 
 def html_files():
     return sorted(p for p in ROOT.rglob("*.html") if not (set(p.relative_to(ROOT).parts) & SKIP_DIRS))

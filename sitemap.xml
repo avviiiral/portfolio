@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://aviral-goyal.netlify.app/</loc></url>
-  <url><loc>https://aviral-goyal.netlify.app/projects/bgliin-ai.html</loc></url>
-  <url><loc>https://aviral-goyal.netlify.app/projects/personal-wealth-monitoring.html</loc></url>
-  <url><loc>https://aviral-goyal.netlify.app/projects/ai-data-analyst-agent.html</loc></url>
-  <url><loc>https://aviral-goyal.netlify.app/articles/multi-camera-monitoring.html</loc></url>
-  <url><loc>https://aviral-goyal.netlify.app/articles/auditable-portfolio-calculations.html</loc></url>
+  <url><loc>https://aviral-goyal.netlify.app/</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://aviral-goyal.netlify.app/projects/bgliin-ai.html</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://aviral-goyal.netlify.app/projects/personal-wealth-monitoring.html</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://aviral-goyal.netlify.app/projects/ai-data-analyst-agent.html</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://aviral-goyal.netlify.app/articles/multi-camera-monitoring.html</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://aviral-goyal.netlify.app/articles/auditable-portfolio-calculations.html</loc><lastmod>2026-10-13</lastmod></url>
 </urlset>
