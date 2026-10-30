@@ -1,9 +1,35 @@
-# Security headers for every page.
-# The current site uses inline styles/scripts; migrate them before removing unsafe-inline.
+# Netlify response headers. Keep CSP aligned with any future third-party embeds.
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Strict-Transport-Security: max-age=31536000
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'
+
+# Bounded caching for assets without content-hashed filenames.
+/*.css
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/*.js
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/*.webp
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+/*.jpg
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+/*.png
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+/*.svg
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600, must-revalidate
