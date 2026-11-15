@@ -8,7 +8,7 @@
 <meta name="author" content="Aviral Goyal">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#080a0f">
+<meta name="theme-color" content="#f5f3ee">
 <link rel="canonical" href="https://aviral-goyal.netlify.app/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Aviral Goyal | Software Developer, AI/ML &amp; Data Analytics">
@@ -61,14 +61,14 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/portfolio-refresh.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/portfolio-refresh.css">\n<link rel="stylesheet" href="/editorial.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
 <script>
 // Apply a saved light-theme choice before first paint (default stays dark).
-try{if(localStorage.getItem('theme')==='light')document.body.classList.add('light')}catch(e){}
+try{if(localStorage.getItem('theme')==='dark')document.body.classList.add('dark')}catch(e){}
 </script>
 <a class="skip-link" href="#main-content">Skip to content</a>
 
@@ -77,11 +77,10 @@ try{if(localStorage.getItem('theme')==='light')document.body.classList.add('ligh
   <div class="nav-logo">AG.</div>
   <ul class="nav-links" id="primary-navigation">
     <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#architecture">Architecture</a></li>
-    <li><a href="#notes">Notes</a></li>
+    <li><a href="#skills">Expertise</a></li>
+    <li><a href="#projects">Selected work</a></li>
+    <li><a href="#architecture">Systems</a></li>
+    <li><a href="#notes">Writing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
@@ -103,13 +102,13 @@ try{if(localStorage.getItem('theme')==='light')document.body.classList.add('ligh
           Open to Freelance Projects &amp; Full-Time Roles
         </div>
         <h1 class="hero-h1">
-          I Build <span class="gradient-text">Web Apps,<br>AI Tools</span> &amp;<br>Data Experiences
+          I build <span class="gradient-text">software for</span><br>real-world problems.
         </h1>
         <div class="type-wrap">
-          Data analytics · Power BI · AI/ML · Full-stack development
+          Full-stack engineering · Industrial AI · Data products
         </div>
         <p class="hero-sub">
-          I turn ideas and messy workflows into useful web apps, AI-powered tools, and clear dashboards. I work across Python, Django, Angular, and data/ML to build practical solutions people can actually use.
+          I’m Aviral, a developer working across Python, Angular, AI/ML and data analytics. I build practical systems — from industrial computer vision and investment platforms to dashboards that make complex information easier to act on.
         </p>
         <div class="hero-btns">
 
@@ -669,50 +668,7 @@ try{if(localStorage.getItem('theme')==='light')document.body.classList.add('ligh
 <div class="feedback-copy"><p>I publish client feedback only when it is genuine and shared with permission. There are no placeholder quotes or invented testimonials here.</p>
 <p>Until verified feedback is available, the best evidence is the project case studies, documented trade-offs and source repositories.</p><a class="text-link" href="#projects">Explore the work →</a></div></div></section>
 
-<!-- Vision -->
-<section id="vision">
-<div class="container">
-    <div style="text-align:center">
-      <div class="section-tag" style="justify-content:center;display:flex">Future Goals</div>
-      <h2 class="section-h2">Areas I’m Exploring</h2>
-      <p class="section-sub" style="margin:0 auto">Learning priorities connected to practical software, data and AI engineering.</p>
-    </div>
-    <div class="vision-grid" style="margin-top:3rem">
-      <div class="vision-card">
-        <div class="vision-num">01</div>
-        <div class="vision-title">Real-World AI Systems</div>
-        <div class="vision-text">Building production-grade AI that solves actual industrial problems — not demos, but deployed systems running on factory floors.</div>
-      </div>
-      <div class="vision-card">
-        <div class="vision-num">02</div>
-        <div class="vision-title">Scalable AI Architecture</div>
-        <div class="vision-text">Learning to design containerized AI pipelines for edge and cloud environments, with clear attention to deployment and capacity constraints.</div>
-      </div>
-      <div class="vision-card">
-        <div class="vision-num">03</div>
-        <div class="vision-title">Industrial Intelligence</div>
-        <div class="vision-text">Interested in smart manufacturing applications such as quality inspection, production visibility, and predictive-maintenance workflows.</div>
-      </div>
-      <div class="vision-card">
-        <div class="vision-num">04</div>
-        <div class="vision-title">LLM &amp; Agentic AI</div>
-        <div class="vision-text">Exploring large language models and autonomous AI agents for intelligent data analysis and decision-support systems.</div>
-      </div>
-      <div class="vision-card">
-        <div class="vision-num">05</div>
-        <div class="vision-title">Full-Stack AI Development</div>
-        <div class="vision-text">Building skills across data preparation, model evaluation, application integration, deployment, and monitoring.</div>
-      </div>
-      <div class="vision-card">
-        <div class="vision-num">06</div>
-        <div class="vision-title">Open Source Contributions</div>
-        <div class="vision-text">Contributing tools, datasets, and models back to the community — accelerating industrial AI adoption globally.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Contact -->
+<!-- Future-goals content is consolidated into the currently-exploring panel in Engineering Journal. -->\n<!-- Contact -->
 <!-- REPLACE YOUR CURRENT CONTACT SECTION WITH THIS -->
 
 <section id="contact">
@@ -911,19 +867,19 @@ try{if(localStorage.getItem('theme')==='light')document.body.classList.add('ligh
 <button class="mode-toggle" id="modeToggle" title="Toggle theme" aria-label="Light theme" aria-pressed="false">☀️</button>
 
 <script>
-// Dark/Light mode (the choice is remembered; the button shows the theme it will switch to)
+// Theme toggle: light editorial palette by default, dark palette on request.
 const toggle=document.getElementById('modeToggle');
 const themeColorMeta=document.querySelector('meta[name="theme-color"]');
-const darkThemeColor=themeColorMeta?themeColorMeta.getAttribute('content'):null;
 function syncThemeToggle(){
-  const isLight=document.body.classList.contains('light');
-  toggle.textContent=isLight?'🌙':'☀️';
-  toggle.setAttribute('aria-pressed',String(isLight));
-  if(themeColorMeta)themeColorMeta.setAttribute('content',isLight?'#f4f5f7':darkThemeColor);
+  const isDark=document.body.classList.contains('dark');
+  toggle.textContent=isDark?'☀':'☾';
+  toggle.setAttribute('aria-label',isDark?'Switch to light theme':'Switch to dark theme');
+  toggle.setAttribute('aria-pressed',String(isDark));
+  if(themeColorMeta)themeColorMeta.setAttribute('content',isDark?'#121714':'#f5f3ee');
 }
 toggle.addEventListener('click',()=>{
-  document.body.classList.toggle('light');
-  try{localStorage.setItem('theme',document.body.classList.contains('light')?'light':'dark')}catch(e){}
+  document.body.classList.toggle('dark');
+  try{localStorage.setItem('theme',document.body.classList.contains('dark')?'dark':'light')}catch(e){}
   syncThemeToggle();
 });
 syncThemeToggle();
