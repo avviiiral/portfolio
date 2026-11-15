@@ -2,11 +2,13 @@
 
 > Freelance full-stack developer based in India, available for remote projects and collaborations worldwide. Works across web applications, AI/ML, computer vision, workflow automation, and data analytics.
 
-Canonical portfolio: https://aviral-goyal.netlify.app/
-Contact: https://aviral-goyal.netlify.app/#contact
-LinkedIn: https://www.linkedin.com/in/avviiiral
-GitHub: https://github.com/avviiiral
-Resume: https://aviral-goyal.netlify.app/Aviral_Goyal_Resume.pdf
+## Primary links
+
+- [Portfolio homepage](https://aviral-goyal.netlify.app/)
+- [Contact and project enquiry form](https://aviral-goyal.netlify.app/#contact)
+- [LinkedIn profile](https://www.linkedin.com/in/avviiiral)
+- [GitHub profile](https://github.com/avviiiral)
+- [Download resume](https://aviral-goyal.netlify.app/Aviral_Goyal_Resume.pdf)
 
 ## Freelance services
 
@@ -19,11 +21,11 @@ Engagements can include a focused fix or feature, a new website or web applicati
 
 ## Selected project evidence
 
-- BGLIIN.AI — industrial multi-camera monitoring and computer vision: https://aviral-goyal.netlify.app/projects/bgliin-ai.html
-- Personal Wealth Monitoring System — portfolio tracking and financial analytics: https://aviral-goyal.netlify.app/projects/personal-wealth-monitoring.html
-- AI Data Analyst Agent — dataset analysis and reporting workflows: https://aviral-goyal.netlify.app/projects/ai-data-analyst-agent.html
-- Multi-camera monitoring engineering note: https://aviral-goyal.netlify.app/articles/multi-camera-monitoring.html
-- Auditable portfolio calculations engineering note: https://aviral-goyal.netlify.app/articles/auditable-portfolio-calculations.html
+- [BGLIIN.AI — industrial multi-camera monitoring and computer vision](https://aviral-goyal.netlify.app/projects/bgliin-ai.html)
+- [Personal Wealth Monitoring System — portfolio tracking and financial analytics](https://aviral-goyal.netlify.app/projects/personal-wealth-monitoring.html)
+- [AI Data Analyst Agent — dataset analysis and reporting workflows](https://aviral-goyal.netlify.app/projects/ai-data-analyst-agent.html)
+- [Multi-camera monitoring engineering note](https://aviral-goyal.netlify.app/articles/multi-camera-monitoring.html)
+- [Auditable portfolio calculations engineering note](https://aviral-goyal.netlify.app/articles/auditable-portfolio-calculations.html)
 
 ## Skills
 
@@ -31,7 +33,7 @@ Python, Django, Django REST Framework, Angular, TypeScript, JavaScript, SQL, Pos
 
 ## Location and collaboration
 
-Based in India. Available for remote collaboration. For project enquiries, use the contact form on the portfolio or the published LinkedIn profile.
+Based in India. Available for remote collaboration. For project enquiries, use the [portfolio contact form](https://aviral-goyal.netlify.app/#contact) or the [published LinkedIn profile](https://www.linkedin.com/in/avviiiral).
 
 ## Source of truth
 
