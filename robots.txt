@@ -1,3 +1,4 @@
+# Keep public pages crawlable; utility pages declare noindex in their HTML.
 User-agent: *
 Allow: /
 
