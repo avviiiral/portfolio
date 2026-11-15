@@ -227,6 +227,7 @@ def main() -> int:
         if expected_sitemap not in directives:
             errors.append(f"robots.txt: missing {expected_sitemap}")
 
+    idx = ROOT / "index.html"
     favicon = ROOT / "favicon.svg"
     if not favicon.is_file():
         errors.append("favicon.svg not found")
