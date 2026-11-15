@@ -97,7 +97,21 @@ class Page(HTMLParser):
             self.problems.append("JSON-LD block is missing @context")
 
 def html_files():
-    return sorted(p for p in ROOT.rglob("*.html") if not (set(p.relative_to(ROOT).parts) & SKIP_DIRS))
+    """Return site pages, excluding service-owned verification token documents."""
+    pages = []
+    for path in ROOT.rglob("*.html"):
+        if set(path.relative_to(ROOT).parts) & SKIP_DIRS:
+            continue
+        # Google Search Console verification files contain a plain token, not a
+        # site page. Keep the token deployed, but do not validate or index it.
+        try:
+            if path.read_text(encoding="utf-8").lstrip().startswith("google-site-verification:"):
+                continue
+        except OSError as exc:
+            print(f"Could not read {path}: {exc}", file=sys.stderr)
+            continue
+        pages.append(path)
+    return sorted(pages)
 
 def url_for(path: Path) -> str:
     rel = path.relative_to(ROOT).as_posix()
@@ -202,6 +216,22 @@ def main() -> int:
             errors.append(f"sitemap.xml: lists {extra} but no indexable page matches")
     else:
         errors.append("sitemap.xml not found")
+
+    # Crawler discovery and browser identity assets.
+    robots = ROOT / "robots.txt"
+    if not robots.is_file():
+        errors.append("robots.txt not found")
+    else:
+        directives = {line.strip() for line in robots.read_text(encoding="utf-8").splitlines()}
+        expected_sitemap = f"Sitemap: {SITE}/sitemap.xml"
+        if expected_sitemap not in directives:
+            errors.append(f"robots.txt: missing {expected_sitemap}")
+
+    favicon = ROOT / "favicon.svg"
+    if not favicon.is_file():
+        errors.append("favicon.svg not found")
+    elif idx.is_file() and 'rel="icon" type="image/svg+xml" href="/favicon.svg"' not in idx.read_text(encoding="utf-8"):
+        errors.append('index.html: missing SVG favicon link')
 
     # Sitemap URLs should be absolute HTTPS URLs on the configured site.
     if sm.is_file():

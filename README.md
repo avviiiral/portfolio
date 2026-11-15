@@ -17,7 +17,8 @@ There is no build step: plain HTML, CSS and a little vanilla JavaScript, deploye
 | `thank-you.html` | Redirect target after a Netlify Forms submission (`noindex`) |
 | `404.html` | Custom "page not found" page (served automatically by Netlify) |
 | `_headers` | Netlify security headers, including the Content-Security-Policy |
-| `robots.txt`, `sitemap.xml` | Crawler hints; keep the sitemap in sync with `projects/` |
+| `robots.txt`, `sitemap.xml` | Crawler discovery; keep the sitemap in sync with indexable pages in `projects/` and `articles/` |
+| `favicon.svg` | Scalable browser-tab and bookmark icon |
 | `profile.jpg`, `profile.webp` | Portrait (WebP is served first, JPG is the fallback) |
 | `og-image.jpg` | 1200×630 social-share image used by Open Graph and Twitter cards |
 | `Aviral_Goyal_Resume.pdf` | Downloadable resume |
@@ -39,7 +40,7 @@ Netlify Forms only work once deployed, so the contact form will not submit local
 python3 scripts/check_site.py
 ```
 
-The checker validates page titles/descriptions/canonicals, social metadata, markup structure, duplicate IDs, image alt text, safe external links, internal links/anchors, referenced homepage assets, and sitemap consistency. The same script runs in GitHub Actions on every push and pull request (`.github/workflows/site-checks.yml`). It needs only Python 3.
+The checker validates page titles/descriptions/canonicals, social metadata, markup structure, duplicate IDs, image alt text, safe external links, internal links/anchors, referenced homepage assets, the robots.txt sitemap directive, favicon availability, and sitemap consistency. Google Search Console verification token files are excluded from page validation. The same script runs in GitHub Actions on every push and pull request (`.github/workflows/site-checks.yml`). It needs only Python 3.
 
 ## Search, accessibility and performance
 
