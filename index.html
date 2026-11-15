@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aviral Goyal | Software Developer, AI/ML &amp; Data Analytics</title>
-<meta name="description" content="Aviral Goyal builds software with Python, Django, Angular, AI/ML, computer vision and Power BI. Explore engineering projects and technical case studies.">
+<title>Aviral Goyal | Freelance Full-Stack Developer, AI &amp; Data Analytics</title>
+<meta name="description" content="Hire Aviral Goyal, a freelance full-stack developer in India for Python, Django, Angular, AI automation, computer vision and Power BI dashboards. View projects and get in touch.">
 <meta name="author" content="Aviral Goyal">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#f5f3ee">
 <link rel="canonical" href="https://aviral-goyal.netlify.app/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Aviral Goyal | Software Developer, AI/ML &amp; Data Analytics">
-<meta property="og:description" content="Software engineering projects spanning Python, Django, Angular, AI/ML, computer vision, Power BI dashboards and data analytics by Aviral Goyal.">
+<meta property="og:title" content="Aviral Goyal | Freelance Full-Stack Developer, AI &amp; Data Analytics">
+<meta property="og:description" content="Freelance full-stack development, AI automation, computer vision and Power BI dashboards by Aviral Goyal in India. Explore projects and discuss your requirements.">
 <meta property="og:locale" content="en_IN">
 <meta property="og:url" content="https://aviral-goyal.netlify.app/">
-<meta name="twitter:title" content="Aviral Goyal | Software Developer, AI/ML &amp; Data Analytics">
-<meta name="twitter:description" content="Software engineering projects spanning Python, Django, Angular, AI/ML, computer vision, Power BI dashboards and data analytics by Aviral Goyal.">
+<meta name="twitter:title" content="Aviral Goyal | Freelance Full-Stack Developer, AI &amp; Data Analytics">
+<meta name="twitter:description" content="Freelance full-stack development, AI automation, computer vision and Power BI dashboards by Aviral Goyal in India.">
 <meta property="og:site_name" content="Aviral Goyal">
 <meta property="og:image" content="https://aviral-goyal.netlify.app/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -47,6 +47,45 @@
       ]
     },
     {
+      "@type": "Service",
+      "@id": "https://aviral-goyal.netlify.app/#web-development",
+      "name": "Freelance Website and Full-Stack Web Application Development",
+      "serviceType": "Website development and full-stack web application development",
+      "provider": { "@id": "https://aviral-goyal.netlify.app/#person" },
+      "areaServed": "Worldwide",
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://aviral-goyal.netlify.app/#contact"
+      },
+      "description": "Responsive websites, dashboards, Python and Django backends, Angular frontends, and REST API integrations."
+    },
+    {
+      "@type": "Service",
+      "@id": "https://aviral-goyal.netlify.app/#ai-automation",
+      "name": "AI, Machine Learning and Workflow Automation",
+      "serviceType": "AI automation, machine learning prototyping and computer vision",
+      "provider": { "@id": "https://aviral-goyal.netlify.app/#person" },
+      "areaServed": "Worldwide",
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://aviral-goyal.netlify.app/#contact"
+      },
+      "description": "Python automation, AI-enabled workflows, machine-learning prototypes and computer vision solutions using tools such as YOLO and OpenCV."
+    },
+    {
+      "@type": "Service",
+      "@id": "https://aviral-goyal.netlify.app/#data-analytics",
+      "name": "Power BI and Data Analytics Services",
+      "serviceType": "Data analytics, reporting and business intelligence dashboards",
+      "provider": { "@id": "https://aviral-goyal.netlify.app/#person" },
+      "areaServed": "Worldwide",
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://aviral-goyal.netlify.app/#contact"
+      },
+      "description": "Data cleaning, analysis, reporting and Power BI dashboard development."
+    },
+    {
       "@type": "WebSite",
       "@id": "https://aviral-goyal.netlify.app/#website",
       "url": "https://aviral-goyal.netlify.app/",
@@ -61,8 +100,10 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/portfolio-refresh.css">\n<link rel="stylesheet" href="/editorial.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="/portfolio-refresh.css">
+<link rel="stylesheet" href="/editorial.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
@@ -944,14 +985,8 @@ primaryNavigation.querySelectorAll("a").forEach(link => link.addEventListener("c
   menuToggle.setAttribute("aria-label", "Open navigation menu");
 }));
 
-// Nav scroll effect
-const navbar=document.getElementById('navbar');
-const syncNavbar = () => {
-  if (!navbar) return;
-  navbar.style.padding = window.scrollY > 50 ? '12px 5%' : '';
-};
-window.addEventListener('scroll', syncNavbar, { passive: true });
-syncNavbar();
+// The navigation uses a stable sticky layout; avoid scroll-time style writes
+// that can force synchronous layout recalculation on mobile devices.
 
 </script>
   <script src="/portfolio.js" defer></script>
