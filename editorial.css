@@ -351,3 +351,60 @@ body.dark .nav-links { background:rgba(18,23,20,.98); }
   html { scroll-behavior:auto; }
   *,*::before,*::after { animation:none!important; transition:none!important; }
 }
+
+
+/* Ensure legacy component rules cannot wash out text in the light editorial theme. */
+.skill-name,
+.skill-item,
+.skill-cat-title,
+.skill-used,
+.skill-legend {
+  color:var(--ink)!important;
+}
+.skill-tier {
+  color:var(--muted)!important;
+  border-color:var(--line-strong)!important;
+  background:transparent;
+}
+.skill-tier[data-level="3"] {
+  color:var(--accent-strong)!important;
+  border-color:var(--accent)!important;
+}
+.skill-tier[data-level="2"] {
+  color:var(--muted)!important;
+  border-color:var(--line-strong)!important;
+}
+.skill-tier[data-level="1"] {
+  color:var(--subtle)!important;
+  border-color:var(--line-strong)!important;
+}
+.skill-icon {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--accent-strong);
+  font:700 .68rem/1 var(--sans);
+  letter-spacing:.06em;
+}
+.project-img {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font:700 clamp(.72rem,1.4vw,1rem)/1.2 var(--sans);
+  letter-spacing:.16em;
+  color:var(--muted);
+}
+.contact-icon {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font:700 .58rem/1 var(--sans);
+  letter-spacing:.08em;
+}
+.mode-toggle {
+  min-width:64px;
+  width:auto;
+  padding:0 10px;
+  font:700 .58rem/1 var(--sans);
+  letter-spacing:.08em;
+}
