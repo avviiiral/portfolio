@@ -13,7 +13,7 @@ There is no build step: plain HTML, CSS and a little vanilla JavaScript, deploye
 | `index.html` | Single-page homepage (about, skills, services, FAQ, projects, contact form) |
 | `projects/*.html` | Case-study pages linked from the project cards |
 | `articles/*.html` | Short engineering notes on reliability and auditable data workflows |
-| `portfolio-refresh.css`, `portfolio.js` | Accessible, low-motion layout refinements and the architecture switcher |
+| `portfolio-refresh.css`, `editorial.css`, `case-study.css`, `portfolio.js` | Shared layout foundations, editorial homepage design system, matching case-study styles, and the architecture switcher |
 | `thank-you.html` | Redirect target after a Netlify Forms submission (`noindex`) |
 | `404.html` | Custom "page not found" page (served automatically by Netlify) |
 | `_headers` | Netlify security headers, including the Content-Security-Policy |
@@ -42,7 +42,7 @@ python3 scripts/check_site.py
 
 The checker validates page titles/descriptions/canonicals, social metadata, markup structure, duplicate IDs, image alt text, safe external links, internal links/anchors, referenced homepage assets, the robots.txt sitemap directive, favicon availability, and sitemap consistency. Google Search Console verification token files are excluded from page validation. The same script runs in GitHub Actions on every push and pull request (`.github/workflows/site-checks.yml`). It needs only Python 3.
 
-## Search, accessibility and performance
+## Visual direction\n\nThe homepage uses a restrained editorial layout: warm neutral surfaces, strong typography, a concise introduction, curated project case studies, and restrained interactions. Project and engineering-note pages share the same visual language. The light theme is the default; the dark theme is an explicit user preference.\n\n## Search, accessibility and performance
 
 - Keep page titles and descriptions specific to each page, and update canonical/social metadata and `sitemap.xml` together when URLs change.
 - Use descriptive case-study content and real screenshots only. Mask any private, financial, client or production details before publishing.
