@@ -17,7 +17,7 @@ There is no build step: plain HTML, CSS and a little vanilla JavaScript, deploye
 | `thank-you.html` | Redirect target after a Netlify Forms submission (`noindex`) |
 | `404.html` | Custom "page not found" page (served automatically by Netlify) |
 | `_headers` | Netlify security headers, including the Content-Security-Policy |
-| `robots.txt`, `sitemap.xml` | Crawler discovery; keep the sitemap in sync with indexable pages in `projects/` and `articles/` |
+| `robots.txt`, `sitemap.xml`, `llms.txt` | Search crawler discovery, canonical page discovery, and an AI-readable summary of services and project evidence |
 | `favicon.svg` | Scalable browser-tab and bookmark icon |
 | `profile.jpg`, `profile.webp` | Portrait (WebP is served first, JPG is the fallback) |
 | `og-image.jpg` | 1200×630 social-share image used by Open Graph and Twitter cards |
@@ -45,6 +45,7 @@ The checker validates page titles/descriptions/canonicals, social metadata, mark
 ## Visual direction\n\nThe homepage uses a restrained editorial layout: warm neutral surfaces, strong typography, a concise introduction, curated project case studies, and restrained interactions. Project and engineering-note pages share the same visual language. The light theme is the default; the dark theme is an explicit user preference.\n\n## Search, accessibility and performance
 
 - Keep page titles and descriptions specific to each page, and update canonical/social metadata and `sitemap.xml` together when URLs change.
+- Keep `llms.txt` accurate when services, skills, contact details, or featured project URLs change. It is a supplementary discovery aid, not a guarantee of AI recommendations or inclusion.
 - Use descriptive case-study content and real screenshots only. Mask any private, financial, client or production details before publishing.
 - Preserve keyboard focus visibility, skip navigation, meaningful image alternatives and reduced-motion support.
 - The featured-project SVGs are schematic architecture illustrations, not screenshots of a deployed application. Replace or supplement them with approved, redacted product screenshots when available.
