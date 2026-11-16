@@ -22,6 +22,7 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://aviral-goyal.netlify.app"
+GTM_CONTAINER = "GTM-TT9Q7MHF"
 VOID = {"meta", "link", "img", "input", "br", "hr", "source", "area", "base", "col", "embed", "param", "track", "wbr"}
 SKIP_DIRS = {".git", "node_modules", ".github"}
 
@@ -145,8 +146,15 @@ def main() -> int:
     pages = {p: Page() for p in html_files()}
     ids_by_page = {}
     for p, parser in pages.items():
-        parser.feed(p.read_text(encoding="utf-8"))
+        source = p.read_text(encoding="utf-8")
+        parser.feed(source)
         parser.close()
+        rel = p.relative_to(ROOT).as_posix()
+        gtm_script = f"https://www.googletagmanager.com/gtm.js?id={GTM_CONTAINER}"
+        if source.count(gtm_script) != 1:
+            errors.append(f"{rel}: expected exactly one Google tag script for {GTM_CONTAINER}")
+        if "window.dataLayer = window.dataLayer || [];" not in source or "function gtag()" not in source:
+            errors.append(f"{rel}: missing Google tag dataLayer initialization")
         ids_by_page[p] = set(parser.ids)
 
     indexable = []
