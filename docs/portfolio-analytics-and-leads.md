@@ -1,6 +1,6 @@
 # Portfolio analytics and freelance lead workflow
 
-This guide is intentionally separate from the public homepage. The website includes optional event hooks, but no analytics provider is loaded until the site owner configures an account.
+This guide covers the website's Google Tag Manager integration and the separate Netlify form/lead workflow. The container snippet is loaded on site pages; GA4 measurement and event collection still depend on tags being configured and published inside GTM.
 
 ## 1. Configure Google Tag Manager and GA4
 
@@ -23,7 +23,7 @@ The `_headers` policy permits:
 - `connect-src`: `https://www.googletagmanager.com`, `https://*.google-analytics.com`, `https://*.google.com`, and `https://ingesteer.services-prod.nsvcs.net`
 - `frame-src`: `https://www.googletagmanager.com`
 
-The policy does not add `unsafe-eval`, wildcard hosts, or advertising domains. If you later add Google Ads or other GTM tags, extend the relevant CSP directives only for the hosts those tags actually require. Netlify RUM is production-only; validate its requests on the live deployment, not only on a local preview.
+The policy does not add `unsafe-eval`, a blanket `*` source permission, or advertising domains. If you later add Google Ads or other GTM tags, extend the relevant CSP directives only for the hosts those tags actually require. Netlify RUM is production-only; validate its requests on the live deployment, not only on a local preview.
 
 ## 2. Configure Google Search Console
 
