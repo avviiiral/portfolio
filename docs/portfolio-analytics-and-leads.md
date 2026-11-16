@@ -2,24 +2,28 @@
 
 This guide is intentionally separate from the public homepage. The website includes optional event hooks, but no analytics provider is loaded until the site owner configures an account.
 
-## 1. Configure analytics
+## 1. Configure Google Tag Manager and GA4
 
-1. Create a Google Analytics 4 property and a web data stream for `https://aviral-goyal.netlify.app`.
-2. Copy the Measurement ID (format: `G-XXXXXXXXXX`). This identifier is designed to be public; do not put API secrets or credentials in the frontend.
-3. Add the official Google tag snippet to the `<head>` of `index.html`, replacing the placeholder with your real Measurement ID. Do not commit an example or fake ID.
-4. Verify the tag with Google Tag Assistant and the GA4 Realtime report.
-5. Check that the site's `trackPortfolioEvent()` hook records events after the tag is loaded. Suggested events: `contact_cta_click` and `outbound_contact_or_project_click`.
-6. Review consent and privacy obligations for the audiences you serve before enabling analytics. Avoid collecting form field values as analytics event parameters.
+The site uses the existing Google Tag Manager web container `GTM-TT9Q7MHF`. Its install snippet is included once in the `<head>` of every HTML page, including project notes and the enquiry confirmation page. The public container ID is not a secret.
+
+1. In Google Tag Manager, open the `GTM-TT9Q7MHF` container and create or select the GA4 Google tag.
+2. Set that tag's Measurement ID (format: `G-XXXXXXXXXX`) and use an **All Pages** trigger. The Measurement ID belongs in the GTM workspace; do not add a second Google snippet to the website.
+3. To collect the portfolio's existing custom events, create GA4 Event tags and Custom Event triggers for `contact_cta_click` and `outbound_contact_or_project_click`. The site's `gtag()` helper pushes those events to `dataLayer`; GTM must have matching tags/triggers and the container changes must be published.
+4. Use GTM Preview / Tag Assistant, then confirm page views and test events in GA4 Realtime. Check the browser console and Network panel for blocked requests.
+5. Review the consent and privacy obligations for the audiences you serve before enabling analytics. Do not send contact-form field values, message contents, or other personal information as event parameters.
 
 ### Content-Security-Policy
 
-`_headers` ships a Content-Security-Policy that only allows this site's own files and Google Fonts. Before adding the GA4 snippet, extend the policy in `_headers` or the browser will block the tag silently. Per Google's tag-manager CSP guidance, add:
+Netlify injects its Real User Monitoring (RUM) script on production pages. The CSP allows Netlify's documented script host and the collection endpoint visible in the browser console. Google Tag Manager and GA4 have a separate, limited allowlist.
 
-- `script-src`: `https://*.googletagmanager.com`
-- `img-src`: `https://*.google-analytics.com https://*.googletagmanager.com`
-- `connect-src`: `https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com`
+The `_headers` policy permits:
 
-Deploy to a Netlify preview first and confirm the browser console shows no CSP violations.
+- `script-src`: `https://www.googletagmanager.com` and `https://netlify-rum.netlify.app`
+- `img-src`: `https://www.googletagmanager.com` and `https://*.google-analytics.com`
+- `connect-src`: `https://www.googletagmanager.com`, `https://*.google-analytics.com`, `https://*.google.com`, and `https://ingesteer.services-prod.nsvcs.net`
+- `frame-src`: `https://www.googletagmanager.com`
+
+The policy does not add `unsafe-eval`, wildcard hosts, or advertising domains. If you later add Google Ads or other GTM tags, extend the relevant CSP directives only for the hosts those tags actually require. Netlify RUM is production-only; validate its requests on the live deployment, not only on a local preview.
 
 ## 2. Configure Google Search Console
 
