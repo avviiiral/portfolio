@@ -115,8 +115,15 @@ def html_files():
     return sorted(pages)
 
 def url_for(path: Path) -> str:
+    """Return the public canonical URL under Netlify Pretty URLs."""
     rel = path.relative_to(ROOT).as_posix()
-    return SITE + "/" if rel == "index.html" else f"{SITE}/{rel}"
+    if rel == "index.html":
+        return SITE + "/"
+    if rel.endswith("/index.html"):
+        return f"{SITE}/{rel[:-len('index.html')]}"
+    if rel.endswith(".html"):
+        return f"{SITE}/{rel[:-5]}"
+    return f"{SITE}/{rel}"
 
 def resolve_internal(href: str, page: Path):
     """Return (target_file, fragment) for an internal href, or None for external/ignored links."""
@@ -139,6 +146,14 @@ def resolve_internal(href: str, page: Path):
         target = (page.parent / path)
     if target.is_dir() or path.endswith("/") or path == "/":
         target = target / "index.html"
+    elif not target.exists() and not target.suffix:
+        # Netlify Pretty URLs expose .html files without their suffix.
+        html_candidate = target.with_suffix(".html")
+        index_candidate = target / "index.html"
+        if html_candidate.is_file():
+            target = html_candidate
+        elif index_candidate.is_file():
+            target = index_candidate
     return target, u.fragment
 
 def main() -> int:
@@ -155,6 +170,8 @@ def main() -> int:
             errors.append(f"{rel}: expected exactly one Google tag script for {GTM_CONTAINER}")
         if "window.dataLayer = window.dataLayer || [];" not in source or "function gtag()" not in source:
             errors.append(f"{rel}: missing Google tag dataLayer initialization")
+        if rel == "resume/index.html" and '"@type":"ProfilePage"' not in source:
+            errors.append(f"{rel}: missing ProfilePage structured data")
         ids_by_page[p] = set(parser.ids)
 
     indexable = []

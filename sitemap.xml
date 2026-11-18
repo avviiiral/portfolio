@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Only canonical, indexable pages belong in this sitemap. -->
+<!-- Canonical, indexable URLs. Netlify serves the HTML files at these clean paths. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://aviral-goyal.netlify.app/</loc></url>
-  <url><loc>https://aviral-goyal.netlify.app/projects/bgliin-ai.html</loc></url>
-  <url><loc>https://aviral-goyal.netlify.app/projects/personal-wealth-monitoring.html</loc></url>
-  <url><loc>https://aviral-goyal.netlify.app/projects/ai-data-analyst-agent.html</loc></url>
-  <url><loc>https://aviral-goyal.netlify.app/articles/multi-camera-monitoring.html</loc></url>
-  <url><loc>https://aviral-goyal.netlify.app/articles/auditable-portfolio-calculations.html</loc></url>
+  <url><loc>https://aviral-goyal.netlify.app/services/</loc></url>
+  <url><loc>https://aviral-goyal.netlify.app/resume/</loc></url>
+  <url><loc>https://aviral-goyal.netlify.app/projects/bgliin-ai</loc></url>
+  <url><loc>https://aviral-goyal.netlify.app/projects/personal-wealth-monitoring</loc></url>
+  <url><loc>https://aviral-goyal.netlify.app/projects/ai-data-analyst-agent</loc></url>
+  <url><loc>https://aviral-goyal.netlify.app/articles/multi-camera-monitoring</loc></url>
+  <url><loc>https://aviral-goyal.netlify.app/articles/auditable-portfolio-calculations</loc></url>
 </urlset>
