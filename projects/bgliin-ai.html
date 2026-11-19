@@ -352,7 +352,14 @@ pre {
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/case-study.css">
 </head>
-<body><main>
+<body>
+<script>
+try {
+  if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark");
+} catch (error) {}
+</script>
+<button class="mode-toggle" id="modeToggle" type="button" title="Toggle theme" aria-label="Switch to dark theme" aria-pressed="false">DARK</button>
+<main>
 <a class="back" href="/">← Back to portfolio</a>
 <div class="eyebrow">Selected work / Computer vision</div>
 <h1>BGLIIN.AI</h1>
@@ -379,4 +386,31 @@ pre {
 <ul><li>Connecting computer vision inference to a usable full-stack application.</li><li>Working with RTSP video sources, OpenCV, model inference, and browser streaming.</li><li>Thinking about operational reliability and resource constraints, not just model predictions.</li></ul>
 <p><em>No throughput or accuracy figures are published here because they should be supported by a reproducible benchmark from the target deployment.</em></p>
 <div class="actions"><a class="btn primary" href="/contact/">Discuss a similar project</a><a class="btn" href="https://github.com/avviiiral/bgliin.ai" target="_blank" rel="noopener noreferrer">GitHub repository</a><a class="btn" href="/projects/">More projects</a></div>
-</main></body></html>
+</main>
+<script>
+(() => {
+  const themeToggle = document.getElementById("modeToggle");
+  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+  function syncThemeToggle() {
+    const isDark = document.body.classList.contains("dark");
+    themeToggle.textContent = isDark ? "LIGHT" : "DARK";
+    themeToggle.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+    if (themeColorMeta) {
+      themeColorMeta.setAttribute("content", isDark ? "#121714" : "#f5f3ee");
+    }
+  }
+
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    try {
+      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+    } catch (error) {}
+    syncThemeToggle();
+  });
+
+  syncThemeToggle();
+})();
+</script>
+</body></html>
