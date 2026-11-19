@@ -221,6 +221,49 @@ def main() -> int:
     if not projects_css_path.is_file() or "object-fit:contain;" not in projects_css_path.read_text(encoding="utf-8") or "position:absolute;" not in projects_css_path.read_text(encoding="utf-8"):
         errors.append("editorial.css: catalogue project diagrams must use a positioned contain-fit image")
 
+    # Synthetic project gallery must use the three local, self-contained preview assets.
+    project_page = ROOT / "projects" / "index.html"
+    if not project_page.is_file():
+        errors.append("projects/index.html not found")
+    else:
+        project_source = project_page.read_text(encoding="utf-8")
+        for marker in (
+            'id="project-ui-previews"',
+            'id="project-preview-dialog"',
+            'class="project-gallery-open"',
+            'data-caption=',
+        ):
+            if marker not in project_source:
+                errors.append(f"projects/index.html: missing gallery marker {marker}")
+        for preview in (
+            "assets/previews/pwms-dashboard.svg",
+            "assets/previews/bgliin-telemetry.svg",
+            "assets/previews/ai-data-analyst.svg",
+        ):
+            if preview not in project_source:
+                errors.append(f"projects/index.html: missing gallery image reference {preview}")
+            elif not (ROOT / preview).is_file():
+                errors.append(f"projects/index.html: missing gallery image file {preview}")
+
+    for rel in ("thank-you.html", "404.html"):
+        utility = ROOT / rel
+        if not utility.is_file():
+            errors.append(f"{rel}: utility page not found")
+            continue
+        utility_source = utility.read_text(encoding="utf-8")
+        for marker in (
+            'localStorage.getItem("theme") === "dark"',
+            'id="modeToggle"',
+            'body.classList.toggle("dark")',
+            'name="theme-color" content="#f5f3ee"',
+        ):
+            if marker not in utility_source:
+                errors.append(f"{rel}: missing shared theme behavior marker {marker}")
+
+    for path in ("project-gallery.css", "project-gallery.scss"):
+        if not (ROOT / path).is_file():
+            errors.append(f"{path}: gallery stylesheet not found")
+
     for p, parser in pages.items():
         source = p.read_text(encoding="utf-8")
         parser.feed(source)
