@@ -245,8 +245,9 @@
 }
 .audience-profile img {
   display: block;
-  width: 150px;
-  height: auto !important;
+  width: 150px !important;
+  height: 187.5px !important;
+  max-width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center 35%;
@@ -295,7 +296,10 @@
   .audience-actions { flex-direction: column; }
   .audience-actions a { width: 100%; }
   .audience-profile { grid-template-columns: 88px minmax(0, 1fr); gap: 16px; }
-  .audience-profile img { width: 88px; }
+  .audience-profile img {
+    width: 88px !important;
+    height: 110px !important;
+  }
 }
 @supports (content-visibility: auto) {
   #about, #skills, #services, #projects, #architecture, #notes, #feedback, #contact {
