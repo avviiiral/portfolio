@@ -16,8 +16,8 @@
 <meta name="robots" content="index,follow">
 <meta name="author" content="Aviral Goyal">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<link rel="canonical" href="https://aviral-goyal.netlify.app/articles/auditable-portfolio-calculations.html">
-<meta property="og:type" content="article"><meta property="og:title" content="Making Portfolio Calculations Auditable"><meta property="og:description" content="Build investment reporting around explicit inputs, assumptions, transaction provenance and reconciliation."><meta property="og:url" content="https://aviral-goyal.netlify.app/articles/auditable-portfolio-calculations.html">
+<link rel="canonical" href="https://aviral-goyal.netlify.app/articles/auditable-portfolio-calculations">
+<meta property="og:type" content="article"><meta property="og:title" content="Making Portfolio Calculations Auditable"><meta property="og:description" content="Build investment reporting around explicit inputs, assumptions, transaction provenance and reconciliation."><meta property="og:url" content="https://aviral-goyal.netlify.app/articles/auditable-portfolio-calculations">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Auditable Portfolio Calculations | Investment Data Engineering Notes">
 <meta name="twitter:description" content="Engineering notes for auditable investment reporting: transaction provenance, price and NAV freshness, cost basis conventions, realized results and reconciliation.">
@@ -152,7 +152,7 @@ h3 {
 </style>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"TechArticle","headline":"Making portfolio calculations auditable","name":"Making portfolio calculations auditable","description":"Engineering notes for auditable investment reporting: transaction provenance, price and NAV freshness, cost basis conventions, realized results and reconciliation.","url":"https://aviral-goyal.netlify.app/articles/auditable-portfolio-calculations.html","author":{"@type":"Person","name":"Aviral Goyal","url":"https://aviral-goyal.netlify.app/"},"inLanguage":"en"}
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Making portfolio calculations auditable","name":"Making portfolio calculations auditable","description":"Engineering notes for auditable investment reporting: transaction provenance, price and NAV freshness, cost basis conventions, realized results and reconciliation.","url":"https://aviral-goyal.netlify.app/articles/auditable-portfolio-calculations","author":{"@type":"Person","name":"Aviral Goyal","url":"https://aviral-goyal.netlify.app/"},"inLanguage":"en"}
 </script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -178,6 +178,6 @@ h3 {
 <h2>Add reconciliation checks</h2>
 <p>Compare transaction-derived units to imported or custodian closing units, report unexplained differences, and retain rounding rules. Reconciliation differences should be visible and investigated rather than silently overwritten. For mutual funds, capture the NAV date as part of the price record.</p>
 <div class="callout"><strong>Practical rule:</strong> calculations should be testable independently of the UI. Keep example ledgers for buys, partial sells, fees, missing prices and date boundaries, then assert expected units, cost, value and realized/unrealized outcomes.</div>
-<h2>Related project</h2><p>See the <a href="/projects/personal-wealth-monitoring.html">Personal Wealth Monitoring System case study</a> for the product scope and data considerations.</p>
-<footer><a href="/#projects">Back to projects</a> · <a href="/#contact">Discuss an analytics application</a></footer>
+<h2>Related project</h2><p>See the <a href="/projects/personal-wealth-monitoring">Personal Wealth Monitoring System case study</a> for the product scope and data considerations.</p>
+<footer><a href="/projects/">Back to projects</a> · <a href="/contact/">Discuss an analytics application</a></footer>
 </main></body></html>

@@ -408,3 +408,9 @@ body.dark .nav-links { background:rgba(18,23,20,.98); }
   font:700 .58rem/1 var(--sans);
   letter-spacing:.08em;
 }
+
+
+
+/* Defer rendering of below-the-fold homepage sections where supported. */
+.service-detail-link { margin-top: 20px; }
+.service-detail-link a { color: var(--accent-strong); font-size: .86rem; font-weight: 650; }

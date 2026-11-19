@@ -1,0 +1,13 @@
+# Redirect legacy .html URLs to the canonical Netlify Pretty URLs.
+# Keep links and search signals consolidated on one URL per page.
+/index.html                         /                                 301
+/projects/index.html                /projects/                        301
+/services/index.html                /services/                        301
+/resume/index.html                  /resume/                          301
+/articles/index.html                /articles/                        301
+/contact/index.html                 /contact/                         301
+/projects/bgliin-ai.html             /projects/bgliin-ai               301
+/projects/personal-wealth-monitoring.html /projects/personal-wealth-monitoring 301
+/projects/ai-data-analyst-agent.html /projects/ai-data-analyst-agent   301
+/articles/multi-camera-monitoring.html /articles/multi-camera-monitoring 301
+/articles/auditable-portfolio-calculations.html /articles/auditable-portfolio-calculations 301

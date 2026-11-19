@@ -115,8 +115,15 @@ def html_files():
     return sorted(pages)
 
 def url_for(path: Path) -> str:
+    """Return the public canonical URL under Netlify Pretty URLs."""
     rel = path.relative_to(ROOT).as_posix()
-    return SITE + "/" if rel == "index.html" else f"{SITE}/{rel}"
+    if rel == "index.html":
+        return SITE + "/"
+    if rel.endswith("/index.html"):
+        return f"{SITE}/{rel[:-len('index.html')]}"
+    if rel.endswith(".html"):
+        return f"{SITE}/{rel[:-5]}"
+    return f"{SITE}/{rel}"
 
 def resolve_internal(href: str, page: Path):
     """Return (target_file, fragment) for an internal href, or None for external/ignored links."""
@@ -139,12 +146,41 @@ def resolve_internal(href: str, page: Path):
         target = (page.parent / path)
     if target.is_dir() or path.endswith("/") or path == "/":
         target = target / "index.html"
+    elif not target.exists() and not target.suffix:
+        # Netlify Pretty URLs expose .html files without their suffix.
+        html_candidate = target.with_suffix(".html")
+        index_candidate = target / "index.html"
+        if html_candidate.is_file():
+            target = html_candidate
+        elif index_candidate.is_file():
+            target = index_candidate
     return target, u.fragment
 
 def main() -> int:
     errors = []
     pages = {p: Page() for p in html_files()}
     ids_by_page = {}
+    # Keep the homepage a compact navigation hub and ensure the Netlify contact form has one canonical location.
+    homepage = ROOT / "index.html"
+    if homepage.is_file():
+        home_source = homepage.read_text(encoding="utf-8")
+        home_sections = re.findall(r'<section\b[^>]*\bid="([^"]+)"', home_source)
+        expected_home_sections = {"hero", "home-pathways", "featured-work", "home-writing", "home-contact"}
+        if set(home_sections) != expected_home_sections:
+            errors.append(f"index.html: expected compact homepage sections {sorted(expected_home_sections)}, found {sorted(set(home_sections))}")
+        if not re.search(r'<h1\b[^>]*>\s*Aviral Goyal\s*</h1>', home_source):
+            errors.append("index.html: primary heading should identify Aviral Goyal")
+        if re.search(r'<form\b', home_source, re.I):
+            errors.append("index.html: move the long enquiry form to /contact/ to keep the homepage concise")
+    contact_page = ROOT / "contact" / "index.html"
+    contact_forms = []
+    for page_path in pages:
+        page_source = page_path.read_text(encoding="utf-8")
+        if re.search(r'<form\b[^>]*\bname=["\']contact["\']', page_source, re.I):
+            contact_forms.append(page_path.relative_to(ROOT).as_posix())
+    if contact_forms != ["contact/index.html"]:
+        errors.append(f"expected one Netlify contact form in contact/index.html, found {contact_forms}")
+
     for p, parser in pages.items():
         source = p.read_text(encoding="utf-8")
         parser.feed(source)
@@ -155,6 +191,8 @@ def main() -> int:
             errors.append(f"{rel}: expected exactly one Google tag script for {GTM_CONTAINER}")
         if "window.dataLayer = window.dataLayer || [];" not in source or "function gtag()" not in source:
             errors.append(f"{rel}: missing Google tag dataLayer initialization")
+        if rel == "resume/index.html" and '"@type":"ProfilePage"' not in source:
+            errors.append(f"{rel}: missing ProfilePage structured data")
         ids_by_page[p] = set(parser.ids)
 
     indexable = []
@@ -241,6 +279,32 @@ def main() -> int:
         errors.append("favicon.svg not found")
     elif idx.is_file() and 'rel="icon" type="image/svg+xml" href="/favicon.svg"' not in idx.read_text(encoding="utf-8"):
         errors.append('index.html: missing SVG favicon link')
+
+    # Legacy .html URLs should permanently redirect to their clean canonical paths.
+    redirects_file = ROOT / "_redirects"
+    required_redirects = {
+        ("/index.html", "/", "301"),
+        ("/projects/index.html", "/projects/", "301"),
+        ("/services/index.html", "/services/", "301"),
+        ("/resume/index.html", "/resume/", "301"),
+        ("/articles/index.html", "/articles/", "301"),
+        ("/contact/index.html", "/contact/", "301"),
+        ("/projects/bgliin-ai.html", "/projects/bgliin-ai", "301"),
+        ("/projects/personal-wealth-monitoring.html", "/projects/personal-wealth-monitoring", "301"),
+        ("/projects/ai-data-analyst-agent.html", "/projects/ai-data-analyst-agent", "301"),
+        ("/articles/multi-camera-monitoring.html", "/articles/multi-camera-monitoring", "301"),
+        ("/articles/auditable-portfolio-calculations.html", "/articles/auditable-portfolio-calculations", "301"),
+    }
+    if not redirects_file.is_file():
+        errors.append("_redirects not found")
+    else:
+        actual_redirects = set()
+        for line in redirects_file.read_text(encoding="utf-8").splitlines():
+            parts = line.split()
+            if len(parts) >= 3 and parts[0] and not parts[0].startswith("#"):
+                actual_redirects.add((parts[0], parts[1], parts[2]))
+        for source, target, code in sorted(required_redirects - actual_redirects):
+            errors.append(f"_redirects: missing permanent redirect {source} -> {target} ({code})")
 
     # Sitemap URLs should be absolute HTTPS URLs on the configured site.
     if sm.is_file():
