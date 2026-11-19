@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="t d">
+<title id="t">Production Line Telemetry — synthetic multi-camera monitor</title>
+<desc id="d">Four schematic camera feeds with conveyor wireframes, object detection boxes, unit throughput chart and stream health.</desc>
+<defs>
+ <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#0f1b2f"/><stop offset="1" stop-color="#080f1e"/></linearGradient>
+ <linearGradient id="panel" x2="0" y2="1"><stop stop-color="#18283e"/><stop offset="1" stop-color="#111e31"/></linearGradient>
+ <style>
+  text{font-family:Inter,Arial,sans-serif;fill:#e5edf7}.muted{fill:#94a9c0}.tiny{font-size:17px}.small{font-size:20px}.medium{font-size:23px}.head{font-size:31px;font-weight:700}.panelhead{font-size:23px;font-weight:700}
+ </style>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<rect x="0" y="0" width="1600" height="88" fill="#0d192b"/><path d="M0 88H1600" stroke="#2a3f58" stroke-width="2"/>
+<rect x="30" y="23" width="44" height="42" rx="9" fill="#0e7490"/><path d="M40 53V42h7v11m5 0V32h7v21" stroke="#67e8f9" stroke-width="4" fill="none"/>
+<text x="94" y="56" class="head">Production Line Telemetry</text>
+<rect x="565" y="24" width="230" height="40" rx="20" fill="#14532d" stroke="#22c55e"/><circle cx="590" cy="44" r="7" fill="#4ade80"/><text x="690" y="51" text-anchor="middle" font-size="19" fill="#bbf7d0">4/4 Streams Active</text>
+<text x="1315" y="54" class="small muted">Live Operations</text>
+<!-- camera cards -->
+<g>
+ <rect x="32" y="122" width="490" height="300" rx="18" fill="url(#panel)" stroke="#314a66" stroke-width="2"/>
+ <rect x="546" y="122" width="490" height="300" rx="18" fill="url(#panel)" stroke="#314a66" stroke-width="2"/>
+ <rect x="32" y="446" width="490" height="300" rx="18" fill="url(#panel)" stroke="#314a66" stroke-width="2"/>
+ <rect x="546" y="446" width="490" height="300" rx="18" fill="url(#panel)" stroke="#314a66" stroke-width="2"/>
+</g>
+<g class="panelhead"><circle cx="66" cy="161" r="8" fill="#4ade80"/><text x="88" y="169">CAM-01 (Line A)</text><circle cx="580" cy="161" r="8" fill="#4ade80"/><text x="602" y="169">CAM-02 (Line A)</text><circle cx="66" cy="485" r="8" fill="#4ade80"/><text x="88" y="493">CAM-03 (Line B)</text><circle cx="580" cy="485" r="8" fill="#4ade80"/><text x="602" y="493">CAM-04 (Packaging)</text></g>
+<g>
+ <rect x="380" y="140" width="105" height="34" rx="17" fill="#164e63"/><text x="432" y="163" text-anchor="middle" class="tiny">28 FPS</text><rect x="380" y="181" width="105" height="34" rx="17" fill="#1e3a5f"/><text x="432" y="204" text-anchor="middle" class="tiny">Count: 1,420</text>
+ <rect x="894" y="140" width="105" height="34" rx="17" fill="#164e63"/><text x="946" y="163" text-anchor="middle" class="tiny">28 FPS</text><rect x="894" y="181" width="105" height="34" rx="17" fill="#1e3a5f"/><text x="946" y="204" text-anchor="middle" class="tiny">Count: 1,420</text>
+ <rect x="380" y="464" width="105" height="34" rx="17" fill="#164e63"/><text x="432" y="487" text-anchor="middle" class="tiny">28 FPS</text><rect x="380" y="505" width="105" height="34" rx="17" fill="#1e3a5f"/><text x="432" y="528" text-anchor="middle" class="tiny">Count: 1,420</text>
+ <rect x="894" y="464" width="105" height="34" rx="17" fill="#164e63"/><text x="946" y="487" text-anchor="middle" class="tiny">28 FPS</text><rect x="894" y="505" width="105" height="34" rx="17" fill="#1e3a5f"/><text x="946" y="528" text-anchor="middle" class="tiny">Count: 1,420</text>
+</g>
+<!-- conveyor schematic card 1 -->
+<g stroke-linecap="round">
+ <path d="M75 335H480M75 354H480M92 335V377M463 335V377" stroke="#7dd3fc" stroke-width="5" fill="none"/><path d="M95 354H460" stroke="#334e68" stroke-width="11" fill="none"/>
+ <g fill="#0b1728" stroke="#38bdf8" stroke-width="4"><circle cx="110" cy="354" r="10"/><circle cx="180" cy="354" r="10"/><circle cx="250" cy="354" r="10"/><circle cx="320" cy="354" r="10"/><circle cx="390" cy="354" r="10"/><circle cx="460" cy="354" r="10"/></g>
+ <g stroke="#22c55e" stroke-width="4" fill="none"><rect x="145" y="255" width="62" height="73"/><rect x="260" y="255" width="62" height="73"/><rect x="375" y="255" width="62" height="73"/></g>
+ <g fill="#9fb4cb" stroke="#b9cce0" stroke-width="2"><rect x="155" y="268" width="42" height="51" rx="5"/><rect x="270" y="268" width="42" height="51" rx="5"/><rect x="385" y="268" width="42" height="51" rx="5"/></g>
+</g>
+<!-- conveyor 2 -->
+<g stroke-linecap="round"><path d="M589 335H1000M589 354H1000" stroke="#7dd3fc" stroke-width="5"/><path d="M605 354H985" stroke="#334e68" stroke-width="11"/><g fill="#0b1728" stroke="#38bdf8" stroke-width="4"><circle cx="620" cy="354" r="10"/><circle cx="690" cy="354" r="10"/><circle cx="760" cy="354" r="10"/><circle cx="830" cy="354" r="10"/><circle cx="900" cy="354" r="10"/><circle cx="970" cy="354" r="10"/></g><g stroke="#22c55e" stroke-width="4" fill="none"><rect x="665" y="255" width="62" height="73"/><rect x="780" y="255" width="62" height="73"/><rect x="895" y="255" width="62" height="73"/></g><g fill="#0e7490" stroke="#67e8f9" stroke-width="2"><path d="M684 269h24v48h-24zM799 269h24v48h-24zM914 269h24v48h-24z"/></g></g>
+<!-- conveyor 3 -->
+<g stroke-linecap="round"><path d="M75 659H480M75 678H480" stroke="#7dd3fc" stroke-width="5"/><path d="M95 678H460" stroke="#334e68" stroke-width="11"/><g fill="#0b1728" stroke="#38bdf8" stroke-width="4"><circle cx="110" cy="678" r="10"/><circle cx="180" cy="678" r="10"/><circle cx="250" cy="678" r="10"/><circle cx="320" cy="678" r="10"/><circle cx="390" cy="678" r="10"/><circle cx="460" cy="678" r="10"/></g><g stroke="#22c55e" stroke-width="4" fill="none"><rect x="145" y="579" width="62" height="73"/><rect x="260" y="579" width="62" height="73"/><rect x="375" y="579" width="62" height="73"/></g><g fill="#64748b" stroke="#cbd5e1" stroke-width="3"><circle cx="176" cy="613" r="22"/><circle cx="291" cy="613" r="22"/><circle cx="406" cy="613" r="22"/></g></g>
+<!-- conveyor 4 -->
+<g stroke-linecap="round"><path d="M589 659H1000M589 678H1000" stroke="#7dd3fc" stroke-width="5"/><path d="M605 678H985" stroke="#334e68" stroke-width="11"/><g fill="#0b1728" stroke="#38bdf8" stroke-width="4"><circle cx="620" cy="678" r="10"/><circle cx="690" cy="678" r="10"/><circle cx="760" cy="678" r="10"/><circle cx="830" cy="678" r="10"/><circle cx="900" cy="678" r="10"/><circle cx="970" cy="678" r="10"/></g><g stroke="#22c55e" stroke-width="4" fill="none"><rect x="665" y="579" width="62" height="73"/><rect x="780" y="579" width="62" height="73"/><rect x="895" y="579" width="62" height="73"/></g><g fill="#334155" stroke="#cbd5e1" stroke-width="3"><path d="M676 594h40l-6 47h-28zM791 594h40l-6 47h-28zM906 594h40l-6 47h-28z"/></g></g>
+<!-- sidebar chart -->
+<rect x="1060" y="122" width="508" height="300" rx="18" fill="url(#panel)" stroke="#314a66" stroke-width="2"/>
+<text x="1092" y="169" class="panelhead">Hourly Unit Throughput</text>
+<g stroke="#30445c" stroke-width="2"><path d="M1115 350H1534M1115 290H1534M1115 230H1534"/></g>
+<g fill="#22d3ee"><rect x="1140" y="292" width="42" height="58" rx="5"/><rect x="1195" y="270" width="42" height="80" rx="5"/><rect x="1250" y="248" width="42" height="102" rx="5"/><rect x="1305" y="220" width="42" height="130" rx="5"/><rect x="1360" y="237" width="42" height="113" rx="5"/><rect x="1415" y="202" width="42" height="148" rx="5"/><rect x="1470" y="182" width="42" height="168" rx="5"/></g>
+<g class="tiny muted" text-anchor="middle"><text x="1160" y="383">08</text><text x="1215" y="383">09</text><text x="1270" y="383">10</text><text x="1325" y="383">11</text><text x="1380" y="383">12</text><text x="1435" y="383">13</text><text x="1490" y="383">14</text></g>
+<rect x="1060" y="446" width="508" height="300" rx="18" fill="url(#panel)" stroke="#314a66" stroke-width="2"/>
+<text x="1092" y="493" class="panelhead">System Health</text>
+<circle cx="1110" cy="547" r="11" fill="#22c55e"/><text x="1140" y="555" class="medium">Inference Queue: 14ms</text>
+<rect x="1088" y="590" width="450" height="62" rx="12" fill="#78350f" opacity=".55"/><path d="M1110 604l14 25h-28z" fill="#fbbf24"/><text x="1140" y="631" font-size="20" fill="#fde68a">CAM-03: Frame drop recovered</text>
+<circle cx="1110" cy="696" r="11" fill="#22c55e"/><text x="1140" y="704" class="medium">All streams stable · 4/4 active</text>
+</svg>
