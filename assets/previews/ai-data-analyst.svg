@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="t d">
 <title id="t">AI Data Analyst Agent — synthetic analytics workspace</title>
 <desc id="d">Light interface with dataset inspection, deterministic scatter analysis, summary statistics and an AI explanation panel.</desc>
 <defs>
@@ -27,7 +27,7 @@
 <!-- center -->
 <text x="504" y="170" class="panelhead">Deterministic Analysis</text><text x="504" y="210" class="small muted">Sales Amount vs. Marketing Spend · synthetic records</text>
 <rect x="510" y="235" width="566" height="430" rx="14" fill="#fbfdff" stroke="#e2e8f0" stroke-width="2"/>
-<g stroke="#e2e8f0" stroke-width="2"><path d="M580 285V600H1030M580 520H1030M580 440H1030M580 360H1030"/></g>
+<g stroke="#e2e8f0" stroke-width="2"><path d="M580 285V600H1030M580 520H1030M580 440H1030M580 360H1030" fill="none" stroke="#e2e8f0" stroke-width="2"/></g>
 <g class="tiny muted"><text x="545" y="605">0</text><text x="532" y="525">2,000</text><text x="532" y="445">4,000</text><text x="532" y="365">6,000</text><text x="532" y="289">8,000</text></g>
 <g fill="#6366f1" opacity=".8">
  <circle cx="620" cy="560" r="6"/><circle cx="650" cy="545" r="6"/><circle cx="670" cy="532" r="6"/><circle cx="690" cy="540" r="6"/><circle cx="710" cy="515" r="6"/><circle cx="732" cy="509" r="6"/><circle cx="755" cy="498" r="6"/><circle cx="775" cy="505" r="6"/><circle cx="795" cy="477" r="6"/><circle cx="815" cy="470" r="6"/><circle cx="836" cy="463" r="6"/><circle cx="855" cy="448" r="6"/><circle cx="875" cy="456" r="6"/><circle cx="894" cy="425" r="6"/><circle cx="916" cy="414" r="6"/><circle cx="936" cy="402" r="6"/><circle cx="955" cy="410" r="6"/><circle cx="976" cy="384" r="6"/><circle cx="998" cy="376" r="6"/><circle cx="1018" cy="350" r="6"/>
