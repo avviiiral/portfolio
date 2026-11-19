@@ -245,6 +245,36 @@ def main() -> int:
             elif not (ROOT / preview).is_file():
                 errors.append(f"projects/index.html: missing gallery image file {preview}")
 
+    # Layout regressions reported from the PR preview: image ratios, catalogue contrast and recruiter portrait sizing.
+    gallery_css_path = ROOT / "project-gallery.css"
+    if gallery_css_path.is_file():
+        gallery_css = gallery_css_path.read_text(encoding="utf-8")
+        for marker in (
+            ".project-gallery-media {",
+            "aspect-ratio: 16 / 9;",
+            "height: 100%;",
+            "object-fit: contain;",
+            "#project-catalogue .projects-subhead",
+            "#project-catalogue .project-links .project-btn",
+            "color: var(--ink) !important;",
+        ):
+            if marker not in gallery_css:
+                errors.append(f"project-gallery.css: missing responsive/theme rule {marker}")
+    else:
+        errors.append("project-gallery.css: gallery stylesheet not found")
+
+    project_source = (ROOT / "projects" / "index.html").read_text(encoding="utf-8") if (ROOT / "projects" / "index.html").is_file() else ""
+    if project_source.count('class="project-gallery-media"') != 3:
+        errors.append("projects/index.html: all three gallery screenshots must use the fixed-ratio media wrapper")
+
+    portrait_css_path = ROOT / "audience-pages.css"
+    if portrait_css_path.is_file():
+        portrait_css = portrait_css_path.read_text(encoding="utf-8")
+        if ".audience-profile img" not in portrait_css or "height: auto !important;" not in portrait_css:
+            errors.append("audience-pages.css: recruiter portrait must preserve its source aspect ratio")
+    else:
+        errors.append("audience-pages.css not found")
+
     for rel in ("thank-you.html", "404.html"):
         utility = ROOT / rel
         if not utility.is_file():
