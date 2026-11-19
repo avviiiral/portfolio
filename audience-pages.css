@@ -246,6 +246,7 @@
 .audience-profile img {
   display: block;
   width: 150px;
+  height: auto !important;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center 35%;
