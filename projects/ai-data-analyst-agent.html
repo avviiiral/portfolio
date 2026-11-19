@@ -352,7 +352,14 @@ pre {
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/case-study.css">
 </head>
-<body><main>
+<body>
+<script>
+try {
+  if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark");
+} catch (error) {}
+</script>
+<button class="mode-toggle" id="modeToggle" type="button" title="Toggle theme" aria-label="Switch to dark theme" aria-pressed="false">DARK</button>
+<main>
 <a class="back" href="/">← Back to portfolio</a>
 <div class="eyebrow">Selected work / AI-assisted analytics</div>
 <h1>AI Data Analyst Agent</h1>
@@ -377,4 +384,31 @@ pre {
 <ul><li>Prototyping an interactive data application with Python and Streamlit.</li><li>Thinking through how AI can support, rather than obscure, analytical work.</li><li>Designing an extensible workflow that can be tested with different datasets.</li></ul>
 <div class="panel"><p><strong>Next steps for a production version:</strong> add automated tests for calculations, explicit file-size and type limits, clear error messages, traceable model outputs, and a privacy review for any external AI provider.</p></div>
 <div class="actions"><a class="btn primary" href="/contact/">Discuss an AI or analytics project</a><a class="btn" href="https://github.com/avviiiral/AI-Data-Analyst-Agent_v1" target="_blank" rel="noopener noreferrer">GitHub repository</a><a class="btn" href="/projects/">More projects</a></div>
-</main></body></html>
+</main>
+<script>
+(() => {
+  const themeToggle = document.getElementById("modeToggle");
+  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+  function syncThemeToggle() {
+    const isDark = document.body.classList.contains("dark");
+    themeToggle.textContent = isDark ? "LIGHT" : "DARK";
+    themeToggle.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+    if (themeColorMeta) {
+      themeColorMeta.setAttribute("content", isDark ? "#121714" : "#f5f3ee");
+    }
+  }
+
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    try {
+      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+    } catch (error) {}
+    syncThemeToggle();
+  });
+
+  syncThemeToggle();
+})();
+</script>
+</body></html>
