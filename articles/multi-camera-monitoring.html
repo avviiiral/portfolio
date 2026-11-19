@@ -174,7 +174,14 @@ h3 {
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/case-study.css">
 </head>
-<body><main>
+<body>
+<script>
+try {
+  if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark");
+} catch (error) {}
+</script>
+<button class="mode-toggle" id="modeToggle" type="button" title="Toggle theme" aria-label="Switch to dark theme" aria-pressed="false">DARK</button>
+<main>
 <a class="back" href="/">← Portfolio</a>
 <div class="eyebrow">Computer vision / Engineering notes</div>
 <h1>Designing a multi-camera monitoring pipeline</h1>
@@ -191,4 +198,31 @@ h3 {
 <div class="callout"><strong>Reporting rule:</strong> publish FPS, detection accuracy or capacity numbers only after recording camera count, frame size, model version, hardware, network conditions and the measurement method.</div>
 <h2>Related project</h2><p>See the <a href="/projects/bgliin-ai">BGLIIN.AI case study</a> for the system components and implementation considerations.</p>
 <footer><a href="/projects/">Back to projects</a> · <a href="/contact/">Discuss a similar system</a></footer>
-</main></body></html>
+</main>
+<script>
+(() => {
+  const themeToggle = document.getElementById("modeToggle");
+  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+  function syncThemeToggle() {
+    const isDark = document.body.classList.contains("dark");
+    themeToggle.textContent = isDark ? "LIGHT" : "DARK";
+    themeToggle.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+    if (themeColorMeta) {
+      themeColorMeta.setAttribute("content", isDark ? "#121714" : "#f5f3ee");
+    }
+  }
+
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    try {
+      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+    } catch (error) {}
+    syncThemeToggle();
+  });
+
+  syncThemeToggle();
+})();
+</script>
+</body></html>
