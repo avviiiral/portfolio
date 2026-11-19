@@ -111,22 +111,24 @@
 }
 
 .project-gallery-media {
-  position: relative;
   display: block;
   width: 100%;
   min-width: 0;
+  height: auto !important;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #0b1422;
+  line-height: 0;
 }
 
 .project-gallery-image {
-  position: absolute;
-  inset: 0;
+  position: static !important;
+  inset: auto;
   display: block;
-  width: 100%;
-  height: 100%;
-  max-width: none;
+  width: 100% !important;
+  max-width: 100%;
+  height: auto !important;
+  aspect-ratio: 16 / 9;
   object-fit: contain;
   object-position: center;
   transition: transform .35s ease;
@@ -173,29 +175,25 @@
   text-transform: uppercase;
 }
 
-// Keep the existing catalogue readable in the light and dark theme.
+// Explicit high-contrast foreground/background pairs for project links and filters.
 #project-catalogue {
   .projects-subhead { color: var(--ink) !important; }
   .projects-intro { color: var(--muted); }
-
   .filter-btn {
     border-color: var(--line-strong);
     background: transparent;
     color: var(--muted);
-
     &[aria-pressed="true"] {
-      border-color: var(--ink);
-      background: var(--ink);
-      color: var(--bg) !important;
+      border-color: #17211a;
+      background: #17211a;
+      color: #fff !important;
     }
   }
-
   .project-tag {
     border-color: var(--line);
     background: transparent;
     color: var(--muted);
   }
-
   .project-links {
     display: grid;
     width: 100%;
@@ -204,51 +202,58 @@
     gap: 10px;
     margin-top: auto;
     padding-top: 18px;
-
-    .project-btn {
+    > a.project-btn {
       display: inline-flex;
       min-width: 0;
       min-height: 44px;
       align-items: center;
       justify-content: center;
       padding: 10px 12px !important;
-      border: 1px solid var(--line-strong) !important;
-      border-radius: 2px !important;
-      background: transparent !important;
-      color: var(--ink) !important;
-      font: 650 .78rem/1.25 var(--sans);
+      border: 1px solid #657267 !important;
+      border-radius: 3px !important;
+      background: #fff !important;
+      color: #17211a !important;
+      font: 700 .78rem/1.25 var(--sans);
       text-align: center;
       text-decoration: none;
       white-space: normal;
       overflow-wrap: anywhere;
     }
-
-    .case-study-link {
-      border-color: var(--ink) !important;
-      background: var(--ink) !important;
-      color: var(--bg) !important;
+    > a.project-btn.case-study-link {
+      border-color: #17211a !important;
+      background: #17211a !important;
+      color: #fff !important;
     }
-
-    .project-btn:hover {
-      border-color: var(--accent) !important;
-      background: var(--accent-wash) !important;
-      color: var(--ink) !important;
+    > a.project-btn:hover {
+      border-color: #344b3d !important;
+      background: #e5ebe4 !important;
+      color: #17211a !important;
       transform: translateY(-1px);
     }
   }
 }
-
-body.dark #project-catalogue .filter-btn[aria-pressed="true"] {
-  border-color: var(--ink);
-  background: var(--ink);
-  color: var(--bg) !important;
+body.dark #project-catalogue {
+  .filter-btn[aria-pressed="true"] {
+    border-color: #edf0e9;
+    background: #edf0e9;
+    color: #121714 !important;
+  }
+  .project-links > a.project-btn {
+    border-color: #657568 !important;
+    background: #202922 !important;
+    color: #edf0e9 !important;
+  }
+  .project-links > a.project-btn.case-study-link {
+    border-color: #edf0e9 !important;
+    background: #edf0e9 !important;
+    color: #121714 !important;
+  }
+  .project-links > a.project-btn:hover {
+    border-color: #c3d0b9 !important;
+    background: #263329 !important;
+    color: #edf0e9 !important;
+  }
 }
-body.dark #project-catalogue .project-links .case-study-link {
-  border-color: var(--ink) !important;
-  background: var(--ink) !important;
-  color: var(--bg) !important;
-}
-
 @media (max-width: 480px) {
   #project-catalogue .project-links {
     grid-template-columns: minmax(0, 1fr);
