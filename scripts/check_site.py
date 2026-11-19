@@ -181,6 +181,46 @@ def main() -> int:
     if contact_forms != ["contact/index.html"]:
         errors.append(f"expected one Netlify contact form in contact/index.html, found {contact_forms}")
 
+    # Keep theme behavior consistent across every project and engineering-note detail page.
+    detail_pages = [
+        "projects/bgliin-ai.html",
+        "projects/personal-wealth-monitoring.html",
+        "projects/ai-data-analyst-agent.html",
+        "articles/multi-camera-monitoring.html",
+        "articles/auditable-portfolio-calculations.html",
+    ]
+    for rel in detail_pages:
+        detail_path = ROOT / rel
+        if not detail_path.is_file():
+            errors.append(f"{rel}: missing detail page")
+            continue
+        detail_source = detail_path.read_text(encoding="utf-8")
+        for marker in (
+            'localStorage.getItem("theme") === "dark"',
+            'id="modeToggle"',
+            'body.classList.toggle("dark")',
+            'name="theme-color" content="#f5f3ee"',
+        ):
+            if marker not in detail_source:
+                errors.append(f"{rel}: missing shared theme behavior marker {marker}")
+
+    case_css_path = ROOT / "case-study.css"
+    if not case_css_path.is_file():
+        errors.append("case-study.css not found")
+    else:
+        case_css = case_css_path.read_text(encoding="utf-8")
+        for marker in ("body.dark", "--case-bg:#121714", ".mode-toggle"):
+            if marker not in case_css:
+                errors.append(f"case-study.css: missing shared theme rule {marker}")
+
+    # SVG architecture diagrams must fit the responsive card frame instead of being cropped.
+    home_css_path = ROOT / "home-index.css"
+    projects_css_path = ROOT / "editorial.css"
+    if not home_css_path.is_file() or "object-fit: contain;" not in home_css_path.read_text(encoding="utf-8") or "position: absolute;" not in home_css_path.read_text(encoding="utf-8"):
+        errors.append("home-index.css: featured project diagrams must use a positioned contain-fit image")
+    if not projects_css_path.is_file() or "object-fit:contain;" not in projects_css_path.read_text(encoding="utf-8") or "position:absolute;" not in projects_css_path.read_text(encoding="utf-8"):
+        errors.append("editorial.css: catalogue project diagrams must use a positioned contain-fit image")
+
     for p, parser in pages.items():
         source = p.read_text(encoding="utf-8")
         parser.feed(source)
