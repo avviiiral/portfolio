@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="t d">
+<title id="t">Portfolio and ledger monitoring dashboard — synthetic sample</title>
+<desc id="d">Dark investment dashboard with sample portfolio totals, asset allocation, twelve-month growth and four verified ledger entries.</desc>
+<defs>
+  <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#111d32"/><stop offset="1" stop-color="#0a1222"/></linearGradient>
+  <linearGradient id="card" x2="0" y2="1"><stop stop-color="#1e2d44"/><stop offset="1" stop-color="#162338"/></linearGradient>
+  <linearGradient id="green" x2="0" y2="1"><stop stop-color="#34d399"/><stop offset="1" stop-color="#059669"/></linearGradient>
+  <style>
+    text{font-family:Inter,Arial,sans-serif;fill:#e5edf7}
+    .muted{fill:#93a7bf}.small{font-size:20px}.tiny{font-size:17px}.label{font-size:21px;fill:#b7c6d8}.value{font-size:39px;font-weight:700}.heading{font-size:29px;font-weight:700}.kpi{font-size:22px;fill:#9fb1c7}.line{stroke:#30435b;stroke-width:2}
+  </style>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<rect x="0" y="0" width="1600" height="86" fill="#101b2d"/>
+<path d="M0 86H1600" class="line"/>
+<rect x="30" y="24" width="42" height="37" rx="8" fill="#0f766e"/><path d="M40 52V41h7v11m5 0V32h7v20" stroke="#7ce7d3" stroke-width="4" fill="none"/>
+<text x="91" y="55" font-size="31" font-weight="700">Portfolio &amp; Ledger Monitor</text>
+<rect x="560" y="24" width="178" height="38" rx="19" fill="#153b63" stroke="#2f73ad"/><text x="649" y="50" text-anchor="middle" font-size="19" fill="#c5e4ff">Sample Dataset</text>
+<text x="1215" y="53" class="small muted">Dashboard</text><text x="1350" y="53" class="small muted">Holdings</text><text x="1450" y="53" class="small muted">Reports</text>
+<rect x="0" y="87" width="220" height="813" fill="#0d192a"/><path d="M220 87V900" class="line"/>
+<g class="small"><text x="35" y="145" fill="#9de3d8">◈  Overview</text><text x="35" y="205" class="muted">▦  Portfolio</text><text x="35" y="265" class="muted">▤  Transactions</text><text x="35" y="325" class="muted">◎  Reconciliation</text><text x="35" y="385" class="muted">▥  Analytics</text><text x="35" y="445" class="muted">⚙  Settings</text></g>
+<!-- KPI cards -->
+<g>
+ <rect x="250" y="120" width="410" height="145" rx="17" fill="url(#card)" stroke="#30465f"/>
+ <rect x="680" y="120" width="410" height="145" rx="17" fill="url(#card)" stroke="#30465f"/>
+ <rect x="1110" y="120" width="450" height="145" rx="17" fill="url(#card)" stroke="#30465f"/>
+ <text x="280" y="166" class="kpi">Total Invested</text><text x="280" y="222" class="value">₹12,50,000</text>
+ <text x="710" y="166" class="kpi">Current Value</text><text x="710" y="222" class="value">₹14,18,400</text>
+ <text x="1140" y="166" class="kpi">Reconciliation</text><text x="1140" y="222" font-size="36" font-weight="700" fill="#4ade80">100% Matched</text>
+</g>
+<!-- Allocation -->
+<rect x="250" y="290" width="600" height="320" rx="17" fill="url(#card)" stroke="#30465f"/>
+<text x="282" y="336" class="heading">Asset Allocation</text>
+<circle cx="465" cy="465" r="105" fill="none" stroke="#33465d" stroke-width="38"/>
+<circle cx="465" cy="465" r="105" fill="none" stroke="#3b82f6" stroke-width="38" stroke-dasharray="396 264" transform="rotate(-90 465 465)"/>
+<circle cx="465" cy="465" r="105" fill="none" stroke="#34d399" stroke-width="38" stroke-dasharray="198 462" stroke-dashoffset="-396" transform="rotate(-90 465 465)"/>
+<circle cx="465" cy="465" r="105" fill="none" stroke="#a78bfa" stroke-width="38" stroke-dasharray="66 594" stroke-dashoffset="-594" transform="rotate(-90 465 465)"/>
+<text x="465" y="458" text-anchor="middle" font-size="25" font-weight="700">₹14,18,400</text><text x="465" y="490" text-anchor="middle" class="tiny muted">Portfolio Value</text>
+<circle cx="650" cy="410" r="10" fill="#3b82f6"/><text x="675" y="418" class="small">Equity</text><text x="805" y="418" class="small" text-anchor="end">60%</text>
+<circle cx="650" cy="462" r="10" fill="#34d399"/><text x="675" y="470" class="small">Mutual Funds</text><text x="805" y="470" class="small" text-anchor="end">30%</text>
+<circle cx="650" cy="514" r="10" fill="#a78bfa"/><text x="675" y="522" class="small">Debt</text><text x="805" y="522" class="small" text-anchor="end">10%</text>
+<!-- Growth chart -->
+<rect x="875" y="290" width="685" height="320" rx="17" fill="url(#card)" stroke="#30465f"/>
+<text x="907" y="336" class="heading">Portfolio Growth (12 Months)</text>
+<g class="tiny muted"><text x="904" y="405">₹10L</text><text x="904" y="462">₹12L</text><text x="904" y="519">₹14L</text></g>
+<g class="line"><path d="M960 390H1524M960 447H1524M960 504H1524"/></g>
+<path d="M960 514 L1010 500 L1060 493 L1110 474 L1160 479 L1210 456 L1260 448 L1310 428 L1360 420 L1410 406 L1460 390 L1520 372" fill="none" stroke="#34d399" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M960 514 L1010 500 L1060 493 L1110 474 L1160 479 L1210 456 L1260 448 L1310 428 L1360 420 L1410 406 L1460 390 L1520 372 L1520 552 L960 552Z" fill="#10b981" opacity=".12"/>
+<g fill="#6ee7b7"><circle cx="960" cy="514" r="5"/><circle cx="1010" cy="500" r="5"/><circle cx="1060" cy="493" r="5"/><circle cx="1110" cy="474" r="5"/><circle cx="1160" cy="479" r="5"/><circle cx="1210" cy="456" r="5"/><circle cx="1260" cy="448" r="5"/><circle cx="1310" cy="428" r="5"/><circle cx="1360" cy="420" r="5"/><circle cx="1410" cy="406" r="5"/><circle cx="1460" cy="390" r="5"/><circle cx="1520" cy="372" r="5"/></g>
+<g class="tiny muted" text-anchor="middle"><text x="960" y="583">Jan</text><text x="1010" y="583">Feb</text><text x="1060" y="583">Mar</text><text x="1110" y="583">Apr</text><text x="1160" y="583">May</text><text x="1210" y="583">Jun</text><text x="1260" y="583">Jul</text><text x="1310" y="583">Aug</text><text x="1360" y="583">Sep</text><text x="1410" y="583">Oct</text><text x="1460" y="583">Nov</text><text x="1520" y="583">Dec</text></g>
+<!-- Ledger -->
+<rect x="250" y="635" width="1310" height="230" rx="17" fill="url(#card)" stroke="#30465f"/>
+<text x="282" y="682" class="heading">Recent Ledger Entries</text>
+<rect x="278" y="700" width="1254" height="45" rx="7" fill="#25374e"/>
+<g class="small" font-weight="700"><text x="305" y="730">Date</text><text x="510" y="730">Asset</text><text x="840" y="730">Type</text><text x="1050" y="730">Amount</text><text x="1370" y="730">Status</text></g>
+<g class="small">
+ <path d="M280 790H1530M280 835H1530" class="line"/>
+ <text x="305" y="780">05 Jan 2026</text><text x="510" y="780">SAMPLE-EQ-A</text><rect x="825" y="754" width="75" height="34" rx="17" fill="#1d4e89"/><text x="862" y="778" text-anchor="middle">BUY</text><text x="1050" y="780">₹2,00,000</text><rect x="1350" y="754" width="145" height="34" rx="17" fill="#14532d"/><text x="1422" y="778" text-anchor="middle" fill="#bbf7d0">✓ Verified</text>
+ <text x="305" y="824">01 Dec 2026</text><text x="510" y="824">SAMPLE-MF-B</text><rect x="825" y="798" width="75" height="34" rx="17" fill="#164e63"/><text x="862" y="822" text-anchor="middle">SIP</text><text x="1050" y="824">₹25,000</text><rect x="1350" y="798" width="145" height="34" rx="17" fill="#14532d"/><text x="1422" y="822" text-anchor="middle" fill="#bbf7d0">✓ Verified</text>
+ <text x="305" y="858">15 Nov 2026</text><text x="510" y="858">SAMPLE-ETF-C</text><text x="862" y="858" text-anchor="middle">BUY</text><text x="1050" y="858">₹50,000</text><text x="1422" y="858" text-anchor="middle" fill="#86efac">✓ Verified</text>
+</g>
+</svg>
