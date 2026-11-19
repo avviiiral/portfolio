@@ -252,11 +252,14 @@ def main() -> int:
         for marker in (
             ".project-gallery-media {",
             "aspect-ratio: 16 / 9;",
-            "height: 100%;",
+            "height: auto !important;",
+            "width: 100% !important;",
             "object-fit: contain;",
             "#project-catalogue .projects-subhead",
-            "#project-catalogue .project-links .project-btn",
-            "color: var(--ink) !important;",
+            "#project-catalogue .project-links > a.project-btn",
+            "color: #17211a !important;",
+            "background: #ffffff !important;",
+            "body.dark #project-catalogue .project-links > a.project-btn",
         ):
             if marker not in gallery_css:
                 errors.append(f"project-gallery.css: missing responsive/theme rule {marker}")
@@ -264,14 +267,27 @@ def main() -> int:
         errors.append("project-gallery.css: gallery stylesheet not found")
 
     project_source = (ROOT / "projects" / "index.html").read_text(encoding="utf-8") if (ROOT / "projects" / "index.html").is_file() else ""
+    if 'href="/project-gallery.css?v=20261119-3"' not in project_source:
+        errors.append("projects/index.html: gallery stylesheet cache-busting version is missing")
     if project_source.count('class="project-gallery-media"') != 3:
         errors.append("projects/index.html: all three gallery screenshots must use the fixed-ratio media wrapper")
+
+    resume_source = (ROOT / "resume" / "index.html").read_text(encoding="utf-8") if (ROOT / "resume" / "index.html").is_file() else ""
+    if 'href="/audience-pages.css?v=20261119-3"' not in resume_source:
+        errors.append("resume/index.html: portrait stylesheet cache-busting version is missing")
 
     portrait_css_path = ROOT / "audience-pages.css"
     if portrait_css_path.is_file():
         portrait_css = portrait_css_path.read_text(encoding="utf-8")
-        if ".audience-profile img" not in portrait_css or "height: auto !important;" not in portrait_css:
-            errors.append("audience-pages.css: recruiter portrait must preserve its source aspect ratio")
+        for marker in (
+            ".audience-profile img",
+            "width: 150px !important;",
+            "height: 187.5px !important;",
+            "width: 88px !important;",
+            "height: 110px !important;",
+        ):
+            if marker not in portrait_css:
+                errors.append(f"audience-pages.css: recruiter portrait ratio rule missing {marker}")
     else:
         errors.append("audience-pages.css not found")
 
