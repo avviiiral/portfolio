@@ -39,12 +39,15 @@
 
 .project-gallery-grid {
   display: grid;
+  width: 100%;
+  min-width: 0;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
 
 .project-gallery-card {
   display: flex;
+  width: 100%;
   min-width: 0;
   margin: 0;
   flex-direction: column;
@@ -55,6 +58,7 @@
 .project-gallery-open {
   display: block;
   width: 100%;
+  min-width: 0;
   padding: 0;
   overflow: hidden;
   border: 0;
@@ -106,11 +110,24 @@
   white-space: nowrap;
 }
 
-.project-gallery-image {
+.project-gallery-media {
+  position: relative;
   display: block;
   width: 100%;
+  min-width: 0;
   aspect-ratio: 16 / 9;
-  object-fit: cover;
+  overflow: hidden;
+  background: #0b1422;
+}
+
+.project-gallery-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
   object-position: center;
   transition: transform .35s ease;
 }
