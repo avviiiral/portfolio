@@ -151,6 +151,81 @@
   font-size: .84rem;
   line-height: 1.75;
 }
+/* Restore readable catalogue controls in both themes; legacy rules assume body.light. */
+#project-catalogue .projects-subhead {
+  color: var(--ink) !important;
+}
+#project-catalogue .projects-intro {
+  color: var(--muted);
+}
+#project-catalogue .filter-btn {
+  border-color: var(--line-strong);
+  background: transparent;
+  color: var(--muted);
+}
+#project-catalogue .filter-btn[aria-pressed="true"] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--bg) !important;
+}
+body.dark #project-catalogue .filter-btn[aria-pressed="true"] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--bg) !important;
+}
+#project-catalogue .project-tag {
+  border-color: var(--line);
+  background: transparent;
+  color: var(--muted);
+}
+#project-catalogue .project-links {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 18px;
+}
+#project-catalogue .project-links .project-btn {
+  display: inline-flex;
+  min-width: 0;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px !important;
+  border: 1px solid var(--line-strong) !important;
+  border-radius: 2px !important;
+  background: transparent !important;
+  color: var(--ink) !important;
+  font: 650 .78rem/1.25 var(--sans);
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+#project-catalogue .project-links .case-study-link {
+  border-color: var(--ink) !important;
+  background: var(--ink) !important;
+  color: var(--bg) !important;
+}
+#project-catalogue .project-links .project-btn:hover {
+  border-color: var(--accent) !important;
+  background: var(--accent-wash) !important;
+  color: var(--ink) !important;
+  transform: translateY(-1px);
+}
+body.dark #project-catalogue .project-links .case-study-link {
+  border-color: var(--ink) !important;
+  background: var(--ink) !important;
+  color: var(--bg) !important;
+}
+@media (max-width: 480px) {
+  #project-catalogue .project-links {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .project-gallery-note {
   display: flex;
   align-items: flex-start;
