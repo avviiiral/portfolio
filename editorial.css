@@ -39,7 +39,7 @@ nav {
   color:var(--ink); -webkit-text-fill-color:var(--ink); background:none;
   font:700 1.1rem/1 var(--sans); letter-spacing:-.08em;
 }
-.nav-logo::after { content:" /"; color:var(--accent); }
+.nav-logo::after { content:""; color:var(--accent); }
 .nav-links { gap:clamp(1rem,2.1vw,2rem); }
 .nav-links a {
   color:var(--muted); font-size:.82rem; font-weight:600; letter-spacing:.01em;
