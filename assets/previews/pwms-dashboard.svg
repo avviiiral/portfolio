@@ -49,14 +49,18 @@
 <g fill="#6ee7b7"><circle cx="960" cy="514" r="5"/><circle cx="1010" cy="500" r="5"/><circle cx="1060" cy="493" r="5"/><circle cx="1110" cy="474" r="5"/><circle cx="1160" cy="479" r="5"/><circle cx="1210" cy="456" r="5"/><circle cx="1260" cy="448" r="5"/><circle cx="1310" cy="428" r="5"/><circle cx="1360" cy="420" r="5"/><circle cx="1410" cy="406" r="5"/><circle cx="1460" cy="390" r="5"/><circle cx="1520" cy="372" r="5"/></g>
 <g class="tiny muted" text-anchor="middle"><text x="960" y="583">Jan</text><text x="1010" y="583">Feb</text><text x="1060" y="583">Mar</text><text x="1110" y="583">Apr</text><text x="1160" y="583">May</text><text x="1210" y="583">Jun</text><text x="1260" y="583">Jul</text><text x="1310" y="583">Aug</text><text x="1360" y="583">Sep</text><text x="1410" y="583">Oct</text><text x="1460" y="583">Nov</text><text x="1520" y="583">Dec</text></g>
 <!-- Ledger -->
-<rect x="250" y="635" width="1310" height="230" rx="17" fill="url(#card)" stroke="#30465f"/>
+<rect x="250" y="635" width="1310" height="250" rx="17" fill="url(#card)" stroke="#30465f"/>
 <text x="282" y="682" class="heading">Recent Ledger Entries</text>
 <rect x="278" y="700" width="1254" height="45" rx="7" fill="#25374e"/>
 <g class="small" font-weight="700"><text x="305" y="730">Date</text><text x="510" y="730">Asset</text><text x="840" y="730">Type</text><text x="1050" y="730">Amount</text><text x="1370" y="730">Status</text></g>
 <g class="small">
  <path d="M280 790H1530M280 835H1530" class="line"/>
- <text x="305" y="780">05 Jan 2026</text><text x="510" y="780">SAMPLE-EQ-A</text><rect x="825" y="754" width="75" height="34" rx="17" fill="#1d4e89"/><text x="862" y="778" text-anchor="middle">BUY</text><text x="1050" y="780">₹2,00,000</text><rect x="1350" y="754" width="145" height="34" rx="17" fill="#14532d"/><text x="1422" y="778" text-anchor="middle" fill="#bbf7d0">✓ Verified</text>
- <text x="305" y="824">01 Dec 2026</text><text x="510" y="824">SAMPLE-MF-B</text><rect x="825" y="798" width="75" height="34" rx="17" fill="#164e63"/><text x="862" y="822" text-anchor="middle">SIP</text><text x="1050" y="824">₹25,000</text><rect x="1350" y="798" width="145" height="34" rx="17" fill="#14532d"/><text x="1422" y="822" text-anchor="middle" fill="#bbf7d0">✓ Verified</text>
- <text x="305" y="858">15 Nov 2026</text><text x="510" y="858">SAMPLE-ETF-C</text><text x="862" y="858" text-anchor="middle">BUY</text><text x="1050" y="858">₹50,000</text><text x="1422" y="858" text-anchor="middle" fill="#86efac">✓ Verified</text>
+ <text x="305" y="770">05 Jan 2026</text><text x="510" y="770">SAMPLE-EQ-A</text><rect x="825" y="744" width="75" height="30" rx="15" fill="#1d4e89"/><text x="862" y="765" text-anchor="middle" class="tiny">BUY</text><text x="1050" y="770">₹2,00,000</text><rect x="1350" y="744" width="145" height="30" rx="15" fill="#14532d"/><text x="1422" y="765" text-anchor="middle" class="tiny" fill="#bbf7d0">✓ Verified</text>
+ <path d="M280 783H1530" class="line"/>
+ <text x="305" y="800">01 Dec 2026</text><text x="510" y="800">SAMPLE-MF-B</text><rect x="825" y="774" width="75" height="30" rx="15" fill="#164e63"/><text x="862" y="795" text-anchor="middle" class="tiny">SIP</text><text x="1050" y="800">₹25,000</text><rect x="1350" y="774" width="145" height="30" rx="15" fill="#14532d"/><text x="1422" y="795" text-anchor="middle" class="tiny" fill="#bbf7d0">✓ Verified</text>
+ <path d="M280 813H1530" class="line"/>
+ <text x="305" y="830">15 Nov 2026</text><text x="510" y="830">SAMPLE-ETF-C</text><rect x="825" y="804" width="75" height="30" rx="15" fill="#1d4e89"/><text x="862" y="825" text-anchor="middle" class="tiny">BUY</text><text x="1050" y="830">₹50,000</text><rect x="1350" y="804" width="145" height="30" rx="15" fill="#14532d"/><text x="1422" y="825" text-anchor="middle" class="tiny" fill="#bbf7d0">✓ Verified</text>
+ <path d="M280 843H1530" class="line"/>
+ <text x="305" y="860">10 Nov 2026</text><text x="510" y="860">SAMPLE-MF-B</text><rect x="825" y="834" width="75" height="30" rx="15" fill="#164e63"/><text x="862" y="855" text-anchor="middle" class="tiny">SIP</text><text x="1050" y="860">₹25,000</text><rect x="1350" y="834" width="145" height="30" rx="15" fill="#14532d"/><text x="1422" y="855" text-anchor="middle" class="tiny" fill="#bbf7d0">✓ Verified</text>
 </g>
 </svg>
