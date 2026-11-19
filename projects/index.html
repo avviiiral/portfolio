@@ -36,7 +36,7 @@
 <link rel="stylesheet" href="/portfolio-refresh.css">
 <link rel="stylesheet" href="/editorial.css">
 <link rel="stylesheet" href="/audience-pages.css">
-<link rel="stylesheet" href="/project-gallery.css?v=20261119-3">
+<link rel="stylesheet" href="/project-gallery.css?v=20261119-4">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -397,6 +397,11 @@
     </div>
     <img class="project-preview-dialog-image" id="project-preview-dialog-image" alt="">
     <p class="project-preview-dialog-caption" id="project-preview-dialog-caption"></p>
+    <div class="project-preview-dialog-nav">
+      <button class="project-preview-nav" id="project-preview-prev" type="button" aria-label="Previous preview">‹ Prev</button>
+      <span class="project-preview-count" id="project-preview-count" aria-live="polite"></span>
+      <button class="project-preview-nav" id="project-preview-next" type="button" aria-label="Next preview">Next ›</button>
+    </div>
   </div>
 </dialog>
 <footer class="audience-footer">
@@ -429,18 +434,42 @@ const previewImage = document.getElementById("project-preview-dialog-image");
 const previewTitle = document.getElementById("project-preview-dialog-title");
 const previewCaption = document.getElementById("project-preview-dialog-caption");
 const previewClose = document.getElementById("project-preview-close");
+const previewPrev = document.getElementById("project-preview-prev");
+const previewNext = document.getElementById("project-preview-next");
+const previewCount = document.getElementById("project-preview-count");
+const galleryTriggers = Array.from(document.querySelectorAll(".project-gallery-open"));
+let previewIndex = 0;
 
-document.querySelectorAll(".project-gallery-open").forEach(trigger => {
+function renderPreview(index) {
+  const trigger = galleryTriggers[index];
+  if (!trigger) return;
+  previewIndex = index;
+  previewImage.src = trigger.dataset.image;
+  previewImage.alt = trigger.dataset.alt || "";
+  previewTitle.textContent = trigger.getAttribute("aria-label").replace("Open enlarged preview: ", "");
+  previewCaption.textContent = trigger.dataset.caption || "";
+  if (previewCount) previewCount.textContent = (index + 1) + " / " + galleryTriggers.length;
+}
+function stepPreview(delta) {
+  if (!galleryTriggers.length) return;
+  renderPreview((previewIndex + delta + galleryTriggers.length) % galleryTriggers.length);
+}
+
+galleryTriggers.forEach((trigger, index) => {
   trigger.addEventListener("click", () => {
-    previewImage.src = trigger.dataset.image;
-    previewImage.alt = trigger.dataset.alt || "";
-    previewTitle.textContent = trigger.getAttribute("aria-label").replace("Open enlarged preview: ", "");
-    previewCaption.textContent = trigger.dataset.caption || "";
+    renderPreview(index);
     if (typeof previewDialog.showModal === "function") {
       previewDialog.showModal();
       previewClose.focus();
     }
   });
+});
+
+if (previewPrev) previewPrev.addEventListener("click", () => stepPreview(-1));
+if (previewNext) previewNext.addEventListener("click", () => stepPreview(1));
+previewDialog.addEventListener("keydown", event => {
+  if (event.key === "ArrowLeft") { event.preventDefault(); stepPreview(-1); }
+  else if (event.key === "ArrowRight") { event.preventDefault(); stepPreview(1); }
 });
 
 previewClose.addEventListener("click", () => previewDialog.close());

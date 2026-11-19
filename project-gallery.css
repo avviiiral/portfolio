@@ -301,6 +301,33 @@ body.dark #project-catalogue .filter-btn[aria-pressed="true"] {
   font-size: .82rem;
   line-height: 1.7;
 }
+.project-preview-dialog-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+}
+.project-preview-nav {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 8px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--ink);
+  font: 650 .8rem/1 var(--sans);
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+}
+.project-preview-nav:hover { border-color: var(--accent); background: var(--accent-wash); }
+.project-preview-nav:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.project-preview-count {
+  color: var(--muted);
+  font: 600 .74rem/1 var(--sans);
+  letter-spacing: .06em;
+}
 body.dark .project-gallery-section { background: var(--bg); }
 body.dark .project-gallery-card { background: var(--surface); }
 body.dark .project-browser-bar,

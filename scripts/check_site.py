@@ -267,7 +267,7 @@ def main() -> int:
         errors.append("project-gallery.css: gallery stylesheet not found")
 
     project_source = (ROOT / "projects" / "index.html").read_text(encoding="utf-8") if (ROOT / "projects" / "index.html").is_file() else ""
-    if 'href="/project-gallery.css?v=20261119-3"' not in project_source:
+    if 'href="/project-gallery.css?v=20261119-4"' not in project_source:
         errors.append("projects/index.html: gallery stylesheet cache-busting version is missing")
     if project_source.count('class="project-gallery-media"') != 3:
         errors.append("projects/index.html: all three gallery screenshots must use the fixed-ratio media wrapper")

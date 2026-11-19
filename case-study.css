@@ -269,3 +269,41 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
     color: var(--case-accent); pointer-events: none;
   }
 }
+
+/* Reading-progress bar: scroll-linked, no JS; hidden where scroll timelines are unsupported. */
+.reading-progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 1200;
+  background: transparent; pointer-events: none;
+}
+.reading-progress span {
+  display: block; height: 100%; width: 100%;
+  background: var(--case-accent);
+  transform: scaleX(0); transform-origin: left;
+}
+@supports (animation-timeline: scroll()) {
+  .reading-progress span {
+    animation: reading-progress-grow linear both;
+    animation-timeline: scroll(root);
+  }
+  @keyframes reading-progress-grow { to { transform: scaleX(1); } }
+}
+
+/* Print: clean, ink-friendly document — light colours, no floating controls or scroll clipping. */
+@media print {
+  :root, body.dark {
+    --case-bg: #fff; --case-surface: #fff; --case-ink: #000; --case-muted: #333;
+    --case-line: #bbb; --case-accent: #333; --case-link-hover: #000;
+    --case-code-bg: #f3f3f3; --case-code-ink: #000; --case-hover-bg: #eee;
+  }
+  body { background: #fff !important; color: #000 !important; }
+  .mode-toggle, .to-top, .skip-link, .reading-progress, .back { display: none !important; }
+  main { max-width: none !important; padding: 0 !important; }
+  a { color: #000 !important; text-decoration: underline; }
+  .btn.primary { background: #fff !important; color: #000 !important; border-color: #000 !important; }
+  .panel, .callout, .metric, .stack, .architecture, .result, .takeaway,
+  .architecture-case > div {
+    background: #fff !important; border-color: #bbb !important; break-inside: avoid;
+  }
+  .architecture-case { overflow: visible !important; flex-wrap: wrap; }
+  h1, h2, h3 { break-after: avoid; }
+}
