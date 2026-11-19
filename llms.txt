@@ -5,9 +5,11 @@
 ## Primary links
 
 - [Portfolio homepage](https://aviral-goyal.netlify.app/)
+- [Projects catalogue and case studies](https://aviral-goyal.netlify.app/projects/)
 - [Freelance services and engagement approach](https://aviral-goyal.netlify.app/services/)
 - [Professional profile and downloadable resume](https://aviral-goyal.netlify.app/resume/)
-- [Contact and project enquiry form](https://aviral-goyal.netlify.app/#contact)
+- [Engineering articles](https://aviral-goyal.netlify.app/articles/)
+- [Contact and project enquiry form](https://aviral-goyal.netlify.app/contact/)
 - [LinkedIn profile](https://www.linkedin.com/in/avviiiral)
 - [GitHub profile](https://github.com/avviiiral)
 - [Download resume PDF](https://aviral-goyal.netlify.app/Aviral_Goyal_Resume.pdf)
@@ -39,7 +41,7 @@ Python, Django, Django REST Framework, Angular, TypeScript, JavaScript, SQL, Pos
 
 ## Location and collaboration
 
-Based in India. Available for remote collaboration. For project enquiries, use the [portfolio contact form](https://aviral-goyal.netlify.app/#contact), the [freelance services page](https://aviral-goyal.netlify.app/services/), or the [published LinkedIn profile](https://www.linkedin.com/in/avviiiral).
+Based in India. Available for remote collaboration. For project enquiries, use the [contact page](https://aviral-goyal.netlify.app/contact/), the [freelance services page](https://aviral-goyal.netlify.app/services/), or the [published LinkedIn profile](https://www.linkedin.com/in/avviiiral).
 
 ## Source of truth
 

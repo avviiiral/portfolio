@@ -302,3 +302,47 @@
     contain-intrinsic-size: auto 760px;
   }
 }
+
+
+/* Keep secondary project experiments available without lengthening the initial mobile scan. */
+.project-more-details {
+  margin-top: 28px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.project-more-details summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 17px 20px;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: .9rem;
+  font-weight: 700;
+  list-style: none;
+}
+.project-more-details summary::-webkit-details-marker { display: none; }
+.project-more-details summary::after {
+  content: "+";
+  color: var(--accent);
+  font-size: 1.25rem;
+}
+.project-more-details[open] summary::after { content: "−"; }
+.project-more-details summary span {
+  color: var(--muted);
+  font-size: .74rem;
+  font-weight: 500;
+}
+.project-more-details > .projects-subhead,
+.project-more-details > .projects-subnote,
+.project-more-details > .projects-grid { margin-inline: 20px; }
+.project-more-details > .projects-grid { margin-bottom: 22px; }
+.project-more-details .projects-grid { padding-bottom: 4px; }
+@media(max-width:560px) {
+  .project-more-details summary { padding: 15px 16px; align-items: flex-start; }
+  .project-more-details summary span { text-align: right; }
+  .project-more-details > .projects-subhead,
+  .project-more-details > .projects-subnote,
+  .project-more-details > .projects-grid { margin-inline: 16px; }
+}

@@ -19,6 +19,7 @@ There is no build step: plain HTML, CSS and a little vanilla JavaScript, deploye
 | `thank-you.html` | Redirect target after a Netlify Forms submission (`noindex`) |
 | `404.html` | Custom "page not found" page (served automatically by Netlify) |
 | `_headers` | Netlify security headers, including the Content-Security-Policy |
+| `_redirects` | Permanent redirects from legacy `.html` URLs to clean canonical URLs |
 | `robots.txt`, `sitemap.xml`, `llms.txt` | Search crawler discovery, clean canonical URL discovery, and an AI-readable summary of services, career interests and project evidence |
 | `favicon.svg` | Scalable browser-tab and bookmark icon |
 | `profile.jpg`, `profile.webp` | Portrait (WebP is served first, JPG is the fallback) |

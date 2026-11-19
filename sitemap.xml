@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Canonical, indexable URLs. Netlify serves the HTML files at these clean paths. -->
+<!-- Canonical, indexable URLs served using Netlify Pretty URLs. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://aviral-goyal.netlify.app/</loc></url>
+  <url><loc>https://aviral-goyal.netlify.app/projects/</loc></url>
   <url><loc>https://aviral-goyal.netlify.app/services/</loc></url>
   <url><loc>https://aviral-goyal.netlify.app/resume/</loc></url>
+  <url><loc>https://aviral-goyal.netlify.app/articles/</loc></url>
+  <url><loc>https://aviral-goyal.netlify.app/contact/</loc></url>
   <url><loc>https://aviral-goyal.netlify.app/projects/bgliin-ai</loc></url>
   <url><loc>https://aviral-goyal.netlify.app/projects/personal-wealth-monitoring</loc></url>
   <url><loc>https://aviral-goyal.netlify.app/projects/ai-data-analyst-agent</loc></url>
