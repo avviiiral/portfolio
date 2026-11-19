@@ -273,7 +273,7 @@ def main() -> int:
         errors.append("projects/index.html: all three gallery screenshots must use the fixed-ratio media wrapper")
 
     resume_source = (ROOT / "resume" / "index.html").read_text(encoding="utf-8") if (ROOT / "resume" / "index.html").is_file() else ""
-    if 'href="/audience-pages.css?v=20261119-3"' not in resume_source:
+    if 'href="/audience-pages.css?v=20261119-4"' not in resume_source:
         errors.append("resume/index.html: portrait stylesheet cache-busting version is missing")
 
     portrait_css_path = ROOT / "audience-pages.css"
@@ -281,10 +281,13 @@ def main() -> int:
         portrait_css = portrait_css_path.read_text(encoding="utf-8")
         for marker in (
             ".audience-profile img",
-            "width: 150px !important;",
-            "height: 187.5px !important;",
-            "width: 88px !important;",
-            "height: 110px !important;",
+            "grid-template-columns: 230px minmax(0, 1fr);",
+            "width: 230px !important;",
+            "height: 287.5px !important;",
+            "width: 190px !important;",
+            "height: 237.5px !important;",
+            "width: 112px !important;",
+            "height: 140px !important;",
         ):
             if marker not in portrait_css:
                 errors.append(f"audience-pages.css: recruiter portrait ratio rule missing {marker}")
