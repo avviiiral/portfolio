@@ -247,6 +247,8 @@ function syncThemeToggle(){
  themeToggle.textContent=dark?"LIGHT":"DARK";
  themeToggle.setAttribute("aria-label",dark?"Switch to light theme":"Switch to dark theme");
  themeToggle.setAttribute("aria-pressed",String(dark));
+ const themeColorMeta=document.querySelector('meta[name="theme-color"]');
+ if(themeColorMeta)themeColorMeta.setAttribute("content",dark?"#121714":"#f5f3ee");
 }
 themeToggle.addEventListener("click",()=>{
  document.body.classList.toggle("dark");

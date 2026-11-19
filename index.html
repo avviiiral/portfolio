@@ -335,17 +335,25 @@ syncThemeToggle();
 const menuToggle = document.getElementById("menuToggle");
 const primaryNavigation = document.getElementById("primary-navigation");
 if (menuToggle && primaryNavigation) {
+  const closeMenu = () => {
+    primaryNavigation.classList.remove("is-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation menu");
+  };
   menuToggle.addEventListener("click", () => {
     const expanded = menuToggle.getAttribute("aria-expanded") === "true";
     menuToggle.setAttribute("aria-expanded", String(!expanded));
     menuToggle.setAttribute("aria-label", expanded ? "Open navigation menu" : "Close navigation menu");
     primaryNavigation.classList.toggle("is-open", !expanded);
   });
-  primaryNavigation.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
-    primaryNavigation.classList.remove("is-open");
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.setAttribute("aria-label", "Open navigation menu");
-  }));
+  primaryNavigation.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
+  // Close the open mobile menu on Escape and return focus to the toggle.
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && primaryNavigation.classList.contains("is-open")) {
+      closeMenu();
+      menuToggle.focus();
+    }
+  });
 }
 
 function trackPortfolioEvent(eventName, parameters = {}) {

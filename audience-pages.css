@@ -21,6 +21,8 @@
   font-size: .82rem;
   font-weight: 600;
   text-decoration: none;
+  /* Keep nav links an adequate tap target (WCAG 2.5.8) without altering the nav height. */
+  padding-block: 6px;
 }
 .audience-nav-links a:hover,
 .audience-nav-links a[aria-current="page"] { color: var(--ink); }
@@ -238,9 +240,14 @@
 .audience-project:hover { border-color: var(--accent); }
 .audience-profile {
   display: grid;
-  grid-template-columns: 230px minmax(0, 1fr);
-  gap: clamp(20px, 2.5vw, 32px);
-  align-items: center;
+  /* Stack the portrait above its caption: the hero's narrow right column never
+     leaves room for a readable caption beside a 230px portrait, which previously
+     squeezed the caption to a ~70px one-word-per-line strip and overflowed the
+     page at 768-1024px. */
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: start;
+  gap: clamp(16px, 2.5vw, 22px);
+  align-items: start;
   margin: 28px 0 0;
 }
 .audience-profile img {
@@ -281,8 +288,7 @@
 @media (max-width: 900px) {
   .audience-grid, .audience-projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .audience-profile {
-    grid-template-columns: 190px minmax(0, 1fr);
-    gap: 20px;
+    gap: 18px;
   }
   .audience-profile img {
     width: 190px !important;
@@ -303,7 +309,7 @@
   .audience-nav-links a { font-size: .75rem; }
   .audience-actions { flex-direction: column; }
   .audience-actions a { width: 100%; }
-  .audience-profile { grid-template-columns: 112px minmax(0, 1fr); gap: 16px; }
+  .audience-profile { gap: 14px; }
   .audience-profile img {
     width: 112px !important;
     height: 140px !important;
