@@ -36,6 +36,7 @@
 <link rel="stylesheet" href="/portfolio-refresh.css">
 <link rel="stylesheet" href="/editorial.css">
 <link rel="stylesheet" href="/audience-pages.css">
+<link rel="stylesheet" href="/project-gallery.css">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -83,6 +84,83 @@
       </div>
     </div>
   </header>
+  <section class="project-gallery-section" id="project-ui-previews" aria-labelledby="project-gallery-title">
+    <div class="container">
+      <header class="project-gallery-heading">
+        <span class="project-gallery-eyebrow">Interface concepts · Synthetic sample data</span>
+        <h2 id="project-gallery-title">A closer look at the systems.</h2>
+        <p>UI previews for three engineering projects. Open any image for a larger view; the screens use fictional records and illustrative metrics, not live application data.</p>
+      </header>
+
+      <div class="project-gallery-grid">
+        <figure class="project-gallery-card">
+          <button class="project-gallery-open" type="button"
+            data-image="/assets/previews/pwms-dashboard.svg"
+            data-alt="Dark Portfolio and Ledger Monitor dashboard with sample investment KPIs, asset allocation, twelve-month growth and verified ledger entries"
+            data-caption="Personal Wealth Monitoring System — a concept interface for consolidating holdings, dated price/NAV inputs and transaction events. A Django REST layer validates ledger records and reconciliation rules before the Angular dashboard presents portfolio values and reports."
+            aria-label="Open enlarged preview: Personal Wealth Monitoring System">
+            <span class="project-browser-bar" aria-hidden="true">
+              <span class="project-browser-dot"></span><span class="project-browser-dot"></span><span class="project-browser-dot"></span>
+              <span class="project-browser-address">portfolio.local / previews / pwms</span>
+            </span>
+            <img class="project-gallery-image" src="/assets/previews/pwms-dashboard.svg" alt="Personal Wealth Monitoring System synthetic dashboard showing invested value, current value, reconciliation, allocation, portfolio growth and a verified sample ledger" width="1600" height="900" loading="lazy" decoding="async">
+            <span class="project-gallery-zoom-hint">Click to enlarge · 16:9 preview</span>
+          </button>
+          <figcaption class="project-gallery-caption">
+            <p class="project-gallery-kicker">Financial data product</p>
+            <h3>Personal Wealth Monitoring System</h3>
+            <p>Consolidates holdings, transactions and date-aware market/NAV inputs into a traceable portfolio workflow. The API owns validation and reconciliation; the UI presents the resulting valuations and reports.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="project-gallery-card">
+          <button class="project-gallery-open" type="button"
+            data-image="/assets/previews/bgliin-telemetry.svg"
+            data-alt="Dark Production Line Telemetry dashboard with four schematic camera feeds, green detection boxes, hourly throughput and system health"
+            data-caption="BGLIIN.AI — a concept interface for multi-camera production monitoring. RTSP capture, YOLOv8/OpenCV inference and count aggregation are kept as separate workloads; the dashboard surfaces camera state, throughput and recovery events."
+            aria-label="Open enlarged preview: BGLIIN.AI Production Monitor">
+            <span class="project-browser-bar" aria-hidden="true">
+              <span class="project-browser-dot"></span><span class="project-browser-dot"></span><span class="project-browser-dot"></span>
+              <span class="project-browser-address">production.local / telemetry / live</span>
+            </span>
+            <img class="project-gallery-image" src="/assets/previews/bgliin-telemetry.svg" alt="BGLIIN.AI synthetic production monitor with CAM-01 through CAM-04, conveyor wireframes, 28 FPS badges, count labels, throughput chart and frame recovery alert" width="1600" height="900" loading="lazy" decoding="async">
+            <span class="project-gallery-zoom-hint">Click to enlarge · 16:9 preview</span>
+          </button>
+          <figcaption class="project-gallery-caption">
+            <p class="project-gallery-kicker">Industrial computer vision</p>
+            <h3>BGLIIN.AI Multi-Camera Monitor</h3>
+            <p>Separates camera capture, YOLOv8/OpenCV inference and count aggregation so one slow stream does not obscure the health of the rest. The monitoring layer brings stream state, throughput and recovery events into one operational view.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="project-gallery-card">
+          <button class="project-gallery-open" type="button"
+            data-image="/assets/previews/ai-data-analyst.svg"
+            data-alt="Light AI Data Analyst Agent workspace with dataset inspection, deterministic scatter analysis, summary statistics and AI explanation"
+            data-caption="AI Data Analyst Agent — a concept interface that distinguishes deterministic Python calculations from the natural-language explanation layer. Dataset profiling and computed statistics remain independently inspectable, while AI summaries are labelled as verified against those calculations."
+            aria-label="Open enlarged preview: AI Data Analyst Agent">
+            <span class="project-browser-bar" aria-hidden="true">
+              <span class="project-browser-dot"></span><span class="project-browser-dot"></span><span class="project-browser-dot"></span>
+              <span class="project-browser-address">analytics.local / workspace / sample</span>
+            </span>
+            <img class="project-gallery-image" src="/assets/previews/ai-data-analyst.svg" alt="AI Data Analyst Agent synthetic workspace with sales_sample_2026.csv, quality score, column profiling, trend chart, mean, median and correlation" width="1600" height="900" loading="lazy" decoding="async">
+            <span class="project-gallery-zoom-hint">Click to enlarge · 16:9 preview</span>
+          </button>
+          <figcaption class="project-gallery-caption">
+            <p class="project-gallery-kicker">AI-assisted analytics</p>
+            <h3>AI Data Analyst Agent</h3>
+            <p>Splits dataset inspection, deterministic Python analysis and AI-generated explanations into visible layers. The workflow keeps computed metrics independently reviewable rather than treating generated narrative as the source of truth.</p>
+          </figcaption>
+        </figure>
+      </div>
+
+      <p class="project-gallery-note">
+        <span class="project-gallery-note-mark" aria-hidden="true">i</span>
+        <span><strong>Sample-data notice:</strong> every amount, date, asset identifier, camera count, chart point and dataset value in these previews is fictional. These are UI concepts for portfolio demonstration only; no personal, client, financial-account or production data is displayed.</span>
+      </p>
+    </div>
+  </section>
+
   <section id="project-catalogue">
   <div class="container">
     <div class="projects-header">
@@ -305,6 +383,16 @@
     </div>
   </section>
 </main>
+<dialog class="project-preview-dialog" id="project-preview-dialog" aria-labelledby="project-preview-dialog-title">
+  <div class="project-preview-dialog-inner">
+    <div class="project-preview-dialog-head">
+      <p class="project-preview-dialog-title" id="project-preview-dialog-title">Project UI preview</p>
+      <button class="project-preview-close" id="project-preview-close" type="button" aria-label="Close enlarged preview">×</button>
+    </div>
+    <img class="project-preview-dialog-image" id="project-preview-dialog-image" src="" alt="">
+    <p class="project-preview-dialog-caption" id="project-preview-dialog-caption"></p>
+  </div>
+</dialog>
 <footer class="audience-footer">
   <div class="audience-footer-inner">
     <span>© 2026 Aviral Goyal</span>
@@ -326,6 +414,34 @@ themeToggle.addEventListener("click", () => {
   syncThemeToggle();
 });
 syncThemeToggle();
+
+const previewDialog = document.getElementById("project-preview-dialog");
+const previewImage = document.getElementById("project-preview-dialog-image");
+const previewTitle = document.getElementById("project-preview-dialog-title");
+const previewCaption = document.getElementById("project-preview-dialog-caption");
+const previewClose = document.getElementById("project-preview-close");
+
+document.querySelectorAll(".project-gallery-open").forEach(trigger => {
+  trigger.addEventListener("click", () => {
+    previewImage.src = trigger.dataset.image;
+    previewImage.alt = trigger.dataset.alt || "";
+    previewTitle.textContent = trigger.getAttribute("aria-label").replace("Open enlarged preview: ", "");
+    previewCaption.textContent = trigger.dataset.caption || "";
+    if (typeof previewDialog.showModal === "function") {
+      previewDialog.showModal();
+      previewClose.focus();
+    }
+  });
+});
+
+previewClose.addEventListener("click", () => previewDialog.close());
+previewDialog.addEventListener("click", event => {
+  if (event.target === previewDialog) previewDialog.close();
+});
+previewDialog.addEventListener("close", () => {
+  previewImage.removeAttribute("src");
+});
+
 const filterButtons = document.querySelectorAll(".filter-btn");
 const cards = document.querySelectorAll(".project-card[data-category]");
 filterButtons.forEach(button => button.addEventListener("click", () => {
