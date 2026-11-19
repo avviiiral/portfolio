@@ -285,6 +285,9 @@
 .audience-footer a:hover { color: var(--ink); }
 .service-detail-link { margin-top: 20px; }
 .service-detail-link a { color: var(--accent-strong); font-size: .86rem; font-weight: 650; }
+/* Contact method icons: on-brand accent glyphs that adapt to light/dark via currentColor. */
+.contact-icon { color: var(--accent-strong); }
+.contact-icon svg { display: block; width: 18px; height: 18px; }
 @media (max-width: 900px) {
   .audience-grid, .audience-projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .audience-profile {
