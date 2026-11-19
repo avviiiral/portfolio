@@ -359,8 +359,9 @@ try {
   if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark");
 } catch (error) {}
 </script>
+<a class="skip-link" href="#main-content">Skip to content</a>
 <button class="mode-toggle" id="modeToggle" type="button" title="Toggle theme" aria-label="Switch to dark theme" aria-pressed="false">DARK</button>
-<main>
+<main id="main-content">
 <a class="back" href="/">← Back to portfolio</a>
 <div class="eyebrow">Selected work / Full-stack application</div>
 <h1>Personal Wealth Monitoring System</h1>
@@ -371,8 +372,10 @@ try {
 <section class="panel"><h2>The approach</h2><p>Use a Django API to manage application data and calculation logic, with an Angular frontend for portfolio views, investment workflows, and analytics.</p></section>
 </div>
 <h2>Product areas</h2>
+<div class="architecture-scroll">
 <div class="architecture-case" aria-label="Portfolio data flow">
 <div>Transactions <small>Ledger</small></div><span aria-hidden="true">+</span><div>Prices / NAV <small>Market data</small></div><span aria-hidden="true">→</span><div>Validation <small>Calculation rules</small></div><span aria-hidden="true">→</span><div>API <small>Django</small></div><span aria-hidden="true">→</span><div>Reports <small>Angular</small></div>
+</div>
 </div>
 <ul>
 <li><strong>Portfolio and holdings:</strong> organize investments and current positions.</li>
@@ -388,6 +391,7 @@ try {
 <p><em>This page describes application scope and design; it does not claim audited financial accuracy or investment performance.</em></p>
 <div class="actions"><a class="btn primary" href="/contact/">Discuss a similar application</a><a class="btn" href="https://github.com/avviiiral/Personal_Wealth_Monitoring_System" target="_blank" rel="noopener noreferrer">GitHub repository</a><a class="btn" href="/projects/">More projects</a></div>
 </main>
+<a class="to-top" href="#main-content" aria-label="Back to top"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></a>
 <script>
 (() => {
   const themeToggle = document.getElementById("modeToggle");

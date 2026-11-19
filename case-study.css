@@ -217,3 +217,55 @@ hr { border:0; border-top:1px solid var(--case-line)!important; margin:42px 0!im
   .mode-toggle { right:14px; bottom:14px; }
 }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+
+
+/* --- Enhancements: skip link, keyboard focus, back-to-top, diagram scroll cue --- */
+.skip-link {
+  position: fixed; left: 16px; top: -60px; z-index: 1100;
+  padding: 10px 14px; border-radius: 2px;
+  background: var(--case-ink); color: var(--case-bg);
+  font: 650 .8rem/1 "DM Sans", sans-serif; text-decoration: none;
+  transition: top .15s ease;
+}
+.skip-link:focus { top: 16px; }
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--case-accent); outline-offset: 3px;
+}
+
+/* Back-to-top control (sits above the theme toggle). */
+.to-top {
+  position: fixed; right: 24px; bottom: 72px; z-index: 1000;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 2px;
+  border: 1px solid var(--case-line); background: var(--case-surface); color: var(--case-ink);
+  text-decoration: none; box-shadow: 0 8px 22px rgba(0,0,0,.12);
+}
+.to-top:hover { border-color: var(--case-accent); color: var(--case-ink); }
+.to-top svg { display: block; }
+@media (max-width: 680px) { .to-top { right: 14px; bottom: 60px; } }
+/* Reveal only after scrolling, where scroll-driven animations are supported;
+   otherwise it stays visible as a safe fallback. */
+@supports (animation-timeline: scroll()) {
+  .to-top {
+    opacity: 0; visibility: hidden;
+    animation: to-top-reveal both;
+    animation-timeline: scroll(root);
+    animation-range: 300px 340px;
+  }
+  @keyframes to-top-reveal { to { opacity: 1; visibility: visible; } }
+}
+
+/* Horizontal architecture diagrams: fade + hint so mobile users know to scroll. */
+.architecture-scroll { position: relative; }
+@media (max-width: 680px) {
+  .architecture-scroll::after {
+    content: ""; position: absolute; top: 0; right: 0; bottom: 14px; width: 52px;
+    background: linear-gradient(to left, var(--case-bg) 12%, transparent);
+    pointer-events: none;
+  }
+  .architecture-scroll::before {
+    content: "Scroll \2192"; position: absolute; right: 2px; bottom: -4px; z-index: 1;
+    font: 600 .62rem/1 "DM Sans", sans-serif; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--case-accent); pointer-events: none;
+  }
+}
