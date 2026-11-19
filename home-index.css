@@ -86,15 +86,22 @@
   background: var(--surface-strong);
 }
 .home-work-image-link {
+  position: relative;
   display: block;
+  min-width: 0;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: var(--bg-soft);
 }
 .home-work-image-link img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 .home-work-body { padding: 20px; }
 .home-work-body h3 a { color: inherit; text-decoration: none; }
