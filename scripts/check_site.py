@@ -181,6 +181,138 @@ def main() -> int:
     if contact_forms != ["contact/index.html"]:
         errors.append(f"expected one Netlify contact form in contact/index.html, found {contact_forms}")
 
+    # Keep theme behavior consistent across every project and engineering-note detail page.
+    detail_pages = [
+        "projects/bgliin-ai.html",
+        "projects/personal-wealth-monitoring.html",
+        "projects/ai-data-analyst-agent.html",
+        "articles/multi-camera-monitoring.html",
+        "articles/auditable-portfolio-calculations.html",
+    ]
+    for rel in detail_pages:
+        detail_path = ROOT / rel
+        if not detail_path.is_file():
+            errors.append(f"{rel}: missing detail page")
+            continue
+        detail_source = detail_path.read_text(encoding="utf-8")
+        for marker in (
+            'localStorage.getItem("theme") === "dark"',
+            'id="modeToggle"',
+            'body.classList.toggle("dark")',
+            'name="theme-color" content="#f5f3ee"',
+        ):
+            if marker not in detail_source:
+                errors.append(f"{rel}: missing shared theme behavior marker {marker}")
+
+    case_css_path = ROOT / "case-study.css"
+    if not case_css_path.is_file():
+        errors.append("case-study.css not found")
+    else:
+        case_css = case_css_path.read_text(encoding="utf-8")
+        for marker in ("body.dark", "--case-bg:#121714", ".mode-toggle"):
+            if marker not in case_css:
+                errors.append(f"case-study.css: missing shared theme rule {marker}")
+
+    # SVG architecture diagrams must fit the responsive card frame instead of being cropped.
+    home_css_path = ROOT / "home-index.css"
+    projects_css_path = ROOT / "editorial.css"
+    if not home_css_path.is_file() or "object-fit: contain;" not in home_css_path.read_text(encoding="utf-8") or "position: absolute;" not in home_css_path.read_text(encoding="utf-8"):
+        errors.append("home-index.css: featured project diagrams must use a positioned contain-fit image")
+    if not projects_css_path.is_file() or "object-fit:contain;" not in projects_css_path.read_text(encoding="utf-8") or "position:absolute;" not in projects_css_path.read_text(encoding="utf-8"):
+        errors.append("editorial.css: catalogue project diagrams must use a positioned contain-fit image")
+
+    # Synthetic project gallery must use the three local, self-contained preview assets.
+    project_page = ROOT / "projects" / "index.html"
+    if not project_page.is_file():
+        errors.append("projects/index.html not found")
+    else:
+        project_source = project_page.read_text(encoding="utf-8")
+        for marker in (
+            'id="project-ui-previews"',
+            'id="project-preview-dialog"',
+            'class="project-gallery-open"',
+            'data-caption=',
+        ):
+            if marker not in project_source:
+                errors.append(f"projects/index.html: missing gallery marker {marker}")
+        for preview in (
+            "assets/previews/pwms-dashboard.svg",
+            "assets/previews/bgliin-telemetry.svg",
+            "assets/previews/ai-data-analyst.svg",
+        ):
+            if preview not in project_source:
+                errors.append(f"projects/index.html: missing gallery image reference {preview}")
+            elif not (ROOT / preview).is_file():
+                errors.append(f"projects/index.html: missing gallery image file {preview}")
+
+    # Layout regressions reported from the PR preview: image ratios, catalogue contrast and recruiter portrait sizing.
+    gallery_css_path = ROOT / "project-gallery.css"
+    if gallery_css_path.is_file():
+        gallery_css = gallery_css_path.read_text(encoding="utf-8")
+        for marker in (
+            ".project-gallery-media {",
+            "aspect-ratio: 16 / 9;",
+            "height: auto !important;",
+            "width: 100% !important;",
+            "object-fit: contain;",
+            "#project-catalogue .projects-subhead",
+            "#project-catalogue .project-links > a.project-btn",
+            "color: #17211a !important;",
+            "background: #ffffff !important;",
+            "body.dark #project-catalogue .project-links > a.project-btn",
+        ):
+            if marker not in gallery_css:
+                errors.append(f"project-gallery.css: missing responsive/theme rule {marker}")
+    else:
+        errors.append("project-gallery.css: gallery stylesheet not found")
+
+    project_source = (ROOT / "projects" / "index.html").read_text(encoding="utf-8") if (ROOT / "projects" / "index.html").is_file() else ""
+    if 'href="/project-gallery.css?v=20261119-4"' not in project_source:
+        errors.append("projects/index.html: gallery stylesheet cache-busting version is missing")
+    if project_source.count('class="project-gallery-media"') != 3:
+        errors.append("projects/index.html: all three gallery screenshots must use the fixed-ratio media wrapper")
+
+    resume_source = (ROOT / "resume" / "index.html").read_text(encoding="utf-8") if (ROOT / "resume" / "index.html").is_file() else ""
+    if 'href="/audience-pages.css?v=20261119-5"' not in resume_source:
+        errors.append("resume/index.html: portrait stylesheet cache-busting version is missing")
+
+    portrait_css_path = ROOT / "audience-pages.css"
+    if portrait_css_path.is_file():
+        portrait_css = portrait_css_path.read_text(encoding="utf-8")
+        for marker in (
+            ".audience-profile img",
+            "grid-template-columns: minmax(0, 1fr);",
+            "width: 230px !important;",
+            "height: 287.5px !important;",
+            "width: 190px !important;",
+            "height: 237.5px !important;",
+            "width: 112px !important;",
+            "height: 140px !important;",
+        ):
+            if marker not in portrait_css:
+                errors.append(f"audience-pages.css: recruiter portrait ratio rule missing {marker}")
+    else:
+        errors.append("audience-pages.css not found")
+
+    for rel in ("thank-you.html", "404.html"):
+        utility = ROOT / rel
+        if not utility.is_file():
+            errors.append(f"{rel}: utility page not found")
+            continue
+        utility_source = utility.read_text(encoding="utf-8")
+        for marker in (
+            'localStorage.getItem("theme") === "dark"',
+            'id="modeToggle"',
+            'body.classList.toggle("dark")',
+            'name="theme-color" content="#f5f3ee"',
+        ):
+            if marker not in utility_source:
+                errors.append(f"{rel}: missing shared theme behavior marker {marker}")
+
+    for path in ("project-gallery.css", "project-gallery.scss"):
+        if not (ROOT / path).is_file():
+            errors.append(f"{path}: gallery stylesheet not found")
+
     for p, parser in pages.items():
         source = p.read_text(encoding="utf-8")
         parser.feed(source)

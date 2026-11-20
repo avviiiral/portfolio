@@ -15,7 +15,8 @@ There is no build step: plain HTML, CSS and a little vanilla JavaScript, deploye
 | `resume/index.html` | Professional profile, technical skills, selected projects and PDF resume |
 | `projects/*.html` | Case-study pages linked from the project cards |
 | `articles/*.html` | Short engineering notes on reliability and auditable data workflows |
-| `portfolio-refresh.css`, `editorial.css`, `case-study.css`, `portfolio.js` | Shared layout foundations, editorial homepage design system, matching case-study styles, and the architecture switcher |
+| `portfolio-refresh.css`, `editorial.css`, `case-study.css`, `project-gallery.css`, `project-gallery.scss`, `portfolio.js` | Shared layout foundations, editorial design system, case-study styling, responsive project UI gallery and its SCSS source, and the architecture switcher |
+| `assets/previews/` | Three self-contained synthetic SVG interface previews for PWMS, BGLIIN.AI and the AI Data Analyst Agent |
 | `thank-you.html` | Redirect target after a Netlify Forms submission (`noindex`) |
 | `404.html` | Custom "page not found" page (served automatically by Netlify) |
 | `_headers` | Netlify security headers, including the Content-Security-Policy |
@@ -52,6 +53,7 @@ The checker validates page titles/descriptions/canonicals, social metadata, mark
 - Use descriptive case-study content and real screenshots only. Mask any private, financial, client or production details before publishing.
 - Preserve keyboard focus visibility, skip navigation, meaningful image alternatives and reduced-motion support.
 - The featured-project SVGs are schematic architecture illustrations, not screenshots of a deployed application. Replace or supplement them with approved, redacted product screenshots when available.
+- The project UI gallery uses synthetic SVG dashboard concepts. All figures, labels and records are fictional; they do not depict live production, client or account data.
 - Check the live site with Lighthouse/PageSpeed Insights and at least one narrow mobile viewport before merging changes. Search ranking depends on external indexing and relevance; metadata improvements do not guarantee rankings.
 
 ## Architecture and technical notes

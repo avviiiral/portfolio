@@ -21,6 +21,8 @@
   font-size: .82rem;
   font-weight: 600;
   text-decoration: none;
+  /* Keep nav links an adequate tap target (WCAG 2.5.8) without altering the nav height. */
+  padding-block: 6px;
 }
 .audience-nav-links a:hover,
 .audience-nav-links a[aria-current="page"] { color: var(--ink); }
@@ -238,14 +240,21 @@
 .audience-project:hover { border-color: var(--accent); }
 .audience-profile {
   display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
-  gap: 28px;
-  align-items: center;
+  /* Stack the portrait above its caption: the hero's narrow right column never
+     leaves room for a readable caption beside a 230px portrait, which previously
+     squeezed the caption to a ~70px one-word-per-line strip and overflowed the
+     page at 768-1024px. */
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: start;
+  gap: clamp(16px, 2.5vw, 22px);
+  align-items: start;
   margin: 28px 0 0;
 }
 .audience-profile img {
   display: block;
-  width: 150px;
+  width: 230px !important;
+  height: 287.5px !important;
+  max-width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center 35%;
@@ -276,8 +285,57 @@
 .audience-footer a:hover { color: var(--ink); }
 .service-detail-link { margin-top: 20px; }
 .service-detail-link a { color: var(--accent-strong); font-size: .86rem; font-weight: 650; }
+/* Contact method icons: on-brand accent glyphs that adapt to light/dark via currentColor. */
+.contact-icon { color: var(--accent-strong); }
+.contact-icon svg { display: block; width: 18px; height: 18px; }
+
+/* Back-to-top control: sits above the theme toggle, reveals after scrolling. */
+.to-top {
+  position: fixed; right: 24px; bottom: 72px; z-index: 1000;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 2px;
+  border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink);
+  text-decoration: none; box-shadow: 0 8px 22px rgba(0, 0, 0, .1);
+}
+.to-top:hover { border-color: var(--accent); color: var(--ink); }
+.to-top svg { display: block; }
+.to-top:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (max-width: 680px) { .to-top { bottom: 66px; } }
+@supports (animation-timeline: scroll()) {
+  .to-top {
+    opacity: 0; visibility: hidden;
+    animation: to-top-reveal both;
+    animation-timeline: scroll(root);
+    animation-range: 300px 340px;
+  }
+  @keyframes to-top-reveal { to { opacity: 1; visibility: visible; } }
+}
+
+/* Copy-to-clipboard control on the contact email/phone rows. */
+.contact-card-row { position: relative; }
+.contact-card-row > .contact-card { padding-right: 88px; }
+.contact-copy {
+  position: absolute; top: 50%; right: 0; transform: translateY(-50%);
+  display: inline-flex; align-items: center; gap: 6px;
+  min-height: 34px; padding: 7px 11px;
+  border: 1px solid var(--line-strong); border-radius: 2px;
+  background: var(--surface); color: var(--muted);
+  font: 650 .72rem/1 var(--sans); white-space: nowrap; cursor: pointer;
+  transition: color .15s ease, border-color .15s ease;
+}
+.contact-copy:hover { color: var(--ink); border-color: var(--accent); }
+.contact-copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.contact-copy svg { display: block; }
+.contact-copy[data-copied="true"] { color: var(--accent-strong); border-color: var(--accent); }
 @media (max-width: 900px) {
   .audience-grid, .audience-projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .audience-profile {
+    gap: 18px;
+  }
+  .audience-profile img {
+    width: 190px !important;
+    height: 237.5px !important;
+  }
 }
 @media (max-width: 760px) {
   .audience-nav { flex-wrap: wrap; justify-content: space-between; gap: 12px 18px; }
@@ -293,8 +351,11 @@
   .audience-nav-links a { font-size: .75rem; }
   .audience-actions { flex-direction: column; }
   .audience-actions a { width: 100%; }
-  .audience-profile { grid-template-columns: 88px minmax(0, 1fr); gap: 16px; }
-  .audience-profile img { width: 88px; }
+  .audience-profile { gap: 14px; }
+  .audience-profile img {
+    width: 112px !important;
+    height: 140px !important;
+  }
 }
 @supports (content-visibility: auto) {
   #about, #skills, #services, #projects, #architecture, #notes, #feedback, #contact {

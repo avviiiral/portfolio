@@ -11,6 +11,7 @@
 </script>
 <!-- End Google tag -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5f3ee">
 <title>Personal Wealth Monitoring System | Django, Angular &amp; Portfolio Analytics</title>
 <meta name="description" content="A case study of a Django and Angular investment-tracking application covering holdings, transaction history, mutual funds, SIPs, price/NAV data and portfolio reporting.">
 <meta name="robots" content="index,follow">
@@ -344,7 +345,7 @@ pre {
   <link rel="stylesheet" href="/portfolio-refresh.css">
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"CreativeWork","headline":"Personal Wealth Monitoring System","name":"Personal Wealth Monitoring System","description":"A case study of a Django and Angular investment-tracking application covering holdings, transaction history, mutual funds, SIPs, price/NAV data and portfolio reporting.","url":"https://aviral-goyal.netlify.app/projects/personal-wealth-monitoring","author":{"@type":"Person","name":"Aviral Goyal","url":"https://aviral-goyal.netlify.app/"},"inLanguage":"en"}
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"Personal Wealth Monitoring System","name":"Personal Wealth Monitoring System","description":"A case study of a Django and Angular investment-tracking application covering holdings, transaction history, mutual funds, SIPs, price/NAV data and portfolio reporting.","url":"https://aviral-goyal.netlify.app/projects/personal-wealth-monitoring","mainEntityOfPage":"https://aviral-goyal.netlify.app/projects/personal-wealth-monitoring","inLanguage":"en","author":{"@type":"Person","name":"Aviral Goyal","url":"https://aviral-goyal.netlify.app/"},"publisher":{"@type":"Person","name":"Aviral Goyal","url":"https://aviral-goyal.netlify.app/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aviral-goyal.netlify.app/"},{"@type":"ListItem","position":2,"name":"Projects","item":"https://aviral-goyal.netlify.app/projects/"},{"@type":"ListItem","position":3,"name":"Personal Wealth Monitoring System","item":"https://aviral-goyal.netlify.app/projects/personal-wealth-monitoring"}]}]}
 </script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -352,7 +353,16 @@ pre {
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/case-study.css">
 </head>
-<body><main>
+<body>
+<script>
+try {
+  if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark");
+} catch (error) {}
+</script>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<button class="mode-toggle" id="modeToggle" type="button" title="Toggle theme" aria-label="Switch to dark theme" aria-pressed="false">DARK</button>
+<main id="main-content">
 <a class="back" href="/">← Back to portfolio</a>
 <div class="eyebrow">Selected work / Full-stack application</div>
 <h1>Personal Wealth Monitoring System</h1>
@@ -363,8 +373,10 @@ pre {
 <section class="panel"><h2>The approach</h2><p>Use a Django API to manage application data and calculation logic, with an Angular frontend for portfolio views, investment workflows, and analytics.</p></section>
 </div>
 <h2>Product areas</h2>
+<div class="architecture-scroll">
 <div class="architecture-case" aria-label="Portfolio data flow">
 <div>Transactions <small>Ledger</small></div><span aria-hidden="true">+</span><div>Prices / NAV <small>Market data</small></div><span aria-hidden="true">→</span><div>Validation <small>Calculation rules</small></div><span aria-hidden="true">→</span><div>API <small>Django</small></div><span aria-hidden="true">→</span><div>Reports <small>Angular</small></div>
+</div>
 </div>
 <ul>
 <li><strong>Portfolio and holdings:</strong> organize investments and current positions.</li>
@@ -379,4 +391,32 @@ pre {
 <ul><li>Building a full-stack application with a separate API and frontend.</li><li>Integrating market-data inputs with user-managed investment records.</li><li>Designing reporting around transaction-level data and calculation consistency.</li></ul>
 <p><em>This page describes application scope and design; it does not claim audited financial accuracy or investment performance.</em></p>
 <div class="actions"><a class="btn primary" href="/contact/">Discuss a similar application</a><a class="btn" href="https://github.com/avviiiral/Personal_Wealth_Monitoring_System" target="_blank" rel="noopener noreferrer">GitHub repository</a><a class="btn" href="/projects/">More projects</a></div>
-</main></body></html>
+</main>
+<a class="to-top" href="#main-content" aria-label="Back to top"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></a>
+<script>
+(() => {
+  const themeToggle = document.getElementById("modeToggle");
+  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+  function syncThemeToggle() {
+    const isDark = document.body.classList.contains("dark");
+    themeToggle.textContent = isDark ? "LIGHT" : "DARK";
+    themeToggle.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+    if (themeColorMeta) {
+      themeColorMeta.setAttribute("content", isDark ? "#121714" : "#f5f3ee");
+    }
+  }
+
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    try {
+      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+    } catch (error) {}
+    syncThemeToggle();
+  });
+
+  syncThemeToggle();
+})();
+</script>
+</body></html>

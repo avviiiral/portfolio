@@ -12,87 +12,338 @@
 <!-- End Google tag -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,follow">
-<title>Enquiry received | Aviral Goyal</title>
-<style>:root {
+<meta name="theme-color" content="#f5f3ee">
+<title>Message received | Aviral Goyal</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+  --page-bg:#f5f3ee;
+  --page-surface:#fbfaf7;
+  --page-strong:#ffffff;
+  --page-ink:#1c211f;
+  --page-muted:#626a64;
+  --page-subtle:#858c85;
+  --page-line:#d9d8d0;
+  --page-line-strong:#bfc4ba;
+  --page-accent:#536b5b;
+  --page-accent-strong:#344b3d;
+}
+body.dark {
   color-scheme:dark;
-  --bg:#050810;
-  --surface:#0f1830;
-  --border:#1a2a50;
-  --text:#e8eeff;
-  --muted:#9aa9d0;
-  --cyan:#67e8f9
+  --page-bg:#121714;
+  --page-surface:#171e19;
+  --page-strong:#202922;
+  --page-ink:#edf0e9;
+  --page-muted:#b2b9ae;
+  --page-subtle:#879286;
+  --page-line:#303a32;
+  --page-line-strong:#4a594d;
+  --page-accent:#a8b99e;
+  --page-accent-strong:#c3d0b9;
 }
-* {
-  box-sizing:border-box
-}
+* { box-sizing:border-box; }
+html { min-height:100%; scroll-behavior:smooth; }
 body {
-  margin:0;
   min-height:100vh;
-  display:grid;
-  place-items:center;
-  background:radial-gradient(ellipse at top right,#111c3b 0,transparent 55%),var(--bg);
-  color:var(--text);
-  font:16px/1.7 system-ui,-apple-system,Segoe UI,sans-serif;
-  padding:20px
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  background:
+    radial-gradient(ellipse at 82% 18%, rgba(83,107,91,.10), transparent 34%),
+    var(--page-bg);
+  color:var(--page-ink);
+  font:16px/1.7 "DM Sans", Inter, ui-sans-serif, system-ui, sans-serif;
+  letter-spacing:-.012em;
+  -webkit-font-smoothing:antialiased;
 }
-.card {
-  max-width:620px;
-  border:1px solid var(--border);
-  background:var(--surface);
-  border-radius:20px;
-  padding:clamp(24px,5vw,48px)
+a { color:inherit; text-underline-offset:4px; }
+a:hover { color:var(--page-accent-strong); }
+button { font:inherit; }
+.site-header {
+  width:100%;
+  border-bottom:1px solid var(--page-line);
+  background:color-mix(in srgb, var(--page-bg) 92%, transparent);
 }
-.mark {
-  font-size:2rem;
-  color:var(--cyan)
+.site-header-inner {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  width:min(100% - 44px, 1240px);
+  min-height:74px;
+  margin:0 auto;
 }
-h1 {
-  font-size:clamp(2rem,6vw,3.2rem);
-  line-height:1.1;
-  margin:.5rem 0 1rem
+.brand {
+  color:var(--page-ink);
+  font-size:1.05rem;
+  font-weight:800;
+  letter-spacing:-.08em;
+  text-decoration:none;
 }
-p {
-  color:var(--muted)
+.brand span { color:var(--page-accent); }
+.site-links { display:flex; align-items:center; gap:clamp(14px,2.5vw,30px); }
+.site-links a {
+  color:var(--page-muted);
+  font-size:.82rem;
+  font-weight:600;
+  text-decoration:none;
 }
-a {
-  display:inline-block;
-  margin-top:18px;
-  padding:11px 16px;
-  border-radius:10px;
-  background:#2563eb;
-  color:#fff;
-  text-decoration:none
+.site-links a:hover { color:var(--page-ink); }
+.theme-toggle {
+  min-width:68px;
+  min-height:38px;
+  padding:0 12px;
+  border:1px solid var(--page-line-strong);
+  border-radius:3px;
+  background:var(--page-surface);
+  color:var(--page-ink);
+  font-size:.65rem;
+  font-weight:800;
+  letter-spacing:.08em;
+  cursor:pointer;
 }
-
-/* Phase 1: keep utility pages readable on small screens. */
+.theme-toggle:focus-visible,
+a:focus-visible {
+  outline:3px solid var(--page-accent);
+  outline-offset:3px;
+}
 main {
-  width: 100%;
-  min-width: 0;
-  overflow-wrap: anywhere;
+  display:grid;
+  flex:1;
+  place-items:center;
+  width:min(100% - 44px, 1240px);
+  margin:0 auto;
+  padding:clamp(54px,8vw,112px) 0;
 }
-a {
-  overflow-wrap: anywhere;
+.status-layout {
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);
+  align-items:center;
+  gap:clamp(34px,7vw,96px);
+  width:min(100%, 1020px);
 }
-@media (max-width: 480px) {
-  main {
-    padding: 28px 16px 48px;
-  }
-  h1 {
-    font-size: clamp(1.9rem, 9vw, 2.8rem);
-    line-height: 1.1;
-    text-wrap: balance;
-  }
-  .links {
-    gap: .65rem;
-  }
-  .links a,
-  .primary {
-    max-width: 100%;
-    text-align: center;
-  }
+.status-panel {
+  padding:clamp(28px,5vw,54px);
+  border:1px solid var(--page-line);
+  background:var(--page-surface);
+  box-shadow:0 24px 70px rgba(18,28,20,.06);
 }
-
+.status-eyebrow {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--page-accent);
+  font-size:.7rem;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.status-eyebrow::before {
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#16a36a;
+  box-shadow:0 0 0 4px rgba(22,163,106,.12);
+}
+.status-icon {
+  display:grid;
+  width:56px;
+  height:56px;
+  place-items:center;
+  margin:28px 0 18px;
+  border:1px solid var(--page-line);
+  border-radius:50%;
+  background:var(--page-strong);
+  color:var(--page-accent-strong);
+}
+.status-icon svg { width:27px; height:27px; }
+h1 {
+  max-width:700px;
+  margin:0 0 16px;
+  color:var(--page-ink);
+  font-size:clamp(2.5rem,6vw,5.4rem);
+  font-weight:650;
+  line-height:.99;
+  letter-spacing:-.085em;
+  text-wrap:balance;
+}
+.status-copy {
+  max-width:620px;
+  margin:0;
+  color:var(--page-muted);
+  font-size:clamp(1rem,1.5vw,1.12rem);
+  line-height:1.85;
+}
+.status-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:30px; }
+.status-button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  padding:11px 17px;
+  border:1px solid var(--page-ink);
+  background:var(--page-ink);
+  color:var(--page-bg);
+  font-size:.82rem;
+  font-weight:700;
+  text-decoration:none;
+  transition:background .2s,border-color .2s,transform .2s;
+}
+.status-button:hover { background:var(--page-accent-strong); border-color:var(--page-accent-strong); color:var(--page-bg); transform:translateY(-1px); }
+.status-button.secondary {
+  border-color:var(--page-line-strong);
+  background:transparent;
+  color:var(--page-ink);
+}
+.status-button.secondary:hover { border-color:var(--page-accent); background:var(--page-strong); color:var(--page-ink); }
+.status-aside {
+  position:relative;
+  min-height:320px;
+  display:grid;
+  align-content:center;
+  gap:14px;
+  padding:28px;
+  border:1px solid var(--page-line);
+  background:var(--page-strong);
+  overflow:hidden;
+}
+.status-aside::before,
+.status-aside::after {
+  content:"";
+  position:absolute;
+  width:270px;
+  height:270px;
+  right:-70px;
+  top:-85px;
+  border:1px solid var(--page-line);
+  border-radius:50%;
+}
+.status-aside::after { width:190px; height:190px; right:-30px; top:-45px; }
+.aside-kicker {
+  position:relative;
+  z-index:1;
+  color:var(--page-subtle);
+  font-size:.68rem;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.aside-title {
+  position:relative;
+  z-index:1;
+  max-width:300px;
+  margin:0;
+  color:var(--page-ink);
+  font-size:1.45rem;
+  font-weight:650;
+  line-height:1.2;
+  letter-spacing:-.05em;
+}
+.aside-flow {
+  position:relative;
+  z-index:1;
+  display:grid;
+  gap:9px;
+  margin-top:12px;
+}
+.aside-flow span {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:11px 12px;
+  border:1px solid var(--page-line);
+  background:var(--page-bg);
+  color:var(--page-muted);
+  font-size:.78rem;
+}
+.aside-flow b { color:var(--page-ink); font-weight:700; }
+.site-footer {
+  padding:18px 22px 24px;
+  border-top:1px solid var(--page-line);
+  color:var(--page-subtle);
+  font-size:.72rem;
+  text-align:center;
+}
+@media(max-width:760px) {
+  .site-header-inner { width:min(100% - 32px,1240px); min-height:66px; }
+  .site-links { display:none; }
+  main { width:min(100% - 32px,1240px); padding:44px 0 58px; }
+  .status-layout { grid-template-columns:1fr; gap:20px; }
+  .status-aside { min-height:0; }
+  .status-actions { flex-direction:column; }
+  .status-actions a { width:100%; }
+  h1 { font-size:clamp(2.55rem,13vw,4.2rem); }
+}
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
+  *,*::before,*::after { transition:none!important; animation:none!important; }
+}
 </style>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
-<body><main class="card"><div class="mark" aria-hidden="true">✓</div><h1>Thanks for reaching out.</h1><p>Your enquiry has been submitted. If your message is time-sensitive, you can also email <a href="mailto:aviralgoyal739@gmail.com">aviralgoyal739@gmail.com</a>.</p><a href="/">Return to portfolio</a></main></body></html>
+<body>
+<script>
+try { if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark"); } catch (error) {}
+</script>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="brand" href="/" aria-label="Aviral Goyal home">AG<span>/</span></a>
+    <nav class="site-links" aria-label="Primary navigation">
+      <a href="/">Home</a><a href="/projects/">Projects</a><a href="/services/">Services</a><a href="/contact/">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="modeToggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">DARK</button>
+  </div>
+</header>
+<main>
+  <div class="status-layout">
+    <section class="status-panel" aria-labelledby="status-title">
+      <span class="status-eyebrow">Enquiry received · Submission complete</span>
+      <div class="status-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4.2 4.2L19 6.8"/></svg>
+      </div>
+      <h1 id="status-title">Thank you for reaching out.</h1>
+      <p class="status-copy">Your message has been received. I’ll review the details and follow up using the contact information you provided.</p>
+      <div class="status-actions">
+        <a class="status-button" href="/">Return to home</a>
+        <a class="status-button secondary" href="/projects/">Explore projects</a>
+        <a class="status-button secondary" href="mailto:aviralgoyal739@gmail.com">Email directly</a>
+      </div>
+    </section>
+    <aside class="status-aside" aria-label="What happens next">
+      <span class="aside-kicker">Next step</span>
+      <h2 class="aside-title">A clear brief makes the first conversation more useful.</h2>
+      <div class="aside-flow">
+        <span><b>01</b> Review the project details</span>
+        <span><b>02</b> Clarify scope and constraints</span>
+        <span><b>03</b> Agree on a practical next step</span>
+      </div>
+    </aside>
+  </div>
+</main>
+<footer class="site-footer">Aviral Goyal · Full-stack development · AI/ML · Data analytics</footer>
+<script>
+(() => {
+  const toggle = document.getElementById("modeToggle");
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  function sync() {
+    const dark = document.body.classList.contains("dark");
+    toggle.textContent = dark ? "LIGHT" : "DARK";
+    toggle.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+    toggle.setAttribute("aria-pressed", String(dark));
+    if (themeMeta) themeMeta.setAttribute("content", dark ? "#121714" : "#f5f3ee");
+  }
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    try { localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light"); } catch (error) {}
+    sync();
+  });
+  sync();
+})();
+</script>
+</body>
+</html>
